@@ -1,0 +1,26 @@
+<idea-plugin>
+  <version>1.0-SNAPSHOT</version>
+  <change-notes>Add change notes here.&lt;br&gt;
+      &lt;em&gt;most HTML tags may be used&lt;/em&gt;</change-notes>
+  <idea-version since-build="213.6777" until-build="213.*" />
+  <id>org.example.gradlePlugin</id>
+  <name>codeComment</name>
+  <vendor email="2274572823@qq.com" url="http://github.com">njuse</vendor>
+  <description><![CDATA[aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa<br>
+    <em>asdddddddddddd</em>]]></description>
+  <!-- please see https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html
+         on how to target different products -->
+  <depends>com.intellij.modules.platform</depends>
+  <extensions defaultExtensionNs="com.intellij">
+    <!-- Add your extensions here -->
+  </extensions>
+  <actions>
+    <!-- Add your actions here -->
+    <action id="demo.hello.world" class="HelloWorldAction" text="HelloWorld" description="Say Hello World">
+      <add-to-group group-id="GenerateGroup" anchor="first" />
+    </action>
+    <action id="demo.rs" class="RS" text="Return Selected Part" description="return">
+      <add-to-group group-id="GenerateGroup" anchor="first" />
+    </action>
+  </actions>
+</idea-plugin>
