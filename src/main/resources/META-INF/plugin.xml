@@ -21,8 +21,6 @@
         <action id="demo.hello.world" class="HelloWorldAction" text="HelloWorld" description="Say Hello World">
             <add-to-group group-id="GenerateGroup" anchor="first"/>
         </action>
-        <action id="demo.rs" class="RS" text="Return Selected Part" description="return">
-            <add-to-group group-id="GenerateGroup" anchor="first"/>
-        </action>
+
     </actions>
 </idea-plugin>
