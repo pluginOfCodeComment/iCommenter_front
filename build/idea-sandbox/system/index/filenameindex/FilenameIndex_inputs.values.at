@@ -1,17 +1,176 @@
-/Header Record For PersistentHashMapValueStorage	homework2.ideamisc.xml
-.gitignoremodules.xmlhomework2.imlworkspace.xmlinspectionProfilesProject_Default.xmlprofiles_settings.xml
-schemas
-logo.pyproperties.dtd	resourcesmaximumdifference.py
-patchesmeta-ext.rncembed-ext.rnccommon-ext.rnc0004_ping.patch0001_html5.patch0002_xhtml5.patch0007_legacy.patchpatch_build.patchcore-scripting-ext.rnc0008_svg_gradient.patch0005_html5_namespace.patch0006_xhtml5_namespace.patchrelaxng.rnghtml5-schemardf
-rdf.rncits2its20-html5.rncits20-html5-types.rncmml3Makefile	patch-vnumathml3.rncmathml3-inc.rncmathml3-common.rncmathml3-content.rncmathml3-presentation.rncmathml3-strict-content.rnchtml5aria.rncdata.rncmeta.rncrdfa.rncruby.rnc	block.rnc	embed.rnc	html5.rnc	media.rnc
-common.rnc
-legacy.rnc
-phrase.rnc
-tables.rnc
-xhtml5.rncmeta-ext.rncrevision.rncembed-ext.rnchtml5core.rnchtml5full.rncmicrodata.rncsectional.rncweb-forms.rnccommon-ext.rncstructural.rncweb-forms2.rncxhtml5core.rncits20-html5.rncapplications.rnccore-scripting.rncform-datatypes.rnchtml5full-rdfa.rncweb-components.rnchtml5exclusions.rncxhtml5full-html.rncxhtml5full-xhtml.rncits20-html5-types.rnccore-scripting-ext.rnchtml5full-rdfalite.rncweb-forms-scripting.rncweb-forms2-scripting.rncxhtml5full-xhtml-rdfa.rnchtml5full-no-microdata.rncxhtml5full-html-rdfalite.rnc xhtml5full-xhtml-rdfalite.rnc!xhtml5core-plus-web-forms2.rnc# xhtml5full-html-no-microdata.rnc$!xhtml5full-xhtml-no-microdata.rncsvg11	svg11.rncinkscape.rncsvg-clip.rncsvg-font.rncsvg-mask.rncsvg-text.rncsvg-view.rncsvg-image.rncsvg-qname.rncsvg-shape.rncsvg-style.rncsvg11-inc.rncsvg-cursor.rncsvg-filter.rncsvg-marker.rncsvg-script.rncsvg11-tiny.rncsvg-pattern.rncsvg-profile.rncsvg11-basic.rncsvg-gradient.rncsvg-animation.rncsvg-datatypes.rncsvg-hyperlink.rncsvg-structure.rncinkscape-draft.rncsvg-basic-clip.rncsvg-basic-font.rncsvg-basic-text.rncsvg11-tiny-inc.rncsvg-conditional.rncsvg-core-attrib.rncsvg11-basic-inc.rncsvg-basic-filter.rncsvg-paint-attrib.rncsvg-xlink-attrib.rncsvg-extensibility.rncsvg-opacity-attrib.rncsvg-basic-structure.rncsvg-graphics-attrib.rncsvg-viewport-attrib.rncsvg-container-attrib.rncsvg-docevents-attrib.rncsvg-animevents-attrib.rncsvg-graphevents-attrib.rncsvg-extresources-attrib.rnc svg-basic-graphics-attrib.rncsvg20	svg20.rncsvg20-inc.rnc
-LICENSE	html5.rnc
-xhtml5.rnchtml5-all.rnchtml5-its.rnchtml5chars.entxhtml5-all.rnchtml5-rdfalite.rncxhtml5-rdfalite.rnchtml5-svg-mathml.rncxhtml5-svg-mathml.rnchtml5-no-microdata.rnchtml5-rdfalite-w3c.rncxhtml5-no-microdata.rncxhtml5-rdfalite-w3c.rncsvg-xhtml5-rdf-mathml.rnc!xhtml1-ruby-rdf-svg-mathml.rnchtml5charref.rbevent-log-metadataFUSevents-scheme.jsonupdate_html5_schema.shextResourcesstandardSchemashtml5
-xhtml5.xsd
-xhtml11xhtml11.dtdxhtml-lat1.entxhtml-base-1.modxhtml-edit-1.modxhtml-form-1.modxhtml-link-1.modxhtml-list-1.modxhtml-meta-1.modxhtml-pres-1.modxhtml-ruby-1.modxhtml-symbol.entxhtml-text-1.modxhtml-image-1.modxhtml-param-1.modxhtml-qname-1.modxhtml-special.entxhtml-style-1.modxhtml-table-1.modxhtml-events-1.modxhtml-object-1.modxhtml-script-1.modxhtml-struct-1.modxhtml-target-1.modxhtml-attribs-1.modxhtml-blkpres-1.modxhtml-charent-1.modxhtml-csismap-1.modxhtml-inlpres-1.modxhtml-ssismap-1.modxhtml11-model-1.modxhtml-blkphras-1.modxhtml-inlphras-1.modxhtml-inlstyle-1.modxhtml-blkstruct-1.modxhtml-datatypes-1.modxhtml-framework-1.modxhtml-hypertext-1.modxhtml-inlstruct-1.modxhtml-basic-form-1.modxhtml-basic-table-1.mod
-xml.xsd	xhtml.dtd	xlink.dtd
-xhtml1.dtdcatalog.xsdxhtml-mobilexhtml-mobile10.dtdxhtml-mobile12.dtdxhtmlmp12-form-1.modxhtml-mobile10-flat.dtdxhtml-mobile12-form.modxhtml-mobile10-model-1.modxhtml-mobile12-model-1.modxinclude.xsdxslt-1_0.xsdxslt-2_0.xsdXMLSchema-1_1XMLSchema.xsd$!XMLSchema-hasFacetAndProperty.xsdXMLSchema.dtdXMLSchema.xsddatatypes.dtdxhtml-lat1.entxhtml-symbol.entxhtml-special.entxhtml1-strict.dtdxhtml1-strict.xsdxhtml1-frameset.dtdxhtml1-frameset.xsdplugin-repository.dtdXMLSchema-instance.xsdxhtml1-transitional.dtdxhtml1-transitional.xsdXMLSchema-versioning.xsdworkspace.xmlmaximumdifference.py
+orama	@testsstubtest_allowlist.txtcoloramaansi.pyi	win32.pyiwinterm.pyi__init__.pyiinitialise.pyiansitowin32.pyiMETADATA.tomlcroniter	@testsstubtest_allowlist.txtcroniter.pyiMETADATA.tomldocutils	@testsstubtest_allowlist.txtdocutilsutils__init__.pyi	io.pyi
+parsersrst	nodes.pyi	roles.pyi
+states.pyi__init__.pyinull.pyi__init__.pyirecommonmark_wrapper.pyi
+readers
+pep.pyidoctree.pyi__init__.pyistandalone.pyi
+writers__init__.pyicore.pyi	languages__init__.pyi	nodes.pyi
+transforms__init__.pyi__init__.pyiexamples.pyifrontend.pyistatemachine.pyiMETADATA.tomlfilelockfilelock__init__.pyiMETADATA.tomlhtml5lib	@testsstubtest_allowlist.txtrequirements-stubtest.txthtml5lib_trie	py.pyi	_base.pyi__init__.pyi
+filtersbase.pyilint.pyi__init__.pyisanitizer.pyiwhitespace.pyioptionaltags.pyiinject_meta_charset.pyialphabeticalattributes.pyi
+_utils.pyitreewalkers
+dom.pyibase.pyi	etree.pyi
+genshi.pyi__init__.pyietree_lxml.pyi__init__.pyitreeadapters
+sax.pyi
+genshi.pyi__init__.pyitreebuilders
+dom.pyibase.pyi	etree.pyi__init__.pyietree_lxml.pyi_ihatexml.pyiconstants.pyi_tokenizer.pyiserializer.pyihtml5parser.pyi_inputstream.pyiMETADATA.tomlhttplib2	@testsstubtest_allowlist.txthttplib2auth.pyi	certs.pyi	error.pyi	socks.pyiiri2uri.pyi__init__.pyiMETADATA.tomljmespathjmespath
+ast.pyi	lexer.pyi
+parser.pyivisitor.pyi__init__.pyifunctions.pyiexceptions.pyiMETADATA.tomlMarkdown	@testsstubtest_allowlist.txtmarkdowncore.pyiutil.pyi
+extensions
+toc.pyiabbr.pyimeta.pyi	extra.pyi	nl2br.pyi
+smarty.pyi
+tables.pyi__init__.pyidef_list.pyiattr_list.pyifootnotes.pyilegacy_em.pyiwikilinks.pyiadmonition.pyicodehilite.pyimd_in_html.pyisane_lists.pyifenced_code.pyilegacy_attrs.pyi
+pep562.pyi__init__.pyi__meta__.pyiblockparser.pyiserializers.pyipreprocessors.pyiinlinepatterns.pyipostprocessors.pyitreeprocessors.pyiblockprocessors.pyiMETADATA.tomloauthlib	@testsstubtest_allowlist.txtoauthlib	oauth1
+rfc5849	endpointsbase.pyi__init__.pyiresource.pyiaccess_token.pyiauthorization.pyirequest_token.pyipre_configured.pyisignature_only.pyi	utils.pyi
+errors.pyi__init__.pyisignature.pyiparameters.pyirequest_validator.pyi__init__.pyi	oauth2
+rfc6749
+clientsbase.pyi__init__.pyiweb_application.pyilegacy_application.pyimobile_application.pyibackend_application.pyiservice_application.pyi	endpointsbase.pyi	token.pyi__init__.pyimetadata.pyiresource.pyiintrospect.pyirevocation.pyiauthorization.pyipre_configured.pyi	utils.pyi
+errors.pyi
+tokens.pyigrant_typesbase.pyi__init__.pyiimplicit.pyirefresh_token.pyiauthorization_code.pyiclient_credentials.pyi*'resource_owner_password_credentials.pyi__init__.pyiparameters.pyirequest_validator.pyi__init__.pyi	openid
+connectcore	endpoints__init__.pyiuserinfo.pyipre_configured.pyi
+tokens.pyigrant_typesbase.pyi
+hybrid.pyi__init__.pyiimplicit.pyidispatchers.pyiauthorization_code.pyi__init__.pyiexceptions.pyirequest_validator.pyi__init__.pyi__init__.pyi
+common.pyisignals.pyi__init__.pyiuri_validate.pyiMETADATA.tomlparamiko	@testsstubtest_allowlist.txtparamiko
+ber.pyifile.pyipipe.pyipkey.pyisftp.pyiutil.pyi	agent.pyi	proxy.pyi
+client.pyi
+common.pyi
+config.pyi
+dsskey.pyi
+packet.pyi
+primes.pyi
+rsakey.pyi
+server.pyi_winapi.pyichannel.pyikex_gex.pyikex_gss.pyimessage.pyisftp_si.pyissh_gss.pyi__init__.pyi_version.pyicompress.pyiecdsakey.pyihostkeys.pyipy3compat.pyisftp_attr.pyisftp_file.pyitransport.pyied25519key.pyikex_group1.pyikex_group14.pyikex_group16.pyisftp_client.pyisftp_handle.pyisftp_server.pyiwin_pageant.pyiauth_handler.pyibuffered_pipe.pyikex_ecdh_nist.pyissh_exception.pyikex_curve25519.pyiMETADATA.tomlpsycopg2	@testsstubtest_allowlist.txtpsycopg2	tz.pyi
+sql.pyipool.pyi	_json.pyi
+_range.pyi
+errors.pyi
+extras.pyi__init__.pyi_psycopg.pyi_ipaddress.pyierrorcodes.pyiextensions.pyiMETADATA.tomlPygments	@testsstubtest_allowlist.txtrequirements-stubtest.txtpygments	lexers__init__.pyi	styles__init__.pyi
+filters__init__.pyiutil.pyi	lexer.pyi	style.pyi	token.pyi
+filter.pyi
+formatters
+img.pyi
+irc.pyi
+rtf.pyi
+svg.pyihtml.pyi	latex.pyi	other.pyi
+bbcode.pyi__init__.pyi_mapping.pyiterminal.pyipangomarkup.pyiterminal256.pyi
+plugin.pyicmdline.pyiconsole.pyiscanner.pyi__init__.pyimodeline.pyiregexopt.pyiformatter.pyisphinxext.pyiunistring.pyiMETADATA.tomlrequests	@testsstubtest_allowlist.txtrequests
+api.pyiauth.pyipackages
+urllib3util
+url.pyissl_.pyi	retry.pyirequest.pyitimeout.pyi__init__.pyiresponse.pyiconnection.pyi
+contrib__init__.pyipackages__init__.pyissl_match_hostname__init__.pyi_implementation.pyi
+fields.pyirequest.pyi__init__.pyifilepost.pyiresponse.pyiconnection.pyiexceptions.pyipoolmanager.pyi_collections.pyiconnectionpool.pyi__init__.pyi	hooks.pyi	utils.pyi
+compat.pyi
+models.pyicookies.pyi__init__.pyiadapters.pyisessions.pyiexceptions.pyistructures.pyistatus_codes.pyiMETADATA.tomlseleniumselenium	common__init__.pyiexceptions.pyi	webdriverieoptions.pyiservice.pyi__init__.pyiwebdriver.pyiedgeoptions.pyiservice.pyi__init__.pyiwebdriver.pyioperaoptions.pyi__init__.pyiwebdriver.pyi	chromeoptions.pyiservice.pyi__init__.pyiwebdriver.pyiremote_connection.pyi	commonhtml5__init__.pyiapplication_cache.pyi	by.pyi
+actions__init__.pyikey_input.pyiinteraction.pyikey_actions.pyiinput_device.pyimouse_button.pyipointer_input.pyiaction_builder.pyipointer_actions.pyikeys.pyi	alert.pyi	proxy.pyi	utils.pyiservice.pyi__init__.pyiaction_chains.pyitouch_actions.pyidesired_capabilities.pyi	remote	utils.pyi
+mobile.pyicommand.pyi__init__.pyiswitch_to.pyiwebdriver.pyiwebelement.pyierrorhandler.pyifile_detector.pyiremote_connection.pyi	safariservice.pyi__init__.pyiwebdriver.pyipermissions.pyiremote_connection.pyi
+android__init__.pyiwebdriver.pyi
+firefoxoptions.pyiservice.pyi__init__.pyiwebdriver.pyiwebelement.pyifirefox_binary.pyifirefox_profile.pyiremote_connection.pyiextension_connection.pyi
+support	ui.pyiwait.pyi	color.pyi
+events.pyi
+select.pyi__init__.pyiexpected_conditions.pyievent_firing_webdriver.pyiabstract_event_listener.pyi	phantomjsservice.pyi__init__.pyiwebdriver.pyi	webkitgtkoptions.pyiservice.pyi__init__.pyiwebdriver.pyi
+blackberry__init__.pyiwebdriver.pyi__init__.pyi__init__.pyiMETADATA.tomltabulatetabulate.pyiMETADATA.tomltoposorttoposort.pyiMETADATA.tomlwaitress	@testsstubtest_allowlist.txtwaitresstask.pyi
+compat.pyi
+parser.pyi
+runner.pyi
+server.pyibuffers.pyichannel.pyirfc7230.pyitrigger.pyi__init__.pyireceiver.pyiutilities.pyiwasyncore.pyiadjustments.pyiproxy_headers.pyiMETADATA.tomlWerkzeug	@testsstubtest_allowlist.txtwerkzeugdebugrepr.pyiconsole.pyitbtools.pyi__init__.pyi
+contribatom.pyilint.pyi	cache.pyi
+fixers.pyi
+iterio.pyilimiter.pyi__init__.pyiprofiler.pyisessions.pyiwrappers.pyijsrouting.pyitesttools.pyisecurecookie.pyihttp.pyitest.pyiurls.pyiwsgi.pyi	local.pyi	utils.pyi
+middlewarelint.pyi__init__.pyiprofiler.pyiproxy_fix.pyidispatcher.pyihttp_proxy.pyishared_data.pyi
+script.pyi_compat.pyirouting.pyiserving.pyitestapp.pyi__init__.pyisecurity.pyiwrappers.pyi_internal.pyi_reloader.pyiexceptions.pyifilesystem.pyiformparser.pyiuseragents.pyidatastructures.pyiposixemulation.pyiMETADATA.toml	braintree	braintreeutilhttp.pyi
+crypto.pyi
+parser.pyi__init__.pyixml_util.pyiconstants.pyigenerator.pyigraphql_client.pyidatetime_parser.pyiplan.pyi
+add_on.pyi
+errors.pyi
+exceptionshttp__init__.pyitimeout_error.pyiconnection_error.pyiinvalid_response_error.pyi__init__.pyiserver_error.pyibraintree_error.pyinot_found_error.pyiunexpected_error.pyiauthorization_error.pyiconfiguration_error.pyiauthentication_error.pyigateway_timeout_error.pyirequest_timeout_error.pyiupgrade_required_error.pyiinvalid_challenge_error.pyiinvalid_signature_error.pyitoo_many_requests_error.pyi service_unavailable_error.pyi
+search.pyiaddress.pyidispute.pyiversion.pyi__init__.pyibin_data.pyicustomer.pyidiscount.pyimerchant.pyiresource.pyirisk_data.pyidescriptor.pyiids_search.pyiach_mandate.pyicredit_card.pyidispute_details__init__.pyievidence.pyipaypal_message.pyistatus_history.pyienvironment.pyierror_codes.pyipaypal_here.pyitransaction.pyiclient_token.pyidisbursement.pyierror_result.pyimerchant_account__init__.pyiaddress_details.pyifunding_details.pyibusiness_details.pyimerchant_account.pyiindividual_details.pyimodification.pyiplan_gateway.pyistatus_event.pyisubscription.pyiconfiguration.pyilocal_payment.pyioauth_gateway.pyivenmo_account.pyiadd_on_gateway.pyiapple_pay_card.pyidispute_search.pyipayment_method.pyipaypal_account.pyiaddress_gateway.pyicustomer_search.pyidispute_gateway.pyidocument_upload.pyimasterpass_card.pyitesting_gateway.pyius_bank_account.pyiwebhook_testing.pyiandroid_pay_card.pyiattribute_getter.pyicustomer_gateway.pyidiscount_gateway.pyimerchant_gateway.pyipaginated_result.pyipartner_merchant.pyisamsung_pay_card.pyivalidation_error.pyiapple_pay_gateway.pyiapple_pay_options.pyibraintree_gateway.pyiiban_bank_account.pyioauth_credentials.pyisignature_service.pyisuccessful_result.pyicredentials_parser.pyitransaction_search.pyivisa_checkout_card.pyicredit_card_gateway.pyidisbursement_detail.pyieurope_bank_account.pyifacilitated_details.pyifacilitator_details.pyiresource_collection.pyisubscription_search.pyithree_d_secure_info.pyitransaction_amounts.pyitransaction_details.pyitransaction_gateway.pyiclient_token_gateway.pyipaginated_collection.pyipayment_method_nonce.pyisubscription_details.pyisubscription_gateway.pyiwebhook_notification.pyipayment_method_parser.pyitransaction_line_item.pyilocal_payment_reversed.pyipayment_method_gateway.pyipaypal_account_gateway.pyiunknown_payment_method.pyidocument_upload_gateway.pyilocal_payment_completed.pyioauth_access_revocation.pyipayment_instrument_type.pyius_bank_account_gateway.pyiwebhook_testing_gateway.pyiauthorization_adjustment.pyicredit_card_verification.pyimerchant_account_gateway.pyiprocessor_response_types.pyisettlement_batch_summary.pyi subscription_status_event.pyi!amex_express_checkout_card.pyi"validation_error_collection.pyi# account_updater_daily_report.pyi# payment_method_nonce_gateway.pyi# us_bank_account_verification.pyi# webhook_notification_gateway.pyi$!transaction_line_item_gateway.pyi&#credit_card_verification_search.pyi&#revoked_payment_method_metadata.pyi'$credit_card_verification_gateway.pyi'$settlement_batch_summary_gateway.pyi(%granted_payment_instrument_update.pyi*'us_bank_account_verification_search.pyi+(us_bank_account_verification_gateway.pyi-*connected_merchant_status_transitioned.pyi/,connected_merchant_paypal_status_changed.pyiMETADATA.toml	decorator	@testsstubtest_allowlist.txtdecorator.pyiMETADATA.toml	freezegun	@testsstubtest_allowlist.txt	freezegun
+api.pyi__init__.pyiMETADATA.toml	ipaddress@python2ipaddress.pyiMETADATA.toml	pyOpenSSL	@testsstubtest_allowlist.txt
+OpenSSL
+SSL.pyi
+crypto.pyi__init__.pyiMETADATA.toml	pyRFC3339	pyrfc3339	utils.pyi
+parser.pyi__init__.pyigenerator.pyiMETADATA.toml	termcolorMETADATA.tomltermcolor.pyi	ttkthemes	ttkthemes
+_utils.pyi_imgops.pyi_widget.pyi__init__.pyithemed_tk.pyithemed_style.pyiMETADATA.toml	typed-ast	typed_astast3.pyi	ast27.pyi__init__.pyiconversions.pyiMETADATA.toml
+cachetools	@testsstubtest_allowlist.txt
+cachetools	rr.pyi
+lfu.pyi
+lru.pyi
+mru.pyi
+ttl.pyififo.pyifunc.pyikeys.pyi	cache.pyi__init__.pyiMETADATA.toml
+commonmark
+commonmark	render
+rst.pyihtml.pyi__init__.pyirenderer.pyidump.pyimain.pyinode.pyi	cmark.pyi
+blocks.pyi
+common.pyiinlines.pyi__init__.pyientitytrans.pyinormalize_reference.pyiMETADATA.toml
+dateparser	@testsstubtest_allowlist.txt
+dateparserdata__init__.pyilanguages_info.pyiutils__init__.pyistrptime.pyi	search
+search.pyi__init__.pyidetection.pyitext_detection.pyiconf.pyidate.pyi	calendars	hijri.pyi
+jalali.pyi__init__.pyihijri_parser.pyijalali_parser.pyi	languages
+loader.pyi
+locale.pyi__init__.pyidictionary.pyivalidation.pyi
+parser.pyi__init__.pyitimezones.pyidate_parser.pyitimezone_parser.pyifreshness_date_parser.pyiMETADATA.tomldateparser_data__init__.pyisettings.pyi
+Deprecated	@testsstubtest_allowlist.txt
+deprecated
+sphinx.pyiclassic.pyi__init__.pyiMETADATA.toml
+frozendict	@testsstubtest_allowlist.txtMETADATA.tomlfrozendict.pyi
+jsonschema	@testsstubtest_allowlist.txt
+jsonschema
+cli.pyi
+_types.pyi
+_utils.pyi
+compat.pyi_format.pyi__init__.pyi_reflect.pyiexceptions.pyivalidators.pyi_validators.pyi_legacy_validators.pyiMETADATA.toml
+MarkupSafe	@testsstubtest_allowlist.txt
+markupsafe_compat.pyi_native.pyi__init__.pyi_speedups.pyi_constants.pyiMETADATA.toml
+pyfarmhashfarmhash.pyiMETADATA.toml
+Send2Trash
+send2trashutil.pyi
+compat.pyi__init__.pyiexceptions.pyiMETADATA.toml
+setuptools	@testsstubtest_allowlist.txt
+setuptools	extern__init__.pyi
+commandtest.pyi	alias.pyi	sdist.pyi
+rotate.pyi
+setopt.pyi
+upload.pyidevelop.pyiinstall.pyi__init__.pyibuild_py.pyiegg_info.pyiregister.pyisaveopts.pyibdist_egg.pyibdist_rpm.pyibuild_ext.pyidist_info.pyibuild_clib.pyipy36compat.pyiinstall_lib.pyiupload_docs.pyieasy_install.pyiinstall_scripts.pyiinstall_egg_info.pyidist.pyiglob.pyimsvc.pyi	wheel.pyi
+config.pyi
+errors.pyi
+launch.pyi
+monkey.pyidepends.pyisandbox.pyiversion.pyi__init__.pyidep_util.pyiextension.pyiinstaller.pyibuild_meta.pyilib2to3_ex.pyinamespaces.pyiarchive_util.pyipackage_index.pyiunicode_utils.pyiwindows_support.pyi_deprecation_warning.pyiMETADATA.tomlpkg_resources__init__.pyipy31compat.pyi
+simplejson	@testsstubtest_allowlist.txt
+simplejsondecoder.pyiencoder.pyiscanner.pyi__init__.pyiraw_json.pyiMETADATA.tomlcontextvars	@testsstubtest_allowlist.txtMETADATA.tomlcontextvars.pyidataclasses	@testsstubtest_allowlist.txtMETADATA.tomldataclasses.pyientrypointsMETADATA.tomlentrypoints.pyiJACK-Clientjack__init__.pyi	@testsstubtest_allowlist.txtMETADATA.tomlmysqlclient	@testsstubtest_allowlist.txt
+MySQLdb	constants	CR.pyi	ER.pyiFLAG.pyi
+CLIENT.pyi__init__.pyiFIELD_TYPE.pyi	times.pyi
+_mysql.pyicursors.pyirelease.pyi__init__.pyiconverters.pyi_exceptions.pyiconnections.pyiMETADATA.tomlprettytableprettytable__init__.pyiprettytable.pyiMETADATA.tomlpython-nmapnmapnmap.pyi__init__.pyiMETADATA.tomlatomicwrites	@testsstubtest_allowlist.txtatomicwrites__init__.pyiMETADATA.tomlaws-xray-sdk	@testsstubtest_allowlist.txtaws_xray_sdkcoreutils
+compat.pyi__init__.pyiconversion.pyistacktrace.pyiatomic_counter.pyisearch_pattern.pyi	modelshttp.pyi
+entity.pyisegment.pyitraceid.pyi__init__.pyithrowable.pyisubsegment.pyinoop_traceid.pyitrace_header.pyidummy_entities.pyifacade_segment.pyidefault_dynamic_naming.pyi
+plugins	utils.pyi__init__.pyiec2_plugin.pyiecs_plugin.pyielasticbeanstalk_plugin.pyiemitters__init__.pyiudp_emitter.pyisamplinglocalsampler.pyi__init__.pyireservoir.pyisampling_rule.pyisampler.pyi__init__.pyiconnector.pyireservoir.pyirule_cache.pyirule_poller.pyisampling_rule.pyitarget_poller.pyi	streaming__init__.pyidefault_streaming.pyi
+exceptions__init__.pyiexceptions.pyicontext.pyipatcher.pyi__init__.pyirecorder.pyiasync_context.pyidaemon_config.pyiasync_recorder.pyilambda_launcher.pyiversion.pyi__init__.pyisdk_config.pyiMETADATA.tomlcryptography	@testsstubtest_allowlist.txtcryptographyx509
+oid.pyi__init__.pyiextensions.pyi	hazmatbackends__init__.pyiinterfaces.pyibindings
+opensslbinding.pyi__init__.pyi__init__.pyi
+primitiveskdfhkdf.pyi	kbkdf.pyi
+pbkdf2.pyi
+scrypt.pyix963kdf.pyi__init__.pyiconcatkdf.pyi
+ciphersaead.pyi	modes.pyi__init__.pyialgorithms.pyicmac.pyihmac.pyi	twofactorhotp.pyitotp.pyi__init__.pyi
+asymmetric	dh.pyi	ec.pyi
+dsa.pyi
+rsa.pyix448.pyi	ed448.pyi	utils.pyi
+x25519.pyied25519.pyipadding.pyi__init__.pyi
+hashes.pyikeywrap.pyipadding.pyi__init__.pyipoly1305.pyiserialization	pkcs7.pyi
+pkcs12.pyi__init__.pyiconstant_time.pyi__init__.pyi
+fernet.pyi__init__.pyiexceptions.pyiMETADATA.tomleditdistanceMETADATA.tomleditdistance.pyiitsdangerous	@testsstubtest_allowlist.txtMETADATA.tomlitsdangerous.pyibackports_abc	@testsstubtest_allowlist.txtMETADATA.tomlbackports_abc.pyiclick-spinner	@testsstubtest_allowlist.txtclick_spinner__init__.pyiMETADATA.tomlDateTimeRangedatetimerange__init__.pyiMETADATA.tomlhumanfriendly	@testsstubtest_allowlist.txtrequirements-stubtest.txthumanfriendly
+cli.pyicase.pyiterminalhtml.pyi__init__.pyispinners.pyitext.pyi	usage.pyi
+compat.pyi
+sphinx.pyi
+tables.pyiprompts.pyitesting.pyi__init__.pyidecorators.pyideprecation.pyiMETADATA.tomlpython-gflags	@testsstubtest_allowlist.txt
+gflags.pyiMETADATA.tomlbeautifulsoup4bs4
+builder	_lxml.pyi__init__.pyi_html5lib.pyi_htmlparser.pyi
+dammit.pyielement.pyi__init__.pyidiagnose.pyiformatter.pyi	@testsstubtest_allowlist.txtrequirements-stubtest.txtMETADATA.tomlcharacteristicMETADATA.tomlcharacteristic__init__.pyipython-slugify
+slugifyslugify.pyispecial.pyi__init__.pyiMETADATA.tomlsingledispatchMETADATA.tomlsingledispatch.pyimypy-extensions	@testsstubtest_allowlist.txtMETADATA.tomlmypy_extensions.pyipython-dateutil	@testsstubtest_allowlist.txtdateutiltz	tz.pyi_common.pyi__init__.pyi	parser__init__.pyiisoparser.pyi	rrule.pyi	utils.pyi
+easter.pyi_common.pyi__init__.pyirelativedelta.pyiMETADATA.tomlpytest-lazy-fixtureMETADATA.tomlpytest_lazyfixture.pyibackports.ssl_match_hostname	backports__init__.pyissl_match_hostname__init__.pyiMETADATA.tomlmisc.xml� 第五次作业.iml__init__.py
+test.py__init__.py__init__.py__init__.pyto_do_list_test.py
+test.py__init__.py__init__.pygrammarlesson_test.py
+test.pyworkspace.xmlgrammarlesson.pygrammarlesson.py� 第四次作业DLLs__init__.py__init__.pyxxlimited_35.py__init__.py
+test.py__init__.py__init__.py__init__.pyto_do_list_test.py
+test.py__init__.py__init__.pygrammarlesson_test.py
+test.py__init__.py__init__.pyDLLs� 第四次作业xxlimited_35.py__init__.py	try.py__init__.pyworkspace.xml__init__.py
+test.py__init__.py__init__.py__init__.pyto_do_list_test.py
+test.py__init__.pygrammarlesson_test.py
+test.py__init__.py
+test.py__init__.py__init__.py__init__.pyto_do_list_test.py
+test.py__init__.py__init__.pygrammarlesson_test.py
+test.pyDLLs� 第四次作业xxlimited_35.py__init__.py__init__.py__init__.pyDLLs� 第四次作业xxlimited_35.py__init__.py__init__.pyxxlimited_35.py__init__.py__init__.py__init__.pyDLLs� 第四次作业xxlimited_35.py__init__.py__init__.pyDLLs� 第四次作业xxlimited_35.py__init__.py__init__.py__init__.pyDLLs� 第四次作业xxlimited_35.py__init__.py__init__.pyDLLs� 第四次作业xxlimited_35.py__init__.py__init__.pyDLLs� 第四次作业xxlimited_35.py__init__.py__init__.py__init__.pyDLLs� 第四次作业xxlimited_35.py__init__.py� 第四次作业DLLs__init__.py__init__.pyxxlimited_35.pyxxlimited_35.py__init__.py__init__.pyDLLs� 第四次作业__init__.pyxxlimited_35.py__init__.py__init__.pyDLLs� 第四次作业xxlimited_35.py__init__.py__init__.pyDLLs� 第四次作业grammarlesson.py__init__.pyxxlimited_35.py__init__.py__init__.pyDLLs� 第四次作业xxlimited_35.py__init__.py__init__.pyDLLs� 第四次作业xxlimited_35.py__init__.py__init__.pyDLLs� 第四次作业grammarlesson.py__init__.pyxxlimited_35.py__init__.py__init__.pyDLLs� 第四次作业__init__.pygrammarlesson.pyxxlimited_35.py__init__.py__init__.pyDLLs� 第四次作业grammarlesson.py__init__.pyxxlimited_35.py__init__.py__init__.pyxxlimited_35.py__init__.py__init__.pyDLLs� 第四次作业grammarlesson.pyxxlimited_35.py__init__.py__init__.pyDLLs� 第四次作业grammarlesson.pyxxlimited_35.py__init__.py__init__.pyDLLs� 第四次作业

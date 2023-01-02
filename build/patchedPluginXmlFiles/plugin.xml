@@ -11,6 +11,8 @@
   <!-- please see https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html
          on how to target different products -->
   <depends>com.intellij.modules.platform</depends>
+  <depends>com.intellij.modules.pycharm</depends>
+  <depends>com.intellij.modules.lang</depends>
   <extensions defaultExtensionNs="com.intellij">
     <!-- Add your extensions here -->
   </extensions>
@@ -19,7 +21,7 @@
     <action id="demo.hello.world" class="HelloWorldAction" text="HelloWorld" description="Say Hello World">
       <add-to-group group-id="GenerateGroup" anchor="first" />
     </action>
-    <action id="demo.rs" class="RS" text="Return Selected Part" description="return">
+    <action id="src.main.java.action" class="action.generateCommentAction" text="generate comment" description="automatically generate code comment">
       <add-to-group group-id="GenerateGroup" anchor="first" />
     </action>
   </actions>

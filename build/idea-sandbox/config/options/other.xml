@@ -2,6 +2,11 @@
   <component name="DynamicPluginEnabler">
     <trackers>
       <map>
+        <entry key="2730wBMiZWCIn5m9GxVoWke6CSJ">
+          <value>
+            <ProjectPluginTracker />
+          </value>
+        </entry>
         <entry key="27CMvDw6vyUO9i8Mpfcd8WUqmg8">
           <value>
             <ProjectPluginTracker />
@@ -23,7 +28,8 @@
     <property name="PyCharm.InitialConfiguration.V7" value="true" />
     <property name="bundled.plugins.list.saved.version" value="PC-213.6777.50" />
     <property name="experimentalFeature.terminal.shell.command.handling" value="false" />
-    <property name="file.chooser.recent.files" value="D:/anaconda/Python/homework2" />
+    <property name="file.chooser.recent.files" value="D:/anaconda/Python/第六次作业&#10;D:/anaconda/Python/homework2" />
+    <property name="file.gist.reindex.count" value="28" />
     <property name="fileTypeChangedCounter" value="2" />
     <property name="fileTypeDetectors" value="com.intellij.ide.scratch.ScratchFileServiceImpl$Detector:org.jetbrains.plugins.textmate.TextMateFileType$TextMateFileDetector" />
     <property name="got.it.tooltip.cwm.invitation.notification" value="1" />
@@ -32,5 +38,10 @@
     <property name="last_opened_file_path" value="D:/anaconda/Python/homework2" />
     <property name="registry.to.advanced.settings.migration.build" value="PC-213.6777.50" />
     <property name="tasks.pass.word.conversion.enforced" value="true" />
+  </component>
+  <component name="TerminalCommandHistoryManager">
+    <command-history-files>
+      <command-history-file filename="homework2-history" project-path="D:/anaconda/Python/homework2" last-access-time="1671881457101" />
+    </command-history-files>
   </component>
 </application>

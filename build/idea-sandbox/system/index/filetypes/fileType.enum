@@ -1,11 +1,52 @@
 XML
-GitIgnore file
-IDEA_MODULE
-DTD
-Python
 RNG Compact
-PATCH
-textmate
+IDEA_MODULE
+GitIgnore file
 PLAIN_TEXT
+Python
+Markdown
+DTD
+PATCH
 JSON
 Shell Script
+textmate
+Image
+UNKNOWN
+ReST
+HTML
+CSS
+PythonStub
+C++
+YAML
+JavaScript
+SVG
+ARCHIVE
+IDL
+Native
+Jupyter
+TOML
+Qt UI file
+JavaFX
+C#
+Perl
+AspectJ
+Erlang
+Haskell
+SQL
+PHP
+JSP
+AUTO_DETECTED
+IDEA_WORKSPACE
+IDEA_PROJECT
+IgnoreLang file
+XHTML
+RegExp
+Dictionary
+JSON5
+JSON-lines
+EditorConfig
+HgIgnore file
+JQL
+Properties
+ResourceBundle
+GitExclude file

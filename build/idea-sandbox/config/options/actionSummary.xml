@@ -1,10 +1,55 @@
 <application>
   <component name="ActionsLocalSummary">
+    <e n="$SelectAll">
+      <i c="3" l="1672560613253" />
+    </e>
+    <e n="$Undo">
+      <i c="2" l="1672574122693" />
+    </e>
+    <e n="EditorBackSpace">
+      <i c="27" l="1672574718619" />
+    </e>
+    <e n="EditorCopy">
+      <i c="1" l="1672411489023" />
+    </e>
+    <e n="EditorEnter">
+      <i c="5" l="1672497686334" />
+    </e>
+    <e n="EditorLeft">
+      <i c="1" l="1671886349781" />
+    </e>
+    <e n="EditorPaste">
+      <i c="1" l="1672411510194" />
+    </e>
+    <e n="EditorTabsEntryPoint">
+      <i c="1" l="1671876386558" />
+    </e>
     <e n="Generate">
-      <i c="4" l="1671365015910" />
+      <i c="115" l="1672574825251" />
+    </e>
+    <e n="NewPythonFile">
+      <i c="1" l="1672411502419" />
+    </e>
+    <e n="OpenFile">
+      <i c="1" l="1671881475624" />
     </e>
     <e n="WelcomeScreen.OpenDirectoryProject">
       <i c="1" l="1671278035161" />
+    </e>
+    <e n="com.intellij.diagnostic.IdeMessagePanel$4">
+      <i c="5" l="1672572640312" />
+    </e>
+    <e n="com.intellij.openapi.fileEditor.impl.tabActions.CloseTab">
+      <i c="2" l="1671881514410" />
+    </e>
+    <e n="com.intellij.openapi.wm.impl.ToolWindowHeader$HideAction">
+      <i c="1" l="1671896312021" />
+    </e>
+    <e n="com.jetbrains.python.sdk.PySdkPopupFactory$AddInterpreterAction">
+      <i c="1" l="1671876396365" />
+    </e>
+    <e n="com.jetbrains.python.sdk.PySdkPopupFactory$InterpreterSettingsAction">
+      <i c="1" l="1671969319385" />
     </e>
   </component>
 </application>

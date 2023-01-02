@@ -1,4 +1,22 @@
 <application>
+  <component name="EventLogWhitelist">
+    <update recorder-id="MLSE" last-modified="0" />
+    <update recorder-id="FUS" last-modified="0" />
+    <options recorder-id="MLSE">
+      <option name="dataThreshold" value="15000" />
+      <option name="id_salt" value="" />
+      <option name="groupAlertThreshold" value="6000" />
+      <option name="groupDataThreshold" value="10000" />
+      <option name="id_salt_revision" value="0" />
+    </options>
+    <options recorder-id="FUS">
+      <option name="dataThreshold" value="15000" />
+      <option name="id_salt" value="" />
+      <option name="groupAlertThreshold" value="6000" />
+      <option name="groupDataThreshold" value="10000" />
+      <option name="id_salt_revision" value="0" />
+    </options>
+  </component>
   <component name="PluginAdvertiserExtensions">
     <plugins>
       <entry key="*.zip">
