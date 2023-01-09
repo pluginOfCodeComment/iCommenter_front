@@ -1,22 +1,25 @@
 <application>
   <component name="ActionsLocalSummary">
     <e n="$SelectAll">
-      <i c="3" l="1672560613253" />
+      <i c="7" l="1673179366541" />
     </e>
     <e n="$Undo">
-      <i c="2" l="1672574122693" />
+      <i c="25" l="1673178036589" />
     </e>
     <e n="EditorBackSpace">
-      <i c="34" l="1673073391926" />
+      <i c="67" l="1673179734901" />
     </e>
     <e n="EditorCopy">
       <i c="1" l="1672411489023" />
     </e>
+    <e n="EditorDown">
+      <i c="1" l="1673179062154" />
+    </e>
     <e n="EditorEnter">
-      <i c="11" l="1673073392219" />
+      <i c="24" l="1673179729555" />
     </e>
     <e n="EditorLeft">
-      <i c="1" l="1671886349781" />
+      <i c="2" l="1673167522096" />
     </e>
     <e n="EditorPaste">
       <i c="1" l="1672411510194" />
@@ -25,13 +28,16 @@
       <i c="1" l="1671876386558" />
     </e>
     <e n="Generate">
-      <i c="121" l="1673073411443" />
+      <i c="160" l="1673179923871" />
     </e>
     <e n="NewPythonFile">
       <i c="1" l="1672411502419" />
     </e>
     <e n="OpenFile">
       <i c="1" l="1671881475624" />
+    </e>
+    <e n="SettingsEntryPoint">
+      <i c="1" l="1673167578866" />
     </e>
     <e n="WelcomeScreen.OpenDirectoryProject">
       <i c="1" l="1671278035161" />

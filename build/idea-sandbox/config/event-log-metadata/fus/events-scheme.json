@@ -733,6 +733,24 @@
       }
     }
   }, {
+    "id" : "dumb.mode",
+    "builds" : [ ],
+    "versions" : [ {
+      "from" : "1"
+    } ],
+    "rules" : {
+      "event_id" : [ "{enum:stage|started|finished}" ],
+      "event_data" : {
+        "duration_ms" : [ "{regexp#integer}" ],
+        "finish_type" : [ "{enum:TERMINATED|FINISHED}" ],
+        "ide_activity_id" : [ "{regexp#integer}" ],
+        "plugin" : [ "{util#plugin}" ],
+        "plugin_type" : [ "{util#plugin_type}" ],
+        "plugin_version" : [ "{util#plugin_version}" ],
+        "stage_class" : [ "{util#class_name}" ]
+      }
+    }
+  }, {
     "id" : "eclipse.projects.detector",
     "builds" : [ ],
     "versions" : [ {
@@ -1619,7 +1637,8 @@
     "id" : "indexing",
     "builds" : [ ],
     "versions" : [ {
-      "from" : "1"
+      "from" : "1",
+      "to" : "7"
     } ],
     "rules" : {
       "event_id" : [ "{enum:started|stage|finished}" ],
@@ -4668,5 +4687,5 @@
       "version" : "Unknown|unknown.format|unknown|UNKNOWN|((\\d+\\.?)*\\d+)"
     }
   },
-  "version" : "2910"
+  "version" : "2912"
 }

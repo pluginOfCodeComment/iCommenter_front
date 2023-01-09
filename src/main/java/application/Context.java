@@ -42,7 +42,11 @@ public class Context {
         hasCodeComment = false;
     }
 
-    public String getFunction(){
+    public boolean isHasCodeComment() {
+        return hasCodeComment;
+    }
+
+    public String getFunctionName(){
         String function_name = null;
         VisualPosition startPosition = selectionModel.getSelectionStartPosition();
         VisualPosition endPosition = selectionModel.getSelectionEndPosition();
@@ -86,29 +90,34 @@ public class Context {
         int k;
         for (k = 0; k < tmp.length && !tmp[k].equals("def"); k++) {}
         function_name = tmp[k + 1].split("\\(")[0];
+        //test
+        System.out.println(function_begin);
+        System.out.println(function_end);
         return function_name;
     }
 
-    public boolean checkComment(){
+    public void checkComment(){
         boolean hasCom = false;
         String[] text = document.getText().split("\n");
         int compare = utils.getTsize(text[function_begin]);
         for(int i = function_begin - 1; i >= 0; i--){
-            if(text[i].contains("#")){
+            if(text[i].equals("'''") || text[i].equals("\"\"\"") || text[i].contains("#")){
                 if(!hasCom){
                     hasCom = true;
                     comment_begin = i;
-                    comment_end = i;
+                    comment_end = function_begin - 1;
                 }else{
                     comment_begin = i;
                 }
             }else if(!text[i].equals("") && utils.getTsize(text[i]) != compare){
                 hasCodeComment = hasCom;
-                return hasCom;
+                return;
             }
         }
         hasCodeComment = hasCom;
-        return hasCom;
+        //test
+        System.out.println(comment_begin);
+        System.out.println(comment_end);
     }
 
     public void getBody(){
@@ -116,27 +125,42 @@ public class Context {
         TextRange textRange = new TextRange(insertOffset, document.getLineEndOffset(function_end));
         code = document.getText(textRange);
         //test
-        System.out.println(function_begin);
-        System.out.println(function_end);
         System.out.println(code);
-        System.out.println(comment_begin);
-        System.out.println(comment_end);
     }
 
-    public void insert(){
+    public void insert(String s){
         int insertOffset = document.getLineStartOffset(function_begin);
         Runnable runnable;
         int k = 0;
         if(hasCodeComment){
             k = Messages.showYesNoDialog(project,"是否要替换掉原来的注释","提示","是","否",Messages.getQuestionIcon());
             if(k == 0){
-                runnable = () -> document.replaceString(document.getLineStartOffset(comment_begin),document.getLineEndOffset(comment_end),"#this is new code comment");
+                int firstOffset = document.getLineStartOffset(comment_begin);
+                int endOffset = document.getLineEndOffset(comment_end) + 1;
+                runnable = () -> document.replaceString(firstOffset,endOffset,s);
+                comment_end = comment_begin;
+                function_end -= function_begin - comment_begin;
+                function_begin = comment_begin + 1;
             }else{
-                runnable = () -> document.insertString(insertOffset,"#this is code comment\n");
+                runnable = () -> document.insertString(insertOffset,s);
+                comment_end++;
+                function_begin++;
+                function_end++;
             }
         }else{
-            runnable = () -> document.insertString(insertOffset,"#this is code comment\n");
+            runnable = () -> document.insertString(insertOffset,s);
+            comment_begin = comment_end = function_begin;
+            function_begin++;
+            function_end++;
+            hasCodeComment = true;
         }
         WriteCommandAction.runWriteCommandAction(project,runnable);
+        //update();
+    }
+
+    public void update(){
+        this.comment_begin = -1;
+        this.comment_end = -1;
+        checkComment();
     }
 }
