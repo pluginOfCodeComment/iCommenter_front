@@ -1,6 +1,6 @@
 <application>
   <component name="WindowManager">
-    <frame x="15" y="30" width="1890" height="975" />
+    <frame x="948" y="0" width="984" height="1034" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.25" />
       <window_info anchor="bottom" id="Version Control" order="0" />
@@ -15,9 +15,9 @@
       <screen x="0" y="0" width="1280" height="689" />
     </state>
     <state x="421" y="84" key="FileChooserDialogImpl/0.0.1280.689" timestamp="1671278058085" />
-    <state x="934" y="516" width="300" height="122" key="ProcessPopupWindow" timestamp="1673179074614">
+    <state x="934" y="516" width="300" height="122" key="ProcessPopupWindow" timestamp="1675498815686">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state x="934" y="516" width="300" height="122" key="ProcessPopupWindow/0.0.1280.689" timestamp="1673179074614" />
+    <state x="934" y="516" width="300" height="122" key="ProcessPopupWindow/0.0.1280.689" timestamp="1675498815686" />
   </component>
 </application>

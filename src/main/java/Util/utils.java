@@ -13,4 +13,24 @@ public class utils {
         }
         return sum / 4;
     }
+
+    public static int getLines(String text){
+        if(text == null || text.isEmpty()){
+            return 0;
+        }
+        int lines = 1;
+        int pos = 0;
+        while ((pos = text.indexOf("\n", pos) + 1) != 0) {
+            lines++;
+        }
+        return lines;
+    }
+
+    public static String getSpace(int k){
+        StringBuffer stringBuffer = new StringBuffer();
+        for(int i = 0; i < k * 4; i++){
+            stringBuffer.append(' ');
+        }
+        return stringBuffer.toString();
+    }
 }

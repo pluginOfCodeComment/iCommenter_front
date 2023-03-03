@@ -27,6 +27,9 @@
         <action id="src.main.java.action" class="action.generateCommentAction" text="generate comment"
                 description="automatically generate code comment">
             <add-to-group group-id="GenerateGroup" anchor="first"/>
+            <keyboard-shortcut keymap="$default" first-keystroke="shift C"/>
         </action>
+
     </actions>
+
 </idea-plugin>

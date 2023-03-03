@@ -29,12 +29,13 @@
     <property name="bundled.plugins.list.saved.version" value="PC-213.6777.50" />
     <property name="experimentalFeature.terminal.shell.command.handling" value="false" />
     <property name="file.chooser.recent.files" value="D:/anaconda/Python/第六次作业&#10;D:/anaconda/Python/homework2" />
-    <property name="file.gist.reindex.count" value="37" />
+    <property name="file.gist.reindex.count" value="92" />
     <property name="fileTypeChangedCounter" value="2" />
     <property name="fileTypeDetectors" value="com.intellij.ide.scratch.ScratchFileServiceImpl$Detector:org.jetbrains.plugins.textmate.TextMateFileType$TextMateFileDetector" />
     <property name="got.it.tooltip.cwm.invitation.notification" value="1" />
     <property name="gotit.previous.run" value="PC-213.6777.50" />
     <property name="ide.memory.adjusted" value="true" />
+    <property name="ignore.virus.scanning.warn.message" value="true" />
     <property name="last_opened_file_path" value="D:/anaconda/Python/homework2" />
     <property name="registry.to.advanced.settings.migration.build" value="PC-213.6777.50" />
     <property name="tasks.pass.word.conversion.enforced" value="true" />

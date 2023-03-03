@@ -1,40 +1,52 @@
 <application>
   <component name="ActionsLocalSummary">
     <e n="$SelectAll">
-      <i c="7" l="1673179366541" />
+      <i c="9" l="1675685409883" />
     </e>
     <e n="$Undo">
-      <i c="25" l="1673178036589" />
+      <i c="111" l="1677828897184" />
     </e>
     <e n="EditorBackSpace">
-      <i c="67" l="1673179734901" />
+      <i c="372" l="1677828813516" />
+    </e>
+    <e n="EditorChooseLookupItem">
+      <i c="1" l="1675504373246" />
     </e>
     <e n="EditorCopy">
-      <i c="1" l="1672411489023" />
+      <i c="3" l="1674993286380" />
     </e>
     <e n="EditorDown">
-      <i c="1" l="1673179062154" />
+      <i c="7" l="1675504372916" />
     </e>
     <e n="EditorEnter">
-      <i c="24" l="1673179729555" />
+      <i c="117" l="1677828778998" />
     </e>
     <e n="EditorLeft">
-      <i c="2" l="1673167522096" />
+      <i c="13" l="1675493758642" />
     </e>
     <e n="EditorPaste">
       <i c="1" l="1672411510194" />
+    </e>
+    <e n="EditorRight">
+      <i c="6" l="1675587960967" />
+    </e>
+    <e n="EditorTab">
+      <i c="8" l="1675494151544" />
     </e>
     <e n="EditorTabsEntryPoint">
       <i c="1" l="1671876386558" />
     </e>
     <e n="Generate">
-      <i c="160" l="1673179923871" />
+      <i c="190" l="1677828611540" />
     </e>
     <e n="NewPythonFile">
       <i c="1" l="1672411502419" />
     </e>
     <e n="OpenFile">
       <i c="1" l="1671881475624" />
+    </e>
+    <e n="SearchEverywhere">
+      <i c="2" l="1677828811996" />
     </e>
     <e n="SettingsEntryPoint">
       <i c="1" l="1673167578866" />
@@ -43,19 +55,40 @@
       <i c="1" l="1671278035161" />
     </e>
     <e n="com.intellij.diagnostic.IdeMessagePanel$4">
-      <i c="5" l="1672572640312" />
+      <i c="20" l="1677828743135" />
+    </e>
+    <e n="com.intellij.diagnostic.WindowsDefenderChecker$1">
+      <i c="1" l="1677553514606" />
+    </e>
+    <e n="com.intellij.ide.actions.ToolWindowViewModeAction">
+      <i c="2" l="1675583794704" />
+    </e>
+    <e n="com.intellij.openapi.editor.impl.EditorMarkupModelImpl$StatusAction">
+      <i c="2" l="1675494120607" />
     </e>
     <e n="com.intellij.openapi.fileEditor.impl.tabActions.CloseTab">
-      <i c="2" l="1671881514410" />
+      <i c="6" l="1676186365794" />
+    </e>
+    <e n="com.intellij.openapi.ui.DialogWrapper$4">
+      <i c="1" l="1677553503329" />
     </e>
     <e n="com.intellij.openapi.wm.impl.ToolWindowHeader$HideAction">
-      <i c="1" l="1671896312021" />
+      <i c="20" l="1677828895811" />
+    </e>
+    <e n="com.intellij.openapi.wm.impl.ToolWindowHeader$ShowOptionsAction">
+      <i c="2" l="1675583793117" />
     </e>
     <e n="com.jetbrains.python.sdk.PySdkPopupFactory$AddInterpreterAction">
       <i c="1" l="1671876396365" />
     </e>
     <e n="com.jetbrains.python.sdk.PySdkPopupFactory$InterpreterSettingsAction">
       <i c="1" l="1671969319385" />
+    </e>
+    <e n="com.jetbrains.python.sdk.PySdkPopupFactory$SwitchToSdkAction">
+      <i c="1" l="1675529730447" />
+    </e>
+    <e n="editRunConfigurations">
+      <i c="1" l="1675588520505" />
     </e>
   </component>
 </application>
