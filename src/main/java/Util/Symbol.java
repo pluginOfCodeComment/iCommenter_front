@@ -8,4 +8,7 @@ public class Symbol {
     public static String get(int index){
         return index == 0 ? format1 : index == 1 ? format2 : format3;
     }
+    public static int length(int index){
+        return index == 2 ? 1 : 3;
+    }
 }

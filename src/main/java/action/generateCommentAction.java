@@ -33,7 +33,7 @@ public class generateCommentAction extends AnAction {
         context = new Context(project,editor);
         String function = context.getFunctionName();
         if(function == null){
-            Messages.showErrorDialog(e.getProject(), "您的输入中包含了两个函数体，请重新输入","错误提示");
+            Messages.showErrorDialog(e.getProject(), "您的输入中不合法，请重新输入","错误提示");
             return;
         }
         context.checkComment();

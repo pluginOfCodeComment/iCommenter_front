@@ -261,6 +261,19 @@
       }
     }
   }, {
+    "id" : "cloud.tools",
+    "builds" : [ ],
+    "versions" : [ {
+      "from" : "1"
+    } ],
+    "rules" : {
+      "event_id" : [ "{enum:tool.installed|config.exists}" ],
+      "event_data" : {
+        "config" : [ "{enum:kubeconfig}" ],
+        "tool" : [ "{enum:docker|helm|kubectl|minikube|podman|telepresence|terraform|ansible}" ]
+      }
+    }
+  }, {
     "id" : "commit.interactions",
     "builds" : [ ],
     "versions" : [ {
@@ -340,6 +353,7 @@
         "iren_probability" : [ "{regexp#float}" ],
         "lang" : [ "{util#lang}" ],
         "ml_used" : [ "{enum#boolean}" ],
+        "order_added_correct_element" : [ "{regexp#integer}" ],
         "plugin" : [ "{util#plugin}" ],
         "plugin_type" : [ "{util#plugin_type}" ],
         "plugin_version" : [ "{util#plugin_version}" ],
@@ -357,7 +371,10 @@
         "selected_index" : [ "{regexp#integer}" ],
         "selection_changed" : [ "{regexp#integer}" ],
         "spellchecker" : [ "{enum#boolean}" ],
+        "time_to_compute_correct_element" : [ "{regexp#integer}" ],
         "time_to_show" : [ "{regexp#integer}" ],
+        "time_to_show_correct_element" : [ "{regexp#integer}" ],
+        "time_to_show_first_element" : [ "{regexp#integer}" ],
         "token_length" : [ "{regexp#integer}" ],
         "total_ml_time" : [ "{regexp#integer}" ],
         "typing" : [ "{regexp#integer}" ],
@@ -460,6 +477,8 @@
         "guestsCount" : [ "{regexp#integer}" ],
         "id" : [ "{regexp#integer}" ],
         "isUnattended" : [ "{enum#boolean}" ],
+        "mode" : [ "{enum:Readonly|EditFiles|FullAccess|Custom}" ],
+        "parentProductCode" : [ "{enum:|unknown|IU|RM|WS|PS|PY|DS|OC|CL|DB|RD|GO|GW}" ],
         "participantsMax" : [ "{regexp#integer}" ],
         "participantsSize" : [ "{enum:OneOnOne|Group}" ],
         "permissions.files" : [ "{enum:Readonly|FullAccess}" ],
@@ -472,15 +491,18 @@
         "permissions_changed.other_tw" : [ "{enum:Disabled|Readonly|FullAccess}" ],
         "permissions_changed.run" : [ "{enum:Disabled|Readonly|FullAccess}" ],
         "permissions_changed.terminal" : [ "{enum:Disabled|Readonly|Request|FullAccess}" ],
+        "permissions_request_result" : [ "{enum:Approved|Declined|Ignored}" ],
+        "permissions_requested" : [ "{enum:FULL_ACCESS|EDIT_FILES}" ],
         "pingDirect" : [ "{regexp#integer}" ],
         "pingUiThread" : [ "{regexp#integer}" ],
+        "place" : [ "{util#place}" ],
         "sessionDurationMinutes" : [ "{regexp#integer}" ],
         "sessionDurationType" : [ "{enum:Below15mins|Below25mins|Below1hr|Above1hr}" ],
         "sessionId" : [ "{regexp#hash}" ],
         "telephonyEnabled" : [ "{enum#boolean}" ]
       },
       "enums" : {
-        "__event_id" : [ "connected", "finished", "onCircleLeftClickStart", "onCircleLeftClickStop", "onCircleRightClick", "onEditorFollowingLabelResume", "onEditorFollowingLabelStop", "onEditorFullSyncLabelStop", "onReconnection", "sessionCreated", "sessionTerminated", "onReconnectionFailed", "sessionFinished", "sessionStarted", "sessionExpired", "onConnectionFailed", "thin.finished", "thin.connected", "onPermissionsChanged", "guest.finished", "guest.connected", "guest.ping" ]
+        "__event_id" : [ "connected", "finished", "onCircleLeftClickStart", "onCircleLeftClickStop", "onCircleRightClick", "onEditorFollowingLabelResume", "onEditorFollowingLabelStop", "onEditorFullSyncLabelStop", "onReconnection", "sessionCreated", "sessionTerminated", "onReconnectionFailed", "sessionFinished", "sessionStarted", "sessionExpired", "onConnectionFailed", "thin.finished", "thin.connected", "onPermissionsChanged", "guest.finished", "guest.connected", "guest.ping", "onPermissionsRequested", "onPermissionsRequestFinished" ]
       }
     }
   }, {
@@ -640,12 +662,27 @@
     "id" : "debugger.ui.experiment",
     "builds" : [ ],
     "versions" : [ {
-      "from" : "1"
+      "from" : "1",
+      "to" : "2"
     } ],
     "rules" : {
       "event_id" : [ "{enum:start|stop}" ],
       "event_data" : {
         "group" : [ "{regexp#integer}" ]
+      }
+    }
+  }, {
+    "id" : "defender",
+    "builds" : [ ],
+    "versions" : [ {
+      "from" : "1"
+    } ],
+    "rules" : {
+      "event_id" : [ "{enum:protection|auto_config|notification}" ],
+      "event_data" : {
+        "reaction" : [ "{enum:Auto|Manual|ProjectMute|GlobalMute}" ],
+        "status" : [ "{enum:Skipped|Enabled|Disabled|Error}" ],
+        "success" : [ "{enum#boolean}" ]
       }
     }
   }, {
@@ -754,6 +791,19 @@
         "lang" : [ "{util#lang}" ],
         "plugin" : [ "{util#plugin}" ],
         "plugin_type" : [ "{util#plugin_type}" ]
+      }
+    }
+  }, {
+    "id" : "docker.connections",
+    "builds" : [ ],
+    "versions" : [ {
+      "from" : "1"
+    } ],
+    "rules" : {
+      "event_id" : [ "{enum:total|connection.used}" ],
+      "event_data" : {
+        "count" : [ "{regexp#integer}" ],
+        "type" : [ "{enum:DOCKER_FOR_MAC|DOCKER_FOR_WINDOWS|UNIX_SOCKET|TCP|MINIKUBE|COLIMA|WSL|SSH|UNKNOWN}" ]
       }
     }
   }, {
@@ -2000,7 +2050,7 @@
         "version" : [ "{regexp#version}", "{enum:unknown}" ]
       },
       "enums" : {
-        "library_names" : [ "scalaz", "scalamock", "scalacheck", "specs2", "utest", "munit", "zio-test", "akka-http", "netty", "scalatra", "unfiltered", "sttp", "http4s", "twitter-util", "shapeless", "finagle", "cats", "breeze", "slick", "fs2", "monix", "zio", "micronaut", "akka-java", "vertx", "spark", "dropwizard", "helidon", "quarkus", "okhttp3", "apache-http", "unirest", "retrofit2", "spring-cloud", "spring-webflux", "reactor", "rxjava", "guice", "drools", "ktor", "cucumber", "selenium", "selenide", "serenity", "appium", "allure2", "allure1", "jdi-light", "htmlelements", "atlas", "geb", "webtau", "jbehave", "robotframework", "restassured", "karate", "citrus", "spring-integration", "spring-integration-amqp", "spring-amqp", "spring-webflow", "spring-osgi", "spring-data-commons", "spring-data-jpa", "spring-data-mongo", "spring-data-neo4j", "spring-data-solr", "spring-data-hadoop", "spring-data-jdbc-ext", "spring-core", "spring-boot", "spring-ws", "spring-web", "spring-security", "spring-batch", "spring-security-oauth2", "apache-tiles", "thymeleaf", "velocity", "freemarker", "gorm", "groovy", "grails", "eureka", "consul", "zookeeper", "zuul", "hystrix", "apache-dubbo", "apache-thrift", "javalin", "armeria", "mybatis", "jooq", "junit", "junit5", "testng", "kafka", "activemq", "rabbitmq", "aws-sqs", "tapestry5", "gwt", "struts2", "javax-jsf", "vaadin-flow", "openfeign", "jhipster", "apache-spark", "apache-flink", "fluentlenium", "testcontainers", "blade", "kotlin", "microprofile", "javax-cdi", "jakarta-cdi", "javax-jms", "jakarta-jms", "javax-jpa", "jakarta-jpa", "javax-rs", "jakarta-rs", "r2dbc", "osgi", "kodein", "http4k", "rxjava3", "rxkotlin", "scala", "play2", "lagom", "kotless", "spek", "koin", "gauge-java", "apache-deltaspike", "apache-deltaspike-data", "graphql-java", "hexagonkt", "jdbi", "jooby", "optaplanner", "flowable", "activiti", "camunda", "jbpm", "apache-ignite", "hazelcast", "coherence", "debezium", "streamex", "jsonpath", "hibernate", "eclipselink-jpa", "arquillian", "flyway", "liquibase", "jodd-db", "querydsl", "apache-camel", "rsocket-java", "google-http-java-client", "google-cloud-pubsub", "springfox", "apache-rocketmq", "opentracing", "zipkin2", "jaegertracing", "lombok", "weld", "jakarta-jsf", "javax-ejb", "jakarta-ejb", "javax-websocket", "jakarta-websocket", "jakarta-ws", "javax-batch", "jakarta-batch", "javax-validation", "jakarta-validation", "kotest", "datanucleus-jpa", "openjpa", "wiremock", "easymock", "jmockit", "mockito", "spock", "hibernate-validator", "apache-bval", "spring-kafka", "spring-session", "jackson", "gson", "micrometer", "mapstruct", "swagger-v2", "swagger-v3", "apache-shiro", "arrowkt", "scalatest", "jetbrains-annotations", "playwright-java", "kotlinx-coroutines", "kotlinx-serialization", "exposed", "ktorm", "tornadofx", "javafx", "mockserver", "kotlinx-datetime", "spring-cloud-gateway", "spring-data-r2dbc", "quarkus-qute", "smallrye-mutiny", "opentelemetry", "io.grpc", "apache-collections", "fastutil", "logback", "slf4j", "asm", "axoniq", "bytebuddy", "apache-cayenne", "dagger", "documents4j", "ebean", "napier", "clikt", "avro", "apollo", "decompose", "mvikotlin", "async-http-client", "coroutineworker", "reaktive", "hikaricp", "sqldelight", "klaxon", "corda", "eclipse-collections", "graphql-kotlin", "firebase-kotlin-sdk", "moko-mvvm", "kotlin-test", "fritz2", "fuel", "kodein-db", "kodein-di", "klock", "korge", "dokka", "js-externals", "kotlinx-benchmark", "kotlinx-browser", "kotlinx-cli", "kotlinx-io", "kotlinx-collections-immutable", "kotlinx-html", "multik", "mockk", "doodle", "ktlint", "protobuf", "quartz", "rabbitmq-java-client", "aeron", "jedis", "resilience4j", "kvision", "rsocket-kotlin", "multiplatform-settings", "rxdownload", "java-websocket", "crashkios", "stately", "flexy-pool", "npm-publish", "h2", "apache-hc", "infinispan", "itextpdf", "jsoup", "log4j", "lucene", "apache-mina", "apache-pdfbox", "apache-poi", "apache-pulsar", "okio", "ehcache", "vavr", "xmlgraphics", "opencv", "kotlin-material-ui", "eclipselink", "spring-data-rest", "hibernate-reactive", "hibernate-envers", "spring-cloud-kubernetes", "spring-cloud-openfeign", "spring-cloud-retrofit", "spring-cloud-stream", "spring-websocket", "spring-graphql", "jakarta-nosql" ]
+        "library_names" : [ "activemq", "activiti", "aeron", "akka-actor-typed", "akka-http", "akka-java", "akka-stream", "algebird", "allure1", "allure2", "androidx-compose", "apache-bval", "apache-camel", "apache-cayenne", "apache-collections", "apache-deltaspike", "apache-deltaspike-data", "apache-dubbo", "apache-flink", "apache-hc", "apache-http", "apache-ignite", "apache-mina", "apache-pdfbox", "apache-poi", "apache-pulsar", "apache-rocketmq", "apache-shiro", "apache-spark", "apache-thrift", "apache-tiles", "apollo", "appium", "armeria", "arquillian", "arrowkt", "asm", "aspectj", "async-http-client", "atlas", "avro", "aws-s3", "aws-sdk", "aws-sqs", "awspring", "axonframework", "axoniq", "blade", "breeze", "bytebuddy", "caliban", "camunda", "cats", "cats-effect", "chimney", "chisel3", "circe", "citrus", "clikt", "coherence", "consul", "corda", "coroutineworker", "crashkios", "cucumber", "dagger", "datanucleus-jpa", "debezium", "decompose", "deequ", "delta-core", "documents4j", "dokka", "doobie", "doodle", "drools", "dropwizard", "easymock", "ebean", "eclipse-collections", "eclipselink", "eclipselink-jpa", "ehcache", "elastic4s", "elasticmq", "eureka", "exposed", "fastutil", "finagle", "finatra", "firebase-kotlin-sdk", "flexy-pool", "flowable", "fluentlenium", "flyway", "freemarker", "fritz2", "fs2", "fuel", "gatling", "gauge-java", "geb", "google-cloud-pubsub", "google-http-java-client", "gorm", "grails", "graphql-java", "graphql-kotlin", "groovy", "gson", "guice", "gwt", "h2", "hazelcast", "helidon", "hexagonkt", "hibernate", "hibernate-envers", "hibernate-reactive", "hibernate-validator", "hikaricp", "htmlelements", "http4k", "http4s", "hystrix", "infinispan", "io.grpc", "itextpdf", "jackson", "jaegertracing", "jakarta-batch", "jakarta-cdi", "jakarta-ejb", "jakarta-jms", "jakarta-jpa", "jakarta-jsf", "jakarta-nosql", "jakarta-rs", "jakarta-validation", "jakarta-websocket", "jakarta-ws", "java-swing", "java-websocket", "javafx", "javalin", "javax-batch", "javax-cdi", "javax-ejb", "javax-jms", "javax-jpa", "javax-jsf", "javax-rs", "javax-validation", "javax-websocket", "jbehave", "jbpm", "jdbi", "jdi-light", "jedis", "jetbrains-annotations", "jetbrains-compose", "jhipster", "jmockit", "jodd-db", "jooby", "jooq", "js-externals", "json4s", "jsoniter-scala", "jsonpath", "jsoup", "junit", "junit5", "kafka", "karate", "klaxon", "klock", "kodein", "kodein-db", "kodein-di", "koin", "korge", "kotest", "kotless", "kotlin", "kotlin-material-ui", "kotlin-test", "kotlinx-benchmark", "kotlinx-browser", "kotlinx-cli", "kotlinx-collections-immutable", "kotlinx-coroutines", "kotlinx-datetime", "kotlinx-html", "kotlinx-io", "kotlinx-serialization", "ktlint", "ktor", "ktorm", "kvision", "lagom", "laminar", "liquibase", "log4j", "logback", "lombok", "lucene", "macwire", "magnolia", "mapstruct", "micrometer", "micronaut", "microprofile", "mleap", "mockito", "mockk", "mockserver", "moko-mvvm", "monix", "monocle", "multik", "multiplatform-settings", "munit", "mvikotlin", "mybatis", "napier", "netty", "npm-publish", "okhttp3", "okio", "opencv", "openfeign", "openjpa", "opentelemetry", "opentracing", "optaplanner", "osgi", "play", "play-json", "playwright-java", "protobuf", "pureconfig", "quarkus", "quarkus-qute", "quartz", "querydsl", "quill", "r2dbc", "rabbitmq", "rabbitmq-java-client", "reactor", "reaktive", "refined", "resilience4j", "restassured", "retrofit2", "robotframework", "rsocket-java", "rsocket-kotlin", "rxdownload", "rxjava", "rxjava3", "rxkotlin", "sangria", "scala", "scala-async", "scalacheck", "scalafx", "scalalikejdbc", "scalameta", "scalamock", "scalapb", "scalatest", "scalatra", "scalaz", "scio", "selenide", "selenium", "serenity", "shapeless", "skunk", "slf4j", "slick", "smallrye-mutiny", "spark", "specs2", "spek", "spire", "spock", "spring-amqp", "spring-batch", "spring-boot", "spring-cloud", "spring-cloud-gateway", "spring-cloud-kubernetes", "spring-cloud-openfeign", "spring-cloud-retrofit", "spring-cloud-stream", "spring-core", "spring-data-commons", "spring-data-hadoop", "spring-data-jdbc-ext", "spring-data-jpa", "spring-data-mongo", "spring-data-neo4j", "spring-data-r2dbc", "spring-data-rest", "spring-data-solr", "spring-graphql", "spring-integration", "spring-integration-amqp", "spring-kafka", "spring-osgi", "spring-security", "spring-security-oauth2", "spring-session", "spring-web", "spring-webflow", "spring-webflux", "spring-websocket", "spring-ws", "springfox", "sqldelight", "stately", "streamex", "struts2", "sttp", "swagger-v2", "swagger-v3", "tapestry5", "tapir", "testcontainers", "testng", "thymeleaf", "tornadofx", "twitter-server", "twitter-util", "unfiltered", "unirest", "upickle", "utest", "vaadin-flow", "vavr", "velocity", "vertx", "webtau", "weld", "wiremock", "xmlgraphics", "zio", "zio-test", "zipkin2", "zookeeper", "zuul" ]
       }
     }
   }, {
@@ -2134,6 +2184,8 @@
         "duration_in_background_ms" : [ "{regexp#integer}" ],
         "duration_in_write_action_ms" : [ "{regexp#integer}" ],
         "duration_ms" : [ "{regexp#integer}" ],
+        "duration_of_bridges_commit_ms" : [ "{regexp#integer}" ],
+        "duration_of_bridges_creation_ms" : [ "{regexp#integer}" ],
         "duration_of_workspace_update_call_ms" : [ "{regexp#integer}" ],
         "ide_activity_id" : [ "{regexp#integer}" ],
         "importer_class" : [ "{util#class_name}" ],
@@ -2144,7 +2196,7 @@
         "total_duration_ms" : [ "{regexp#integer}" ]
       },
       "enums" : {
-        "__event_id" : [ "hasUserModifiedImportedLibrary", "hasUserAddedModuleDependency", "hasUserAddedLibraryDependency", "importer_run", "configurator_run", "legacy_import.started", "workspace_folders_update.started", "workspace_import.legacy_importers.finished", "workspace_import.legacy_importers.started", "workspace_import.populate.finished", "workspace_import.configurator_run", "workspace_import.commit.finished", "legacy_import.finished", "legacy_import.create_modules.started", "legacy_import.importers.started", "legacy_import.create_modules.finished", "workspace_import.started", "legacy_import.delete_obsolete.started", "workspace_import.commit.started", "workspace_import.finished", "workspace_import.populate.started", "legacy_import.importers.finished", "legacy_import.delete_obsolete.finished", "workspace_folders_update.finished", "workspace_commit", "post_import_tasks_run" ]
+        "__event_id" : [ "hasUserModifiedImportedLibrary", "hasUserAddedModuleDependency", "hasUserAddedLibraryDependency", "importer_run", "configurator_run", "legacy_import.started", "workspace_folders_update.started", "workspace_import.legacy_importers.finished", "workspace_import.legacy_importers.started", "workspace_import.populate.finished", "workspace_import.configurator_run", "workspace_import.commit.finished", "legacy_import.finished", "legacy_import.create_modules.started", "legacy_import.importers.started", "legacy_import.create_modules.finished", "workspace_import.started", "legacy_import.delete_obsolete.started", "workspace_import.commit.started", "workspace_import.finished", "workspace_import.populate.started", "legacy_import.importers.finished", "legacy_import.delete_obsolete.finished", "workspace_folders_update.finished", "workspace_commit", "post_import_tasks_run", "workspace_import.legacy_importers.stats" ]
       }
     }
   }, {
@@ -2156,7 +2208,7 @@
     "rules" : {
       "event_id" : [ "{enum#__event_id}" ],
       "event_data" : {
-        "action_id" : [ "{enum:find_usages|open_endpoints|generate_request|generate_openapi|generate_test}" ],
+        "action_id" : [ "{enum:find_usages|open_endpoints|generate_request|generate_openapi|generate_test}", "{enum:show_secured_urls|show_security_matchers}" ],
         "endpoints_provider" : [ "{util#endpoint_provider_name}" ],
         "filter_id" : [ "{enum:framework|module|type}" ],
         "plugin" : [ "{util#plugin}" ],
@@ -2395,6 +2447,15 @@
       }
     }
   }, {
+    "id" : "php.check.reg.exp",
+    "builds" : [ ],
+    "versions" : [ {
+      "from" : "1"
+    } ],
+    "rules" : {
+      "event_id" : [ "{enum:check.regexp.tooltip.shown|run.check.regexp.intention}" ]
+    }
+  }, {
     "id" : "php.command.line.tools.events",
     "builds" : [ ],
     "versions" : [ {
@@ -2407,6 +2468,38 @@
       },
       "enums" : {
         "__toolType" : [ "unconfigured", "unknown", "custom", "zend1", "zend2", "symfony", "composer", "symfonyBasedTool", "drush", "wordPress" ]
+      }
+    }
+  }, {
+    "id" : "php.composer.config",
+    "builds" : [ ],
+    "versions" : [ {
+      "from" : "3"
+    } ],
+    "rules" : {
+      "event_id" : [ "{enum#__event_id}" ],
+      "event_data" : {
+        "configured" : [ "{enum#boolean}" ],
+        "configured_subprojects" : [ "{regexp#integer}" ],
+        "constraint" : [ "{enum:>|>=|-|~|^|=}" ],
+        "default" : [ "{enum#boolean}" ],
+        "dev" : [ "{enum#boolean}" ],
+        "interpreterType" : [ "{enum#__interpreterType}" ],
+        "json_in_subdirs" : [ "{regexp#integer}" ],
+        "libs" : [ "{enum#boolean}" ],
+        "max_depth" : [ "{regexp#integer}" ],
+        "name" : [ "{util#composer_package}" ],
+        "php_versions" : [ "{regexp#version}" ],
+        "repository_type" : [ "{enum#__repository_type}" ],
+        "settings" : [ "{enum:NOT_INITIALIZED|SYNCHRONIZE|DONT_SYNCHRONIZE}" ],
+        "state" : [ "{enum:configured|foundInBaseDir|foundOutOfBaseDir|none}" ],
+        "type" : [ "{enum:unknown|ExecutableComposerExecution|PharComposerExecution|ComposerRemoteInterpreterExecution}" ],
+        "version" : [ "{enum:any|master|branch|undefined}", "{regexp#version}" ]
+      },
+      "enums" : {
+        "__event_id" : [ "package", "executor", "sync", "json", "repository", "installed_package" ],
+        "__interpreterType" : [ "third.party", "unconfigured", "lost", "corrupted", "local", "vagrant", "docker", "docker-compose", "ssh-credentials", "web-deployment" ],
+        "__repository_type" : [ "composer", "vcs", "git", "svn", "fossil", "hg", "pear", "package", "artifact", "path" ]
       }
     }
   }, {
@@ -2435,6 +2528,18 @@
       }
     }
   }, {
+    "id" : "php.external.formatters",
+    "builds" : [ ],
+    "versions" : [ {
+      "from" : "1"
+    } ],
+    "rules" : {
+      "event_id" : [ "{enum:type}" ],
+      "event_data" : {
+        "value" : [ "{enum:PHP_CS_FIXER|PHP_CBF|NO}" ]
+      }
+    }
+  }, {
     "id" : "php.import.class.usages",
     "builds" : [ ],
     "versions" : [ {
@@ -2446,6 +2551,18 @@
         "class_reference_place" : [ "{enum:DOC_COMMENT|FIELD_TYPE|PARAMETER_TYPE|RETURN_TYPE|METHOD_CALL|CLASS_CONSTANT_REFERENCE|RETURN_NEW_EXPRESSION|NEW_EXPRESSION|UNKNOWN}", "{enum:IMPLEMENTS_LIST|EXTENDS_LIST}" ],
         "index_of_selected_candidate_in_popup" : [ "{regexp#integer}" ],
         "number_of_candidates" : [ "{regexp#integer}" ]
+      }
+    }
+  }, {
+    "id" : "php.jb.attributes.usages",
+    "builds" : [ ],
+    "versions" : [ {
+      "from" : "1"
+    } ],
+    "rules" : {
+      "event_id" : [ "{enum:attribute.usage}" ],
+      "event_data" : {
+        "name" : [ "{enum:ArrayShape|Deprecated|ExpectedValues|Immutable|Language|NoReturn|Pure}" ]
       }
     }
   }, {
@@ -2461,6 +2578,18 @@
       }
     }
   }, {
+    "id" : "php.move.dnd.refactoring",
+    "builds" : [ ],
+    "versions" : [ {
+      "from" : "1"
+    } ],
+    "rules" : {
+      "event_id" : [ "{enum:php.move.succeeded}" ],
+      "event_data" : {
+        "succeeded_because_of_psr_detection" : [ "{enum#boolean}" ]
+      }
+    }
+  }, {
     "id" : "php.phing",
     "builds" : [ ],
     "versions" : [ {
@@ -2468,6 +2597,18 @@
     } ],
     "rules" : {
       "event_id" : [ "{enum:build.file}" ]
+    }
+  }, {
+    "id" : "php.terminal.customizer",
+    "builds" : [ ],
+    "versions" : [ {
+      "from" : "1"
+    } ],
+    "rules" : {
+      "event_id" : [ "{enum:php.path.customization.enabled}" ],
+      "event_data" : {
+        "enabled" : [ "{enum#boolean}" ]
+      }
     }
   }, {
     "id" : "platform.installer",
@@ -2826,6 +2967,18 @@
       }
     }
   }, {
+    "id" : "python.code.vision",
+    "builds" : [ ],
+    "versions" : [ {
+      "from" : "1"
+    } ],
+    "rules" : {
+      "event_id" : [ "{enum:usages.clicked}" ],
+      "event_data" : {
+        "location" : [ "{enum:class|function|method|unknown}" ]
+      }
+    }
+  }, {
     "id" : "python.interpreter.remote",
     "builds" : [ ],
     "versions" : [ {
@@ -3062,7 +3215,10 @@
       "from" : "1"
     } ],
     "rules" : {
-      "event_id" : [ "{enum:see.also.navigation}" ]
+      "event_id" : [ "{enum:see.also.navigation|widget.switched}" ],
+      "event_data" : {
+        "enabled" : [ "{enum#boolean}" ]
+      }
     }
   }, {
     "id" : "refactoring",
@@ -3345,6 +3501,18 @@
         "enabled" : [ "{enum#boolean}" ],
         "fileType" : [ "{util#file_type}" ],
         "langID" : [ "{util#lang}" ]
+      }
+    }
+  }, {
+    "id" : "search.everywhere.process",
+    "builds" : [ ],
+    "versions" : [ {
+      "from" : "1"
+    } ],
+    "rules" : {
+      "event_id" : [ "{enum:firs.element.shown|contributor.search.started|first.element.found}" ],
+      "event_data" : {
+        "contributorID" : [ "{enum:FileSearchEverywhereContributor|SearchEverywhereContributor.All|ClassSearchEverywhereContributor|RecentFilesSEContributor|ActionSearchEverywhereContributor|SymbolSearchEverywhereContributor|TopHitSEContributor|RunConfigurationsSEContributor|YAMLKeysSearchEverywhereContributor|CommandsContributor|third.party|Vcs.Git|UrlSearchEverywhereContributor|GitSearchEverywhereContributor|TextSearchContributor}" ]
       }
     }
   }, {
@@ -3991,7 +4159,7 @@
       "event_id" : [ "{enum#_}", "{enum:enabled.color.scheme}" ],
       "event_data" : {
         "is_dark" : [ "{enum#boolean}" ],
-        "scheme" : [ "{enum#__scheme}", "{enum:New Dark|Light|Dark|Monokai}" ],
+        "scheme" : [ "{enum#__scheme}", "{enum:New Dark|Light|Dark|Monokai}", "{enum:New Dark RC}" ],
         "value" : [ "{enum#boolean}" ]
       },
       "enums" : {
@@ -4071,6 +4239,7 @@
         "scale" : [ "{regexp#float}" ],
         "scale_mode" : [ "{enum#boolean}" ],
         "toolbar" : [ "{enum:visible|hidden}" ],
+        "user_scale" : [ "{regexp#float}" ],
         "value" : [ "{enum:visible|floating}", "{enum:visible|hidden}", "{enum:Top|None|Right|Left|Bottom}", "{enum#look_and_feel}", "{enum:per_monitor_dpi|system_dpi}", "{regexp#integer}", "{regexp#integer}x{regexp#integer}", "{regexp#integer}x{regexp#integer}_({regexp#integer}%)" ]
       },
       "enums" : {
@@ -4835,7 +5004,7 @@
     },
     "regexps" : {
       "count" : "\\d+K?M?\\+?",
-      "float" : "-?\\d+\\.\\d+(E\\-?\\d+)?",
+      "float" : "-?\\d+(\\.\\d+(E\\-?\\d+)?)?",
       "hash" : "([0-9A-Fa-f]{40,64})|undefined",
       "integer" : "-?\\d+(\\+)?",
       "kotlin_version" : "(\\d+-)?\\d\\.\\d\\.\\d{1,3}-(dev|eap|release)-(\\d+-)?(AppCode|CLion|IJ|Studio)[0-9\\-\\.]+",
@@ -4845,5 +5014,5 @@
       "version" : "Unknown|unknown.format|unknown|UNKNOWN|((\\d+\\.?)*\\d+)"
     }
   },
-  "version" : "2987"
+  "version" : "3046"
 }

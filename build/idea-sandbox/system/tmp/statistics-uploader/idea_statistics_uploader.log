@@ -1,63 +1,17 @@
-03/03 15:46:10 INFO  com.intellij.internal.statistic.uploader.ExternalDataCollectorLogger - Process started with '--ide-token D:\JAVA\gradlePlugin\build\idea-sandbox\system\token --recorder FUS --files D:\JAVA\gradlePlugin\build\idea-sandbox\system\event-log-data\logs\FUS\7ac5-4fab-bdec-e60cadb89b3b-213.6777.50-release.log;D:\JAVA\gradlePlugin\build\idea-sandbox\system\event-log-data\logs\FUS\a17e-40b6-a55d-c1d47445ad7b-213.6777.50-release.log;D:\JAVA\gradlePlugin\build\idea-sandbox\system\event-log-data\logs\FUS\fd33-4e09-aa3c-1f78f99567b9-213.6777.50-release.log --device 27092112621158d-f57d-43f2-b60e-32b58c33f407 --bucket 81 --machine-id 2dd08f82ff2da804ff2989b2b09650806a002cc51ce4b200efc7e77432f9fa1a --id-revision-option 0 --url https://resources.jetbrains.com/storage/fus/config/v4/%s/%s.json --product PC --product-version 2021.3.2 --user-agent PyCharm/213.6777.50'
-03/03 15:46:10 INFO  com.intellij.internal.statistic.uploader.ExternalDataCollectorLogger - Classpath:C:\Users\白白\.gradle\caches\modules-2\files-2.1\com.jetbrains.intellij.pycharm\pycharmPC\2021.3.2\4446ff685f495663e7d8bc37006af90cd68821bc\pycharmPC-2021.3.2\lib\kotlin-stdlib-jdk8.jar;C:\Users\白白\.gradle\caches\modules-2\files-2.1\com.jetbrains.intellij.pycharm\pycharmPC\2021.3.2\4446ff685f495663e7d8bc37006af90cd68821bc\pycharmPC-2021.3.2\lib\annotations-java5.jar;C:\Users\白白\.gradle\caches\modules-2\files-2.1\com.jetbrains.intellij.pycharm\pycharmPC\2021.3.2\4446ff685f495663e7d8bc37006af90cd68821bc\pycharmPC-2021.3.2\lib\3rd-party-rt.jar;C:\Users\白白\.gradle\caches\modules-2\files-2.1\com.jetbrains.intellij.pycharm\pycharmPC\2021.3.2\4446ff685f495663e7d8bc37006af90cd68821bc\pycharmPC-2021.3.2\lib\3rd-party-rt.jar;C:\Users\白白\.gradle\caches\modules-2\files-2.1\com.jetbrains.intellij.pycharm\pycharmPC\2021.3.2\4446ff685f495663e7d8bc37006af90cd68821bc\pycharmPC-2021.3.2\lib\3rd-party.jar;C:\Users\白白\.gradle\caches\modules-2\files-2.1\com.jetbrains.intellij.pycharm\pycharmPC\2021.3.2\4446ff685f495663e7d8bc37006af90cd68821bc\pycharmPC-2021.3.2\lib\stats.jar
-03/03 15:46:10 INFO  com.intellij.internal.statistic.uploader.events.ExternalEventsLogger - 1677829570204 STARTED
-03/03 15:46:10 INFO  com.intellij.internal.statistic.uploader.ExternalDataCollectorLogger - IDE token file: D:\JAVA\gradlePlugin\build\idea-sandbox\system\token
-03/03 15:46:10 INFO  com.intellij.internal.statistic.uploader.ExternalDataCollectorLogger - Waiting for 2000ms for IDE to close. Attempt #0
-03/03 15:46:12 INFO  com.intellij.internal.statistic.uploader.ExternalDataCollectorLogger - Start uploading...
-03/03 15:46:12 INFO  com.intellij.internal.statistic.uploader.ExternalDataCollectorLogger - {url:https://resources.jetbrains.com/storage/fus/config/v4/%s/%s.json, product:PC, userAgent:PyCharm/213.6777.50(External), internal:false, isTest:false}
-03/03 15:46:12 INFO  com.intellij.internal.statistic.uploader.ExternalDataCollectorLogger - {recorder:FUS, files:D:\JAVA\gradlePlugin\build\idea-sandbox\system\event-log-data\logs\FUS\7ac5-4fab-bdec-e60cadb89b3b-213.6777.50-release.log;D:\JAVA\gradlePlugin\build\idea-sandbox\system\event-log-data\logs\FUS\a17e-40b6-a55d-c1d47445ad7b-213.6777.50-release.log;D:\JAVA\gradlePlugin\build\idea-sandbox\system\event-log-data\logs\FUS\fd33-4e09-aa3c-1f78f99567b9-213.6777.50-release.log}
-03/03 15:46:12 INFO  com.intellij.internal.statistic.uploader.ExternalDataCollectorLogger - {device:27092112621158d-f57d-43f2-b60e-32b58c33f407, bucket:81}
-03/03 15:46:13 WARN  com.intellij.internal.statistic.uploader.ExternalDataCollectorLogger - 
-java.net.ConnectException
-	at java.net.http/jdk.internal.net.http.HttpClientImpl.send(HttpClientImpl.java:561)
-	at java.net.http/jdk.internal.net.http.HttpClientFacade.send(HttpClientFacade.java:119)
-	at com.intellij.internal.statistic.eventLog.connection.request.StatsRequestBuilder.trySend(StatsRequestBuilder.java:113)
-	at com.intellij.internal.statistic.eventLog.connection.request.StatsRequestBuilder.trySend(StatsRequestBuilder.java:108)
-	at com.intellij.internal.statistic.eventLog.connection.request.StatsRequestBuilder.send(StatsRequestBuilder.java:93)
-	at com.intellij.internal.statistic.eventLog.connection.SettingsConnectionService.loadSettings(SettingsConnectionService.java:68)
-	at com.intellij.internal.statistic.eventLog.connection.SettingsConnectionService.lambda$new$0(SettingsConnectionService.java:37)
-	at com.intellij.internal.statistic.eventLog.connection.StatisticsCachingSupplier.get(StatisticsCachingSupplier.java:24)
-	at com.intellij.internal.statistic.eventLog.connection.SettingsConnectionService.getExternalSettings(SettingsConnectionService.java:62)
-	at com.intellij.internal.statistic.eventLog.connection.EventLogUploadSettingsService.isSettingsReachable(EventLogUploadSettingsService.java:60)
-	at com.intellij.internal.statistic.eventLog.connection.EventLogStatisticsService.send(EventLogStatisticsService.java:83)
-	at com.intellij.internal.statistic.eventLog.connection.EventLogStatisticsService.send(EventLogStatisticsService.java:59)
-	at com.intellij.internal.statistic.uploader.EventLogUploader.execute(EventLogUploader.java:98)
-	at com.intellij.internal.statistic.uploader.EventLogUploader.main(EventLogUploader.java:29)
-Caused by: java.net.ConnectException
-	at java.net.http/jdk.internal.net.http.common.Utils.toConnectException(Utils.java:970)
-	at java.net.http/jdk.internal.net.http.PlainHttpConnection.connectAsync(PlainHttpConnection.java:179)
-	at java.net.http/jdk.internal.net.http.AsyncSSLConnection.connectAsync(AsyncSSLConnection.java:56)
-	at java.net.http/jdk.internal.net.http.Http2Connection.createAsync(Http2Connection.java:369)
-	at java.net.http/jdk.internal.net.http.Http2ClientImpl.getConnectionFor(Http2ClientImpl.java:127)
-	at java.net.http/jdk.internal.net.http.ExchangeImpl.get(ExchangeImpl.java:89)
-	at java.net.http/jdk.internal.net.http.Exchange.establishExchange(Exchange.java:306)
-	at java.net.http/jdk.internal.net.http.Exchange.responseAsyncImpl0(Exchange.java:438)
-	at java.net.http/jdk.internal.net.http.Exchange.responseAsyncImpl(Exchange.java:343)
-	at java.net.http/jdk.internal.net.http.Exchange.responseAsync(Exchange.java:335)
-	at java.net.http/jdk.internal.net.http.MultiExchange.responseAsyncImpl(MultiExchange.java:347)
-	at java.net.http/jdk.internal.net.http.MultiExchange.lambda$responseAsyncImpl$7(MultiExchange.java:388)
-	at java.base/java.util.concurrent.CompletableFuture.uniHandle(CompletableFuture.java:930)
-	at java.base/java.util.concurrent.CompletableFuture.uniHandleStage(CompletableFuture.java:946)
-	at java.base/java.util.concurrent.CompletableFuture.handle(CompletableFuture.java:2266)
-	at java.net.http/jdk.internal.net.http.MultiExchange.responseAsyncImpl(MultiExchange.java:378)
-	at java.net.http/jdk.internal.net.http.MultiExchange.lambda$responseAsync0$2(MultiExchange.java:293)
-	at java.base/java.util.concurrent.CompletableFuture$UniCompose.tryFire(CompletableFuture.java:1072)
-	at java.base/java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:506)
-	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1705)
-	at java.net.http/jdk.internal.net.http.HttpClientImpl$DelegatingExecutor.execute(HttpClientImpl.java:153)
-	at java.base/java.util.concurrent.CompletableFuture.completeAsync(CompletableFuture.java:2591)
-	at java.net.http/jdk.internal.net.http.MultiExchange.responseAsync(MultiExchange.java:246)
-	at java.net.http/jdk.internal.net.http.HttpClientImpl.sendAsync(HttpClientImpl.java:632)
-	at java.net.http/jdk.internal.net.http.HttpClientImpl.send(HttpClientImpl.java:540)
-	... 13 more
-Caused by: java.nio.channels.UnresolvedAddressException
-	at java.base/sun.nio.ch.Net.checkAddress(Net.java:130)
-	at java.base/sun.nio.ch.SocketChannelImpl.connect(SocketChannelImpl.java:673)
-	at java.net.http/jdk.internal.net.http.PlainHttpConnection.lambda$connectAsync$0(PlainHttpConnection.java:165)
-	at java.base/java.security.AccessController.doPrivileged(Native Method)
-	at java.net.http/jdk.internal.net.http.PlainHttpConnection.connectAsync(PlainHttpConnection.java:167)
-	... 36 more
-03/03 15:46:13 INFO  com.intellij.internal.statistic.uploader.events.ExternalEventsLogger - 1677829573622 ERROR loading.config.failed java.net.ConnectException
-03/03 15:46:13 INFO  com.intellij.internal.statistic.uploader.events.ExternalEventsLogger - 1677829573634 FINISHED ERROR_IN_CONFIG
-03/03 15:46:13 TRACE com.intellij.internal.statistic.uploader.ExternalDataCollectorLogger - Uploading finished with ERROR_IN_CONFIG
-03/03 15:46:13 TRACE com.intellij.internal.statistic.uploader.ExternalDataCollectorLogger - ERROR: settings server is unreachable
+07/03 17:08:35 INFO  com.intellij.internal.statistic.uploader.ExternalDataCollectorLogger - Process started with '--ide-token D:\JAVA\gradlePlugin\build\idea-sandbox\system\token --recorder FUS --files D:\JAVA\gradlePlugin\build\idea-sandbox\system\event-log-data\logs\FUS\7416-43e5-9ef4-26d3bba62563-213.6777.50-release.log;D:\JAVA\gradlePlugin\build\idea-sandbox\system\event-log-data\logs\FUS\cff7-46a4-9e33-2f19c57d6eaa-213.6777.50-release.log --device 27092112621158d-f57d-43f2-b60e-32b58c33f407 --bucket 81 --machine-id 2dd08f82ff2da804ff2989b2b09650806a002cc51ce4b200efc7e77432f9fa1a --id-revision-option 0 --url https://resources.jetbrains.com/storage/fus/config/v4/%s/%s.json --product PC --product-version 2021.3.2 --user-agent PyCharm/213.6777.50'
+07/03 17:08:35 INFO  com.intellij.internal.statistic.uploader.ExternalDataCollectorLogger - Classpath:C:\Users\白白\.gradle\caches\modules-2\files-2.1\com.jetbrains.intellij.pycharm\pycharmPC\2021.3.2\4446ff685f495663e7d8bc37006af90cd68821bc\pycharmPC-2021.3.2\lib\kotlin-stdlib-jdk8.jar;C:\Users\白白\.gradle\caches\modules-2\files-2.1\com.jetbrains.intellij.pycharm\pycharmPC\2021.3.2\4446ff685f495663e7d8bc37006af90cd68821bc\pycharmPC-2021.3.2\lib\annotations-java5.jar;C:\Users\白白\.gradle\caches\modules-2\files-2.1\com.jetbrains.intellij.pycharm\pycharmPC\2021.3.2\4446ff685f495663e7d8bc37006af90cd68821bc\pycharmPC-2021.3.2\lib\3rd-party-rt.jar;C:\Users\白白\.gradle\caches\modules-2\files-2.1\com.jetbrains.intellij.pycharm\pycharmPC\2021.3.2\4446ff685f495663e7d8bc37006af90cd68821bc\pycharmPC-2021.3.2\lib\3rd-party-rt.jar;C:\Users\白白\.gradle\caches\modules-2\files-2.1\com.jetbrains.intellij.pycharm\pycharmPC\2021.3.2\4446ff685f495663e7d8bc37006af90cd68821bc\pycharmPC-2021.3.2\lib\3rd-party.jar;C:\Users\白白\.gradle\caches\modules-2\files-2.1\com.jetbrains.intellij.pycharm\pycharmPC\2021.3.2\4446ff685f495663e7d8bc37006af90cd68821bc\pycharmPC-2021.3.2\lib\stats.jar
+07/03 17:08:35 INFO  com.intellij.internal.statistic.uploader.events.ExternalEventsLogger - 1678180115214 STARTED
+07/03 17:08:35 INFO  com.intellij.internal.statistic.uploader.ExternalDataCollectorLogger - IDE token file: D:\JAVA\gradlePlugin\build\idea-sandbox\system\token
+07/03 17:08:35 INFO  com.intellij.internal.statistic.uploader.ExternalDataCollectorLogger - Waiting for 2000ms for IDE to close. Attempt #0
+07/03 17:08:37 INFO  com.intellij.internal.statistic.uploader.ExternalDataCollectorLogger - Start uploading...
+07/03 17:08:37 INFO  com.intellij.internal.statistic.uploader.ExternalDataCollectorLogger - {url:https://resources.jetbrains.com/storage/fus/config/v4/%s/%s.json, product:PC, userAgent:PyCharm/213.6777.50(External), internal:false, isTest:false}
+07/03 17:08:37 INFO  com.intellij.internal.statistic.uploader.ExternalDataCollectorLogger - {recorder:FUS, files:D:\JAVA\gradlePlugin\build\idea-sandbox\system\event-log-data\logs\FUS\7416-43e5-9ef4-26d3bba62563-213.6777.50-release.log;D:\JAVA\gradlePlugin\build\idea-sandbox\system\event-log-data\logs\FUS\cff7-46a4-9e33-2f19c57d6eaa-213.6777.50-release.log}
+07/03 17:08:37 INFO  com.intellij.internal.statistic.uploader.ExternalDataCollectorLogger - {device:27092112621158d-f57d-43f2-b60e-32b58c33f407, bucket:81}
+07/03 17:08:43 TRACE com.intellij.internal.statistic.uploader.ExternalDataCollectorLogger - 7416-43e5-9ef4-26d3bba62563-213.6777.50-release.log -> {"Encrypted":false,"FailedPutCount":0,"RequestResponses":[{"RecordId":"9Fi3UawmvXLYarlTJFoAFrCigGordSroEMKt7U9fwLawxEnIiB/lERRFmFhslarSuR4UrIMplQ4LdPs0yqE9WV0P8tbswWVHy6ta/byCz1AC4a5xuFYVDZFMWwD/tZycgZB3oXug8i8xMDktMXk98SFUQ1khWUrvZKlqcpRrubV6OAitHgjTgtkAzkZrwJ0fWHGwLpNs6eotOjNMfBb45yoFePdDJkU8"}]}
+07/03 17:08:44 TRACE com.intellij.internal.statistic.uploader.ExternalDataCollectorLogger - cff7-46a4-9e33-2f19c57d6eaa-213.6777.50-release.log -> {"Encrypted":false,"FailedPutCount":0,"RequestResponses":[{"RecordId":"bF5wzA/WNDV5+PvCBxaiKy5Q/HW3ZUTJv8GcyaLyPs/OWmOyBF/gQRIeisvl1Z2/BeIB4DVDmbHhdyGKRHDkJmN7cgc/7RCKYp7u0vrC5NcxNarPQOwBscSkaabgYMkXJbD5PBV03KhgfkJ7EndsmMYRwNjfFRYJQetf8rdf1Q5b2zsUBHr2B0cMvSrU2riSoaygAEhW29ytc1hCZOJVVVvG25X4wRSi"}]}
+07/03 17:08:44 TRACE com.intellij.internal.statistic.uploader.ExternalDataCollectorLogger - Removed sent log: 7416-43e5-9ef4-26d3bba62563-213.6777.50-release.log
+07/03 17:08:44 TRACE com.intellij.internal.statistic.uploader.ExternalDataCollectorLogger - Removed sent log: cff7-46a4-9e33-2f19c57d6eaa-213.6777.50-release.log
+07/03 17:08:44 INFO  com.intellij.internal.statistic.uploader.events.ExternalEventsLogger - 1678180124077 SEND 2 0 2 [RDpcSkFWQVxncmFkbGVQbHVnaW5cYnVpbGRcaWRlYS1zYW5kYm94XHN5c3RlbVxldmVudC1sb2ctZGF0YVxsb2dzXEZVU1w3NDE2LTQzZTUtOWVmNC0yNmQzYmJhNjI1NjMtMjEzLjY3NzcuNTAtcmVsZWFzZS5sb2c=,RDpcSkFWQVxncmFkbGVQbHVnaW5cYnVpbGRcaWRlYS1zYW5kYm94XHN5c3RlbVxldmVudC1sb2ctZGF0YVxsb2dzXEZVU1xjZmY3LTQ2YTQtOWUzMy0yZjE5YzU3ZDZlYWEtMjEzLjY3NzcuNTAtcmVsZWFzZS5sb2c=] []
+07/03 17:08:44 INFO  com.intellij.internal.statistic.uploader.events.ExternalEventsLogger - 1678180124092 FINISHED
+07/03 17:08:44 TRACE com.intellij.internal.statistic.uploader.ExternalDataCollectorLogger - Uploading finished with SEND
+07/03 17:08:44 TRACE com.intellij.internal.statistic.uploader.ExternalDataCollectorLogger - Uploaded 2 files.

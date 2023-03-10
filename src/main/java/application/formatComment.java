@@ -7,11 +7,15 @@ public class formatComment {
     private String comment;
     private String format_comment;
 
-    public formatComment(String s,int i,int k){
+    public formatComment(String s,int i,int k,int type){
         comment = s;
         //comment = s.replaceAll("(.{70,}?)\\s+", "$1\n") + "\n";
         String space = utils.getSpace(k);
-        format_comment= space + s.replaceAll("(.{70,}?)\\s+", "$1\n"+space) + "\n";
+        if(type == 2){
+            format_comment = space + "# " + s.replaceAll("(.{70,}?)\\s+", "$1\n" + space + "# ") + "\n";
+        }else{
+            format_comment= space + s.replaceAll("(.{70,}?)\\s+", "$1\n"+space) + "\n";
+        }
         //单独加了一行\n
         line = utils.getLines(format_comment) - 1;
         model_type = i;

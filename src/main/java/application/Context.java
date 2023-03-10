@@ -18,6 +18,7 @@ import com.intellij.openapi.project.Project;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.openapi.util.TextRange;
 import com.intellij.openapi.vfs.VirtualFile;
+import com.intellij.util.messages.MessageBusConnection;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
@@ -46,6 +47,7 @@ public class Context {
     private int comment_end;//function_end - 1
     /** 缩进量 */
     private int indent;
+    /** 注释的形式 */
     private int comment_format;
 
     /** 是否已有代码注释 **/
@@ -53,6 +55,8 @@ public class Context {
 
     /** 返回的代码注释 **/
     public formatComment[] comments;
+
+    private final MessageBusConnection connection;
 
     public Context(Project p,Editor e){
         project = p;
@@ -68,23 +72,23 @@ public class Context {
         indent = 0;
         name = null;
         model_id = -1;
-        comment_format = 0;
-        project.getMessageBus().connect().subscribe(FileEditorManagerListener.FILE_EDITOR_MANAGER,
+        comment_format = 2;
+        connection = project.getMessageBus().connect();
+        connection.subscribe(FileEditorManagerListener.FILE_EDITOR_MANAGER,
                 new FileEditorManagerListener() {
-                    private boolean state = true;
                     @Override
                     public void selectionChanged(@NotNull FileEditorManagerEvent event) {
-                        if(!state){return;}
                         System.out.println("selection change");
-                        state = false;
-                        check();
+                        if(check()){
+                            connection.disconnect();
+                        }
                     }
                     @Override
                     public void fileClosed(@NotNull FileEditorManager source, @NotNull VirtualFile file){
-                        if(!state){return;}
                         System.out.println("closed");
-                        state = false;
-                        check();
+                        if(check()){
+                            connection.disconnect();
+                        }
                     }
 
                 });
@@ -130,6 +134,7 @@ public class Context {
         if(function_begin == -1){
             int i;
             for(i = start - 1; i >= 0 && !text[i].contains("def");i--);
+            if(i == -1){return null;}
             function_begin = i;
         }
         if(function_end == -1){
@@ -147,52 +152,34 @@ public class Context {
         System.out.println(function_end);
 
         indent = compare;
-        name = function_name;
+        name = text[function_begin];
         return function_name;
     }
 
     public void checkComment(){
-        boolean hasCom = false;
         String[] text = document.getText().split("\n");
-        int compare = utils.getTsize(text[function_begin]);
-        String type = null;
+        boolean special = false;
         for(int i = function_begin - 1; i >= 0; i--){
-//            if(!hasCom && (text[i].contains("'''") || text[i].contains("\"\"\"") || text[i].contains("#"))){
-//                hasCom = true;
-//                comment_begin = i;
-//                comment_end = function_begin - 1;
-//                type = text[i].contains("'''") ? "'''" : text[i].contains("\"\"\"") ? "\"\"\"" : "#";
-//                //todo:一行注释的问题，考虑用正则表达式实现
-//            }else if(hasCom && text[i].contains(type)){
-//                hasCodeComment = hasCom;
-//                //test
-//                System.out.println("comment:" + comment_begin);
-//                System.out.println(comment_end);
-//                return;
-//            }else if(!text[i].equals("") && utils.getTsize(text[i]) != compare){
-//                hasCodeComment = hasCom;
-//                //test
-//                System.out.println("comment:" + comment_begin);
-//                System.out.println(comment_end);
-//                return;
-//            }
             if(text[i].contains("'''") || text[i].contains("\"\"\"") || text[i].contains("#")){
-                if(!hasCom){
-                    hasCom = true;
+                if(!hasCodeComment){
+                    hasCodeComment = true;
                     comment_begin = i;
                     comment_end = function_begin - 1;
+                    if(text[i].contains("#")){
+                        special = true;
+                    }else if(text[i].matches("\"\"\"(.*?)\"\"\"")){
+                        return;
+                    }else if(text[i].matches("'''(.*?)'''")){
+                        return;
+                    }
                 }else{
                     comment_begin = i;
+                    return;
                 }
-            }else if(!text[i].equals("") && utils.getTsize(text[i]) != compare){
-                hasCodeComment = hasCom;
-                //test
-                System.out.println("comment:" + comment_begin);
-                System.out.println(comment_end);
+            }else if(text[i] != null && special){
                 return;
             }
         }
-        hasCodeComment = hasCom;
         //test
         System.out.println("comment" + comment_begin);
         System.out.println(comment_end);
@@ -224,53 +211,68 @@ public class Context {
         MyClient myClient = new MyClient("127.0.0.1",6666);
         myClient.sendRequest(code);
         String res = myClient.receive();
-        System.out.println("receive_num:"+res);
         String res_comment = myClient.receive();
-        System.out.println("receive:"+ Arrays.toString(res_comment.split(",,")));
         String[] receive = res_comment.split(",,");
-        comments[0] = new formatComment(receive[0],0,indent);
-        comments[1] = new formatComment(receive[1],1,indent);
-        comments[2] = new formatComment(receive[2],2,indent);
-        comments[3] = new formatComment(receive[3],3,indent);
-
-//        comments[0] = new formatComment("this is comment 1 this is comment 1 this is comment 1 this is comment 1 this is comment 1",1,indent);
-//        comments[1] = new formatComment("this is comment 2",1,indent);
-//        comments[2] = new formatComment("this is comment 3 this is comment 3 this is comment 3",2,indent);
-//        comments[3] = new formatComment("comment 4",3,indent);
+        comments[0] = new formatComment(receive[0],0,indent,comment_format);
+        comments[1] = new formatComment(receive[1],1,indent,comment_format);
+        comments[2] = new formatComment(receive[2],2,indent,comment_format);
+        comments[3] = new formatComment(receive[3],3,indent,comment_format);
     }
 
     public void insert(int index){
         String s = comments[index].getFormatComment();
-        int lineSum = comments[index].getLine() + 2;
+        int lineSum = comments[index].getLine();
         System.out.println(lineSum);
-        int insertOffset = document.getLineStartOffset(function_begin);
         Runnable runnable;
-        int k = 0;
         String space = utils.getSpace(indent);
         String symbol = Symbol.get(comment_format);
+
         if(hasCodeComment){
-            k = Messages.showYesNoDialog(project,"是否替换掉以下注释:\n" + document.getText(new TextRange(document.getLineStartOffset(comment_begin), document.getLineEndOffset(comment_end))),"提示","是","否",Messages.getQuestionIcon());
+            int firstOffset = document.getLineStartOffset(comment_begin);
+            int endOffset = document.getLineStartOffset(function_begin);
+            String before = document.getText(new TextRange(firstOffset,endOffset - 1)) + 1;
+            int k = Messages.showYesNoDialog(project,"是否替换掉以下注释:\n" + before,"提示","是","否",Messages.getQuestionIcon());
             if(k == 0){
-                int firstOffset = document.getLineStartOffset(comment_begin);
-                int endOffset = document.getLineEndOffset(comment_end) + 1;
-                runnable = () -> document.replaceString(firstOffset,endOffset,space + "\"\"\"\n" + s + space + "\"\"\"\n");
-                comment_end = comment_begin + lineSum - 1;
+                if(comment_format == 2){
+                    runnable = () -> document.replaceString(firstOffset,endOffset,s);
+                    comment_end = comment_begin + lineSum - 1;
+                }else{
+                    runnable = () -> document.replaceString(firstOffset,endOffset + 1,space + symbol + s + space + symbol);
+                    comment_end = comment_begin + lineSum + 1;
+                }
                 int tmp = function_end - function_begin;
-                function_begin = comment_begin + lineSum;
+                function_begin = comment_end + 1;
                 function_end = function_begin + tmp;
             }else{
-                int tmp = document.getLineStartOffset(comment_end);
-                runnable = () -> document.insertString(tmp, "\n" + s);
-                comment_end += lineSum - 1; //空了一行
-                function_begin += lineSum - 1;
-                function_end += lineSum - 1;
+                //int tmp = document.getLineEndOffset(comment_end) - comment_format == 2 ? 0 : 3;
+                if(comment_format == 2){
+                    int tmp = document.getLineStartOffset(function_begin);
+                    runnable = () -> document.insertString(tmp, s);
+                    comment_end += lineSum; //空了一行
+                    function_begin += lineSum;
+                    function_end += lineSum;
+                }else{
+                    int tmp = document.getLineEndOffset(comment_end) - 3;
+                    runnable = () -> document.insertString(tmp, "\n" + s + space);
+                    comment_end += lineSum + 1; //空了一行
+                    function_begin += lineSum + 1;
+                    function_end += lineSum + 1;
+                }
             }
         }else{
-            runnable = () -> document.insertString(insertOffset,space + "\"\"\"\n" + s + space + "\"\"\"\n");
+            int insertOffset = document.getLineStartOffset(function_begin);
             comment_begin = function_begin;
-            comment_end = comment_begin + lineSum - 1;
-            function_begin += lineSum;
-            function_end += lineSum;
+            if(comment_format == 2){
+                runnable = () -> document.insertString(insertOffset,s);
+                comment_end = comment_begin + lineSum - 1;
+                function_begin += lineSum;
+                function_end += lineSum;
+            }else{
+                runnable = () -> document.insertString(insertOffset,space + symbol + s + space + symbol);
+                comment_end = comment_begin + lineSum + 1;
+                function_begin += lineSum + 2;
+                function_end += lineSum + 2;
+            }
             hasCodeComment = true;
         }
         WriteCommandAction.runWriteCommandAction(project,runnable);
@@ -278,19 +280,23 @@ public class Context {
         //test
         System.out.println("insert commment:"+comment_begin);
         System.out.println(comment_end);
+        System.out.println(function_begin);
+        System.out.println(function_end);
     }
 
-    private void check(){
+    private boolean check(){
         String[] s = document.getText().split("\n");
         for(int i = 0; i < s.length; i++){
-            if(s[i].contains("def") && s[i].contains(name)){
+            if(s[i].contains(name)){
+                hasCodeComment = false;
                 function_begin = i;
                 this.checkComment();
                 String change = document.getText(new TextRange(document.getLineStartOffset(comment_begin),document.getLineEndOffset(comment_end)));
                 System.out.println(model_id + ":");
                 System.out.println(change);
-                return;
+                return true;
             }
         }
+        return false;
     }
 }
