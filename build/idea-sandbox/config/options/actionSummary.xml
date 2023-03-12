@@ -7,7 +7,7 @@
       <i c="127" l="1678180082888" />
     </e>
     <e n="EditorBackSpace">
-      <i c="455" l="1678180100599" />
+      <i c="487" l="1678436376360" />
     </e>
     <e n="EditorChooseLookupItem">
       <i c="1" l="1675504373246" />
@@ -19,7 +19,7 @@
       <i c="7" l="1675504372916" />
     </e>
     <e n="EditorEnter">
-      <i c="128" l="1678180062734" />
+      <i c="130" l="1678436346923" />
     </e>
     <e n="EditorLeft">
       <i c="14" l="1677916469273" />
@@ -28,10 +28,10 @@
       <i c="2" l="1678156195631" />
     </e>
     <e n="EditorRight">
-      <i c="6" l="1675587960967" />
+      <i c="12" l="1678436354856" />
     </e>
     <e n="EditorTab">
-      <i c="12" l="1678156174402" />
+      <i c="15" l="1678435534337" />
     </e>
     <e n="EditorTabsEntryPoint">
       <i c="3" l="1678180079490" />
@@ -46,7 +46,7 @@
       <i c="1" l="1671881475624" />
     </e>
     <e n="SearchEverywhere">
-      <i c="7" l="1678178984465" />
+      <i c="8" l="1678431462650" />
     </e>
     <e n="SettingsEntryPoint">
       <i c="1" l="1673167578866" />
@@ -70,10 +70,10 @@
       <i c="6" l="1676186365794" />
     </e>
     <e n="com.intellij.openapi.ui.DialogWrapper$4">
-      <i c="1" l="1677553503329" />
+      <i c="4" l="1678436359944" />
     </e>
     <e n="com.intellij.openapi.wm.impl.ToolWindowHeader$HideAction">
-      <i c="49" l="1678180091315" />
+      <i c="55" l="1678436373521" />
     </e>
     <e n="com.intellij.openapi.wm.impl.ToolWindowHeader$ShowOptionsAction">
       <i c="3" l="1678156283532" />

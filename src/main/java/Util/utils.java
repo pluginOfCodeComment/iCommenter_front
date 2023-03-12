@@ -3,7 +3,7 @@ package Util;
 import java.util.Objects;
 
 public class utils {
-    public static int getTsize(String text){
+    public static int getSpaceSize(String text){
         if(Objects.equals(text, "")){
             return -1;
         }
@@ -11,7 +11,7 @@ public class utils {
         for(int i = 0; text.charAt(i) == 32 && i < text.length(); i++){
             sum++;
         }
-        return sum / 4;
+        return sum;
     }
 
     public static int getLines(String text){
@@ -28,7 +28,7 @@ public class utils {
 
     public static String getSpace(int k){
         StringBuffer stringBuffer = new StringBuffer();
-        for(int i = 0; i < k * 4; i++){
+        for(int i = 0; i < k; i++){
             stringBuffer.append(' ');
         }
         return stringBuffer.toString();

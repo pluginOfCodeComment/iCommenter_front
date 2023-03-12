@@ -546,6 +546,7 @@
       "event_id" : [ "{enum:finished}" ],
       "event_data" : {
         "duration_ms" : [ "{regexp#integer}" ],
+        "entireFileHighlighted" : [ "{enum#boolean}" ],
         "errors" : [ "{regexp#integer}" ],
         "file_type" : [ "{util#file_type}" ],
         "lines" : [ "{regexp#integer}" ],
@@ -2019,7 +2020,10 @@
       "from" : "1"
     } ],
     "rules" : {
-      "event_id" : [ "{enum:navigation.gutter.label.container|inspection.remove.duplicate.envvar|completion.kind|completion.label.key}" ]
+      "event_id" : [ "{enum#__event_id}" ],
+      "enums" : {
+        "__event_id" : [ "navigation.gutter.label.container", "inspection.remove.duplicate.envvar", "completion.kind", "completion.label.key", "completion.schema" ]
+      }
     }
   }, {
     "id" : "leftover.dirs",
@@ -2135,6 +2139,8 @@
         "duration_ms" : [ "{regexp#integer}" ],
         "ide_requires_license" : [ "{enum#boolean}" ],
         "input_event" : [ "{util#shortcut}" ],
+        "license" : [ "{enum:none|trial|student|professional|open_source}" ],
+        "link_copy" : [ "{enum#boolean}" ],
         "logged_in" : [ "{enum#boolean}" ],
         "login_provider" : [ "{enum:jba|google|github|gitlab|bitbucket}" ],
         "newsletter" : [ "{enum#boolean}" ],
@@ -2143,10 +2149,12 @@
         "session_time_ms" : [ "{regexp#integer}" ],
         "source" : [ "{enum:login_dialog|licenses_user_info|licenses_new_license|licenses_trial}", "{enum:LicenseDialogLink}" ],
         "successful" : [ "{enum#boolean}" ],
+        "token_check" : [ "{enum#boolean}" ],
+        "token_input" : [ "{enum#boolean}" ],
         "troubles_pressed" : [ "{enum#boolean}" ]
       },
       "enums" : {
-        "__event_id" : [ "exit", "licenses.dialog.shown", "request.trial", "continue", "browser.login", "buy.license" ]
+        "__event_id" : [ "exit", "licenses.dialog.shown", "request.trial", "continue", "browser.login", "buy.license", "licenses.dialog.closed", "manual.login", "browser.register" ]
       }
     }
   }, {
@@ -2701,6 +2709,7 @@
     "rules" : {
       "event_id" : [ "{enum#__event_id}" ],
       "event_data" : {
+        "pluginId" : [ "{util#plugin}" ],
         "plugins" : [ "{util#plugin}" ],
         "source" : [ "{enum:editor|notification}", "{enum:search}" ]
       },
@@ -4176,20 +4185,26 @@
     "rules" : {
       "event_id" : [ "{enum#__event_id}" ],
       "event_data" : {
+        "applied" : [ "{enum#boolean}" ],
         "class" : [ "{util#class_name}" ],
         "count" : [ "{regexp#integer}" ],
         "duration_ms" : [ "{regexp#integer}" ],
         "expand" : [ "{enum#boolean}" ],
+        "final_zoom_scale_percent" : [ "{regexp#integer}" ],
         "lang" : [ "{util#lang}" ],
         "plugin" : [ "{util#plugin}" ],
         "plugin_type" : [ "{util#plugin_type}" ],
         "plugin_version" : [ "{util#plugin_version}" ],
+        "presentation_mode" : [ "{enum#boolean}" ],
         "recursive" : [ "{enum#boolean}" ],
         "target_class" : [ "{util#class_name}" ],
-        "with_selection" : [ "{enum#boolean}" ]
+        "with_selection" : [ "{enum#boolean}" ],
+        "zoom_mode" : [ "{enum:ZOOM_IN|ZOOM_OUT}" ],
+        "zoom_place" : [ "{enum:SETTINGS|SWITCHER}" ],
+        "zoom_scale_percent" : [ "{regexp#integer}" ]
       },
       "enums" : {
-        "__event_id" : [ "ProgressPaused", "ProgressResumed", "NavBarShowPopup", "NavBarNavigate", "BreadcrumbShowTooltip", "BreadcrumbNavigate", "DumbModeDialogWasNotNeeded", "DumbModeDialogRequested", "DumbModeDialogShown", "DumbModeDialogCancelled", "DumbModeDialogFinished", "DumbModeDialogProceededToActions", "IncrementalSearchActivated", "IncrementalSearchKeyTyped", "IncrementalSearchCancelled", "IncrementalSearchNextPrevItemSelected", "DumbModeBalloonWasNotNeeded", "DumbModeBalloonRequested", "DumbModeBalloonShown", "DumbModeBalloonCancelled", "DumbModeBalloonProceededToActions", "ShowUsagesPopupShowSettings", "LookupExecuteElementAction", "ToolWindowsWidgetPopupClicked", "ToolWindowsWidgetPopupShown", "LookupShowElementActions", "ImplementationViewComboBoxSelected", "ImplementationViewToolWindowOpened", "DaemonEditorPopupInvoked", "HectorPopupDisplayed", "EditorFoldingIconClicked", "QuickNavigateInfoPopupShown", "EditorAnnotationClicked", "StatusBarWidgetClicked", "StatusBarPopupShown", "CtrlMouseHintShown" ]
+        "__event_id" : [ "ProgressPaused", "ProgressResumed", "NavBarShowPopup", "NavBarNavigate", "BreadcrumbShowTooltip", "BreadcrumbNavigate", "DumbModeDialogWasNotNeeded", "DumbModeDialogRequested", "DumbModeDialogShown", "DumbModeDialogCancelled", "DumbModeDialogFinished", "DumbModeDialogProceededToActions", "IncrementalSearchActivated", "IncrementalSearchKeyTyped", "IncrementalSearchCancelled", "IncrementalSearchNextPrevItemSelected", "DumbModeBalloonWasNotNeeded", "DumbModeBalloonRequested", "DumbModeBalloonShown", "DumbModeBalloonCancelled", "DumbModeBalloonProceededToActions", "ShowUsagesPopupShowSettings", "LookupExecuteElementAction", "ToolWindowsWidgetPopupClicked", "ToolWindowsWidgetPopupShown", "LookupShowElementActions", "ImplementationViewComboBoxSelected", "ImplementationViewToolWindowOpened", "DaemonEditorPopupInvoked", "HectorPopupDisplayed", "EditorFoldingIconClicked", "QuickNavigateInfoPopupShown", "EditorAnnotationClicked", "StatusBarWidgetClicked", "StatusBarPopupShown", "CtrlMouseHintShown", "ide.zoom.switcher.closed", "ide.zoom.changed" ]
       }
     }
   }, {
@@ -4346,7 +4361,10 @@
         "duration_first_results_ms" : [ "{regexp#integer}" ],
         "duration_ms" : [ "{regexp#integer}" ],
         "id" : [ "{regexp#integer}" ],
+        "is_among_recent_files" : [ "{enum#boolean}" ],
+        "is_file_already_opened" : [ "{enum#boolean}" ],
         "is_similar_usage" : [ "{enum#boolean}" ],
+        "is_the_same_file" : [ "{enum#boolean}" ],
         "item_chosen" : [ "{enum#boolean}" ],
         "lang" : [ "{util#lang}" ],
         "new" : [ "{util#scopeRule}" ],
@@ -4362,15 +4380,23 @@
         "reference_class" : [ "{util#class_name}" ],
         "results_total" : [ "{regexp#integer}" ],
         "scope" : [ "{util#scopeRule}" ],
+        "selected_element.is_in_injected_file" : [ "{enum#boolean}" ],
+        "selected_element.is_in_test_sources" : [ "{enum#boolean}" ],
+        "selected_element.lang" : [ "{util#lang}" ],
+        "selected_element.reference_class" : [ "{util#class_name}" ],
         "selected_usage" : [ "{regexp#integer}" ],
         "symbol" : [ "{util#class_name}" ],
+        "target_element.is_in_injected_file" : [ "{enum#boolean}" ],
+        "target_element.is_in_test_sources" : [ "{enum#boolean}" ],
+        "target_element.lang" : [ "{util#lang}" ],
+        "target_element.reference_class" : [ "{util#class_name}" ],
         "too_many_result_warning" : [ "{enum#boolean}" ],
         "ui_location" : [ "{enum:ShowUsagesPopup|FindToolWindow}" ],
         "usage_view" : [ "{regexp#integer}" ],
         "userAction" : [ "{enum:Shown|Aborted|Continued}" ]
       },
       "enums" : {
-        "__event_id" : [ "usage.navigate", "usage.shown", "tooManyResultsDialog", "scope.changed", "switch.tab", "item.chosen", "finished", "started", "open.in.tool.window", "cancelled", "popup.closed" ]
+        "__event_id" : [ "usage.navigate", "usage.shown", "tooManyResultsDialog", "scope.changed", "switch.tab", "item.chosen", "finished", "started", "open.in.tool.window", "cancelled", "popup.closed", "item.chosen.in.popup.features" ]
       }
     }
   }, {
@@ -5014,5 +5040,5 @@
       "version" : "Unknown|unknown.format|unknown|UNKNOWN|((\\d+\\.?)*\\d+)"
     }
   },
-  "version" : "3046"
+  "version" : "3055"
 }

@@ -2,7 +2,6 @@ package MyToolWindow;
 
 import application.Context;
 import application.formatComment;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -38,6 +37,8 @@ public class MyToolWindow {
     private JSeparator sep1;
     private JSeparator sep2;
     private JSeparator sep3;
+    private JButton feedback_total;
+    private JButton settingButton;
 
     //    private float dval;//未改变尺寸时的长度
 
@@ -60,7 +61,9 @@ public class MyToolWindow {
         scoll2.setBorder(Border);
         scoll3.setBorder(Border);
         scoll4.setBorder(Border);
-
+        window1.setLocation(10, 10);
+//        feedback_total.setContentAreaFilled(false);
+//        feedback_total.setBorderPainted(false);
         Apply1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
@@ -115,11 +118,15 @@ public class MyToolWindow {
                 FeedBack.show();
             }
         });
+        feedback_total.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                Suggestions.main(null);
+            }
+        });
     }
 
     public JComponent getContent() {
         return window1;
     }
-
-
 }

@@ -22,7 +22,6 @@ import com.intellij.util.messages.MessageBusConnection;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
-import java.util.Arrays;
 
 
 public class Context {
@@ -72,7 +71,7 @@ public class Context {
         indent = 0;
         name = null;
         model_id = -1;
-        comment_format = 2;
+        comment_format = 0;
         connection = project.getMessageBus().connect();
         connection.subscribe(FileEditorManagerListener.FILE_EDITOR_MANAGER,
                 new FileEditorManagerListener() {
@@ -118,7 +117,7 @@ public class Context {
                     function_begin = i;
                     isContain = true;
                     isFind = true;
-                    compare = utils.getTsize(text[function_begin]);
+                    compare = utils.getSpaceSize(text[function_begin]);
                 }else{
                     return null;
                 }
@@ -126,7 +125,7 @@ public class Context {
             if(!isContain && !text[i].equals("")){
                 isContain = true;
             }
-            if(isFind && i != function_begin && utils.getTsize(text[i]) == compare){
+            if(isFind && i != function_begin && utils.getSpaceSize(text[i]) == compare){
                 function_end = i - 1;
                 break;
             }
@@ -139,8 +138,8 @@ public class Context {
         }
         if(function_end == -1){
             int i = end == function_begin ? end + 1 : end;
-            compare = utils.getTsize(text[function_begin]);
-            for(; i < text.length && compare != utils.getTsize(text[i]);i++);
+            compare = utils.getSpaceSize(text[function_begin]);
+            for(; i < text.length && compare != utils.getSpaceSize(text[i]); i++);
             function_end = i - 1;
         }
         String[] tmp = text[function_begin].split(" ");
@@ -151,8 +150,8 @@ public class Context {
         System.out.println(function_begin);
         System.out.println(function_end);
 
-        indent = compare;
         name = text[function_begin];
+        indent = compare;
         return function_name;
     }
 
@@ -225,19 +224,21 @@ public class Context {
         System.out.println(lineSum);
         Runnable runnable;
         String space = utils.getSpace(indent);
+        System.out.println(name);
+        System.out.println(indent);
         String symbol = Symbol.get(comment_format);
 
         if(hasCodeComment){
             int firstOffset = document.getLineStartOffset(comment_begin);
             int endOffset = document.getLineStartOffset(function_begin);
-            String before = document.getText(new TextRange(firstOffset,endOffset - 1)) + 1;
+            String before = document.getText(new TextRange(firstOffset,endOffset - 1));
             int k = Messages.showYesNoDialog(project,"是否替换掉以下注释:\n" + before,"提示","是","否",Messages.getQuestionIcon());
             if(k == 0){
                 if(comment_format == 2){
                     runnable = () -> document.replaceString(firstOffset,endOffset,s);
                     comment_end = comment_begin + lineSum - 1;
                 }else{
-                    runnable = () -> document.replaceString(firstOffset,endOffset + 1,space + symbol + s + space + symbol);
+                    runnable = () -> document.replaceString(firstOffset,endOffset,space + symbol + s + space + symbol);
                     comment_end = comment_begin + lineSum + 1;
                 }
                 int tmp = function_end - function_begin;
