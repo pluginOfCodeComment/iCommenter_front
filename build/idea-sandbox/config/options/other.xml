@@ -44,7 +44,7 @@
     <property name="bundled.plugins.list.saved.version" value="PC-213.6777.50" />
     <property name="experimentalFeature.terminal.shell.command.handling" value="false" />
     <property name="file.chooser.recent.files" value="$USER_HOME$/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Python 3.10&#10;D:/test&#10;D:/&#10;D:/anaconda/Python/第六次作业&#10;D:/anaconda/Python/homework2" />
-    <property name="file.gist.reindex.count" value="142" />
+    <property name="file.gist.reindex.count" value="146" />
     <property name="fileTypeChangedCounter" value="2" />
     <property name="fileTypeDetectors" value="com.intellij.ide.scratch.ScratchFileServiceImpl$Detector:org.jetbrains.plugins.textmate.TextMateFileType$TextMateFileDetector" />
     <property name="got.it.tooltip.cwm.invitation.notification" value="1" />

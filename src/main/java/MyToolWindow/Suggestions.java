@@ -23,6 +23,7 @@ public class Suggestions {
     private JTextArea feedback;
     private JRadioButton a5;
     private JButton submitButton;
+    private JTextArea contactDetailsTextArea;
     private int[] scoreForPlugin = new int[3];
     static  JFrame frame = new JFrame("Feedback");
 
@@ -133,6 +134,9 @@ public class Suggestions {
             }
         });
     }
+    public String getFeedback(){
+        return feedback.getText();
+    }//获取反馈内容
 
     public static void main(String[] args) {
         frame.setContentPane(new Suggestions().panel1);

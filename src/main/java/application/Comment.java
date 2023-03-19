@@ -17,10 +17,6 @@ public class Comment {
         line = Tools.getLines(format_comment) - 1;
     }
 
-    public Comment() {
-
-    }
-
     public int getLine() {
         return line;
     }

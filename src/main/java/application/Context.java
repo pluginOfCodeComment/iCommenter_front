@@ -35,15 +35,11 @@ public class Context {
     private int function_begin;
     private int function_end;
     private String name;
-    private int model_id;
-
-    //包括'''
     private int comment_begin;
     private int comment_end;//function_end - 1
+
     /** 缩进量 */
     private int indent;
-    /** 注释的形式 */
-    private int comment_format;
 
     /** 是否已有代码注释 **/
     private boolean hasCodeComment;
@@ -55,9 +51,6 @@ public class Context {
 
     private MyClient myClient;
 
-    private static final int Cancel = 2;
-    private static final int YesText = 0;
-
     public Context(Project p,Editor e){
         project = p;
         editor = e;
@@ -67,11 +60,9 @@ public class Context {
         function_begin = function_end = -1;
         comment_begin = comment_end = -1;
         hasCodeComment = false;
-        comment = new Comment();
+        comment = null;
         indent = 0;
         name = null;
-        model_id = -1;
-        comment_format = 0;
         connection = project.getMessageBus().connect();
         myClient = null;
         connection.subscribe(FileEditorManagerListener.FILE_EDITOR_MANAGER,
@@ -120,7 +111,7 @@ public class Context {
             for(i = position; i >= 0 && !text[i].contains("def");i--){
                 if(judge == -1 && text[i] != null){
                     judge = Tools.getSpaceSize(text[i]);
-                }else if(text[i] != null && Tools.getSpaceSize(text[i]) != judge){
+                }else if(!Objects.equals(text[i], "") && Tools.getSpaceSize(text[i]) != judge){
                     return null;
                 }
             }
@@ -201,8 +192,6 @@ public class Context {
         myClient.sendRequest(code);
         myClient.receive();
         String res_comment = myClient.receive();
-        String[] receive = res_comment.split(",,");
-
         comment = new Comment(res_comment,indent);
     }
 
@@ -217,9 +206,9 @@ public class Context {
             int endOffset = document.getLineStartOffset(function_begin);
             String before = document.getText(new TextRange(firstOffset,endOffset - 1));
             int judge = Messages.showYesNoCancelDialog(project,"已存在注释:\n" + before + "\n请决定您的插入方式","提示","完全替换","直接插入","撤销操作",Messages.getQuestionIcon());
-            if(judge == Cancel){
+            if(judge == Messages.CANCEL){
                 return;
-            }else if(judge == YesText){
+            }else if(judge == Messages.NO){
                 runnable = () -> document.replaceString(firstOffset,endOffset,space + "\"\"\"\n" + s + space + "\"\"\"\n");
                 comment_end = comment_begin + lineSum + 1;
                 int tmp = function_end - function_begin;
@@ -231,7 +220,8 @@ public class Context {
                     StringBuffer sb = new StringBuffer(space + "\"\"\"\n");
                     String[] old = before.split("\n");
                     for(int i = 0; i < old.length; i++){
-                        sb.append(old[i].substring(1) + "\n");
+                        //sb.append(space + old[i].substring(indent + 1) + "\n");
+                        sb.append(old[i].replace("#","") + "\n");
                     }
                     sb.append("\n" + s + space + "\"\"\"\n");
                     runnable = () -> document.replaceString(firstOffset,endOffset,sb);
@@ -287,7 +277,6 @@ public class Context {
             hasCodeComment = true;
         }
         WriteCommandAction.runWriteCommandAction(project,runnable);
-        model_id = index;
         //test
         System.out.println("insert commment: "+comment_begin + " " + comment_end);
         System.out.println("function: " + function_begin + " " + function_end);
@@ -301,7 +290,7 @@ public class Context {
                 function_begin = i;
                 this.checkComment();
                 String change = document.getText(new TextRange(document.getLineStartOffset(comment_begin),document.getLineEndOffset(comment_end)));
-                System.out.println(model_id + ":");
+                System.out.println("change :");
                 System.out.println(change);
                 connection.disconnect();
                 myClient.close();

@@ -34,6 +34,7 @@ public class HelloWorldAction extends AnAction {
         //Messages.showMessageDialog(project, classPath, title, Messages.getInformationIcon());
         int i = Messages.showYesNoCancelDialog(project,title,"test","1","0","cancel",Messages.getQuestionIcon());
         System.out.println(i);
+        i = Messages.showYesNoDialog(project,title,"test","yes","no",Messages.getInformationIcon());
         // TODO: insert action logic here
 
     }

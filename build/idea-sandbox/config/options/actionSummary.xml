@@ -4,10 +4,10 @@
       <i c="10" l="1678706155178" />
     </e>
     <e n="$Undo">
-      <i c="190" l="1679225011663" />
+      <i c="193" l="1679231219028" />
     </e>
     <e n="EditorBackSpace">
-      <i c="633" l="1679223715928" />
+      <i c="643" l="1679231145799" />
     </e>
     <e n="EditorChooseLookupItem">
       <i c="5" l="1679223704285" />
@@ -19,7 +19,7 @@
       <i c="9" l="1678723698084" />
     </e>
     <e n="EditorEnter">
-      <i c="177" l="1679223702359" />
+      <i c="179" l="1679228902929" />
     </e>
     <e n="EditorLeft">
       <i c="31" l="1678844260633" />
@@ -34,7 +34,7 @@
       <i c="1" l="1678723735009" />
     </e>
     <e n="EditorTab">
-      <i c="21" l="1679223672449" />
+      <i c="22" l="1679229215646" />
     </e>
     <e n="EditorTabsEntryPoint">
       <i c="3" l="1678180079490" />
@@ -66,6 +66,9 @@
     <e n="TabList">
       <i c="2" l="1678622247158" />
     </e>
+    <e n="ToggleLineBreakpoint">
+      <i c="1" l="1679229240781" />
+    </e>
     <e n="WelcomeScreen.OpenDirectoryProject">
       <i c="1" l="1671278035161" />
     </e>
@@ -85,7 +88,7 @@
       <i c="8" l="1678621649796" />
     </e>
     <e n="com.intellij.openapi.ui.DialogWrapper$4">
-      <i c="25" l="1679224999253" />
+      <i c="32" l="1679229244140" />
     </e>
     <e n="com.intellij.openapi.wm.impl.ToolWindowHeader$HideAction">
       <i c="73" l="1679226038801" />

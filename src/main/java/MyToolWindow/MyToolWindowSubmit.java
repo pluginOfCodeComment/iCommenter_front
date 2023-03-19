@@ -1,7 +1,8 @@
 package MyToolWindow;
 
-import application.Context;
 import application.Comment;
+import application.Context;
+
 
 import javax.swing.*;
 import java.awt.*;
@@ -58,6 +59,9 @@ public class MyToolWindowSubmit {
         Q2.setText("2.The summary is missing important information, and that can hinder the understanding of the method.");
         Q3.setText("3.The summary contains a lot of unnecessary information.");
         comment.setBorder(null);
+        feedback.setContentAreaFilled(false);
+        feedback.setBorderPainted(false);
+        feedback.setPreferredSize(new Dimension(20,2));
 //        feedback.setBorder(null);
 //        feedback.setTransferHandler(null);
         this.context = c;
@@ -180,6 +184,9 @@ public class MyToolWindowSubmit {
             }
         });
     }
+    public String getUsrComment(){
+        return commentOfUser.getText();
+    }//获取用户的反馈
     public JComponent getContent() {
         return window;
     }

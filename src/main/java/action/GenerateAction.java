@@ -1,7 +1,7 @@
 package action;
 
-import application.Context;
 import MyToolWindow.MyToolWindowSubmit;
+import application.Context;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
@@ -48,7 +48,7 @@ public class GenerateAction extends AnAction {
         }else{
             request = "您是否要为函数\""+ function + "\"生成注释";
         }
-        if(Messages.showYesNoDialog(project,request,"提示","是","否",Messages.getQuestionIcon()) == 1){
+        if(Messages.showYesNoDialog(project,request,"提示","是","否",Messages.getQuestionIcon()) == Messages.NO){
             return;
         }
 

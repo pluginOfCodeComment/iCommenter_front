@@ -238,17 +238,6 @@
                   </component>
                 </children>
               </grid>
-              <component id="5471f" class="javax.swing.JTextField" default-binding="true">
-                <constraints>
-                  <grid row="10" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties>
-                  <editable value="false"/>
-                  <enabled value="true"/>
-                  <text value="Contact details"/>
-                  <toolTipText value="You can contact us through this. "/>
-                </properties>
-              </component>
               <component id="6fda0" class="javax.swing.JButton" binding="submitButton" default-binding="true">
                 <constraints>
                   <grid row="11" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
@@ -257,6 +246,22 @@
                   <text value="Submit"/>
                 </properties>
               </component>
+              <scrollpane id="a447a">
+                <constraints>
+                  <grid row="10" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties/>
+                <border type="none"/>
+                <children>
+                  <component id="88474" class="javax.swing.JTextArea" binding="contactDetailsTextArea" default-binding="true">
+                    <constraints/>
+                    <properties>
+                      <editable value="false"/>
+                      <text value="Contact details"/>
+                    </properties>
+                  </component>
+                </children>
+              </scrollpane>
             </children>
           </grid>
         </children>
