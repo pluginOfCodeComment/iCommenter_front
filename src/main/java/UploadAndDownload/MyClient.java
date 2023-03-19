@@ -21,8 +21,6 @@ public class MyClient {
     }
 
     public void sendRequest(String req) throws IOException {
-        System.out.println("this is req:");
-        System.out.println(req);
         outputStream.write(req.getBytes());//向服务器端发送数据
     }
 

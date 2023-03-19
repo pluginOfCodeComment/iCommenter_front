@@ -1,13 +1,10 @@
 package application;
 
 import UploadAndDownload.MyClient;
-import Util.Symbol;
-import Util.utils;
+import Util.Tools;
 import com.intellij.openapi.command.WriteCommandAction;
 import com.intellij.openapi.editor.Document;
 import com.intellij.openapi.editor.Editor;
-import com.intellij.openapi.editor.SelectionModel;
-import com.intellij.openapi.editor.VisualPosition;
 import com.intellij.openapi.fileEditor.FileEditorManager;
 import com.intellij.openapi.fileEditor.FileEditorManagerEvent;
 import com.intellij.openapi.fileEditor.FileEditorManagerListener;
@@ -22,6 +19,7 @@ import com.intellij.util.messages.MessageBusConnection;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
+import java.util.Objects;
 
 
 public class Context {
@@ -33,8 +31,6 @@ public class Context {
     private Document document;
     /** 编辑器 **/
     private Editor editor;
-    /** 文件中的选中部分 **/
-    private SelectionModel selectionModel;
     /** 相关数据 **/
     private int function_begin;
     private int function_end;
@@ -53,48 +49,53 @@ public class Context {
     private boolean hasCodeComment;
 
     /** 返回的代码注释 **/
-    public formatComment[] comments;
+    public Comment comment;
 
     private final MessageBusConnection connection;
+
+    private MyClient myClient;
+
+    private static final int Cancel = 2;
+    private static final int YesText = 0;
 
     public Context(Project p,Editor e){
         project = p;
         editor = e;
         document = e.getDocument();
-        selectionModel = e.getSelectionModel();
 
         code = null;
         function_begin = function_end = -1;
         comment_begin = comment_end = -1;
         hasCodeComment = false;
-        comments = new formatComment[4];
+        comment = new Comment();
         indent = 0;
         name = null;
         model_id = -1;
         comment_format = 0;
         connection = project.getMessageBus().connect();
+        myClient = null;
         connection.subscribe(FileEditorManagerListener.FILE_EDITOR_MANAGER,
                 new FileEditorManagerListener() {
                     @Override
                     public void selectionChanged(@NotNull FileEditorManagerEvent event) {
                         System.out.println("selection change");
-                        if(check()){
-                            connection.disconnect();
+                        try {
+                            check();
+                        } catch (IOException ex) {
+                            ex.printStackTrace();
                         }
                     }
                     @Override
                     public void fileClosed(@NotNull FileEditorManager source, @NotNull VirtualFile file){
                         System.out.println("closed");
-                        if(check()){
-                            connection.disconnect();
+                        try {
+                            check();
+                        } catch (IOException ex) {
+                            ex.printStackTrace();
                         }
                     }
 
                 });
-    }
-
-    public Project getProject() {
-        return project;
     }
 
     public boolean isHasCodeComment() {
@@ -102,53 +103,40 @@ public class Context {
     }
 
     public String getFunctionName(){
-        String function_name = null;
-        VisualPosition startPosition = selectionModel.getSelectionStartPosition();
-        VisualPosition endPosition = selectionModel.getSelectionEndPosition();
-        int start = startPosition.line;
-        int end = endPosition.line;
-        boolean isContain = false;
-        boolean isFind = false;
         int compare = 0;
+        int judge = -1;
         String[] text = document.getText().split("\n");
-        for(int i = start; i <= end; i++){
-            if(text[i].contains("def")){
-                if(!isFind && !isContain){
-                    function_begin = i;
-                    isContain = true;
-                    isFind = true;
-                    compare = utils.getSpaceSize(text[function_begin]);
-                }else{
+        String function_name = null;
+        if(editor.getSelectionModel().getSelectionStartPosition() == null){
+            return null;
+        }
+        int position = editor.getSelectionModel().getSelectionStartPosition().line;
+        if(position >= text.length){return null;}
+        if(text[position].contains("def")){
+            function_begin = position;
+        }
+        int i;
+        if(function_begin == -1){
+            for(i = position; i >= 0 && !text[i].contains("def");i--){
+                if(judge == -1 && text[i] != null){
+                    judge = Tools.getSpaceSize(text[i]);
+                }else if(text[i] != null && Tools.getSpaceSize(text[i]) != judge){
                     return null;
                 }
             }
-            if(!isContain && !text[i].equals("")){
-                isContain = true;
-            }
-            if(isFind && i != function_begin && utils.getSpaceSize(text[i]) == compare){
-                function_end = i - 1;
-                break;
-            }
-        }
-        if(function_begin == -1){
-            int i;
-            for(i = start - 1; i >= 0 && !text[i].contains("def");i--);
             if(i == -1){return null;}
-            function_begin = i;
+            function_begin = function_end = i;
         }
-        if(function_end == -1){
-            int i = end == function_begin ? end + 1 : end;
-            compare = utils.getSpaceSize(text[function_begin]);
-            for(; i < text.length && compare != utils.getSpaceSize(text[i]); i++);
-            function_end = i - 1;
-        }
+
+        compare = Tools.getSpaceSize(text[function_begin]);
+        for(i = function_begin + 1; i < text.length && compare != Tools.getSpaceSize(text[i]); i++);
+        function_end = i - 1;
+
         String[] tmp = text[function_begin].split(" ");
-        int k;
-        for (k = 0; k < tmp.length && !tmp[k].equals("def"); k++) {}
-        function_name = tmp[k + 1].split("\\(")[0];
+        for (i = 0; i < tmp.length && !tmp[i].equals("def"); i++) {}
+        function_name = tmp[i + 1].split("\\(")[0];
         //test
-        System.out.println(function_begin);
-        System.out.println(function_end);
+        System.out.println("function: " + function_begin + " " + function_end);
 
         name = text[function_begin];
         indent = compare;
@@ -173,23 +161,21 @@ public class Context {
                     }
                 }else{
                     comment_begin = i;
-                    return;
+                    if(!special){return;}
                 }
-            }else if(text[i] != null && special){
+            }else if(!hasCodeComment || special){
                 return;
             }
         }
-        //test
-        System.out.println("comment" + comment_begin);
-        System.out.println(comment_end);
+
     }
 
-    public void getBody() throws IOException {
-        int insertOffset = document.getLineStartOffset(function_begin);
-        TextRange textRange = new TextRange(insertOffset, document.getLineEndOffset(function_end));
+    public void getBody(){
+        TextRange textRange = new TextRange(document.getLineStartOffset(function_begin), document.getLineEndOffset(function_end));
         code = document.getText(textRange);
         //test
         System.out.println(code);
+        System.out.println("comment: " + comment_begin + " " + comment_end);
 
         ProgressManager.getInstance().run(
                 new Task.Modal(project, "Generating Comment", true) {
@@ -205,87 +191,109 @@ public class Context {
 
                     }
                 });
+    }
 
-        //return comments from different models
-        MyClient myClient = new MyClient("127.0.0.1",6666);
+    /*
+    return comments from different models
+    */
+    public void transfer() throws IOException {
+        myClient = new MyClient("127.0.0.1",6666);
         myClient.sendRequest(code);
-        String res = myClient.receive();
+        myClient.receive();
         String res_comment = myClient.receive();
         String[] receive = res_comment.split(",,");
-        comments[0] = new formatComment(receive[0],0,indent,comment_format);
-        comments[1] = new formatComment(receive[1],1,indent,comment_format);
-        comments[2] = new formatComment(receive[2],2,indent,comment_format);
-        comments[3] = new formatComment(receive[3],3,indent,comment_format);
+
+        comment = new Comment(res_comment,indent);
     }
 
     public void insert(int index){
-        String s = comments[index].getFormatComment();
-        int lineSum = comments[index].getLine();
-        System.out.println(lineSum);
-        Runnable runnable;
-        String space = utils.getSpace(indent);
-        System.out.println(name);
-        System.out.println(indent);
-        String symbol = Symbol.get(comment_format);
+        String s = comment.getFormatComment();
+        int lineSum = comment.getLine();
+        Runnable runnable = null;
+        String space = Tools.getSpace(indent);
 
         if(hasCodeComment){
             int firstOffset = document.getLineStartOffset(comment_begin);
             int endOffset = document.getLineStartOffset(function_begin);
             String before = document.getText(new TextRange(firstOffset,endOffset - 1));
-            int k = Messages.showYesNoDialog(project,"是否替换掉以下注释:\n" + before,"提示","是","否",Messages.getQuestionIcon());
-            if(k == 0){
-                if(comment_format == 2){
-                    runnable = () -> document.replaceString(firstOffset,endOffset,s);
-                    comment_end = comment_begin + lineSum - 1;
-                }else{
-                    runnable = () -> document.replaceString(firstOffset,endOffset,space + symbol + s + space + symbol);
-                    comment_end = comment_begin + lineSum + 1;
-                }
+            int judge = Messages.showYesNoCancelDialog(project,"已存在注释:\n" + before + "\n请决定您的插入方式","提示","完全替换","直接插入","撤销操作",Messages.getQuestionIcon());
+            if(judge == Cancel){
+                return;
+            }else if(judge == YesText){
+                runnable = () -> document.replaceString(firstOffset,endOffset,space + "\"\"\"\n" + s + space + "\"\"\"\n");
+                comment_end = comment_begin + lineSum + 1;
                 int tmp = function_end - function_begin;
                 function_begin = comment_end + 1;
                 function_end = function_begin + tmp;
             }else{
-                //int tmp = document.getLineEndOffset(comment_end) - comment_format == 2 ? 0 : 3;
-                if(comment_format == 2){
-                    int tmp = document.getLineStartOffset(function_begin);
-                    runnable = () -> document.insertString(tmp, s);
-                    comment_end += lineSum; //空了一行
-                    function_begin += lineSum;
-                    function_end += lineSum;
+                int add = lineSum + 1; //insert an empty line
+                if(before.contains("#")){
+                    StringBuffer sb = new StringBuffer(space + "\"\"\"\n");
+                    String[] old = before.split("\n");
+                    for(int i = 0; i < old.length; i++){
+                        sb.append(old[i].substring(1) + "\n");
+                    }
+                    sb.append("\n" + s + space + "\"\"\"\n");
+                    runnable = () -> document.replaceString(firstOffset,endOffset,sb);
+                    add += 2; //""" and """
+                    comment_end += add;
+                    function_begin += add;
+                    function_end += add;
+                }else if(before.contains("'''")){
+                    String toreplace = "\"\"\"";
+                    String[] old = before.split("\n");
+                    boolean flag = false;
+                    if(!before.startsWith(space + "'''\n")){
+                        System.out.println("begin need");
+                        toreplace += "\n" + space;
+                        add++;
+                    }
+                    if(!before.endsWith("\n" + space + "'''")){
+                        System.out.println("end need");
+                        flag = true;
+                        add++;
+                    }
+                    String after = before.substring(0,before.length() - 3).replace("'''",toreplace) + (flag ? "\n" : "") +"\n" + s + space + "\"\"\"\n";
+                    runnable = () -> document.replaceString(firstOffset,endOffset,after);
+                    comment_end += add;
+                    function_begin += add;
+                    function_end += add;
                 }else{
-                    int tmp = document.getLineEndOffset(comment_end) - 3;
-                    runnable = () -> document.insertString(tmp, "\n" + s + space);
-                    comment_end += lineSum + 1; //空了一行
-                    function_begin += lineSum + 1;
-                    function_end += lineSum + 1;
+                    boolean flag = !before.endsWith("\n" + space + "\"\"\"");
+
+                    if(flag){add++;System.out.println("end need");}
+                    if(!before.startsWith(space + "\"\"\"\n")){
+                        System.out.println("begin need");
+                        String after = before.substring(0,before.length() - 3).replace("\"\"\"","\"\"\"\n" + space) +
+                                (flag ? "\n" : "") + "\n" + s + space + "\"\"\"\n";
+                        runnable = () -> document.replaceString(firstOffset,endOffset,after);
+                        add++;
+                    }else{
+                        int tmp = document.getLineEndOffset(comment_end) - 3;
+                        runnable = () -> document.insertString(tmp, "\n" + (flag ? "\n" : "") + s + space);
+                    }
+                    comment_end += add; //空了一行
+                    function_begin += add;
+                    function_end += add;
                 }
             }
         }else{
             int insertOffset = document.getLineStartOffset(function_begin);
+            runnable = () -> document.insertString(insertOffset,space + "\"\"\"\n" + s + space + "\"\"\"\n");
             comment_begin = function_begin;
-            if(comment_format == 2){
-                runnable = () -> document.insertString(insertOffset,s);
-                comment_end = comment_begin + lineSum - 1;
-                function_begin += lineSum;
-                function_end += lineSum;
-            }else{
-                runnable = () -> document.insertString(insertOffset,space + symbol + s + space + symbol);
-                comment_end = comment_begin + lineSum + 1;
-                function_begin += lineSum + 2;
-                function_end += lineSum + 2;
-            }
+            comment_end = comment_begin + lineSum + 1;
+            function_begin += lineSum + 2;
+            function_end += lineSum + 2;
             hasCodeComment = true;
         }
         WriteCommandAction.runWriteCommandAction(project,runnable);
         model_id = index;
         //test
-        System.out.println("insert commment:"+comment_begin);
-        System.out.println(comment_end);
-        System.out.println(function_begin);
-        System.out.println(function_end);
+        System.out.println("insert commment: "+comment_begin + " " + comment_end);
+        System.out.println("function: " + function_begin + " " + function_end);
     }
 
-    private boolean check(){
+    private void check() throws IOException {
         String[] s = document.getText().split("\n");
         for(int i = 0; i < s.length; i++){
             if(s[i].contains(name)){
@@ -295,9 +303,13 @@ public class Context {
                 String change = document.getText(new TextRange(document.getLineStartOffset(comment_begin),document.getLineEndOffset(comment_end)));
                 System.out.println(model_id + ":");
                 System.out.println(change);
-                return true;
+                connection.disconnect();
+                myClient.close();
             }
         }
-        return false;
+    }
+
+    public Comment getComment() {
+        return comment;
     }
 }

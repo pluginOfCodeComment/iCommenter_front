@@ -16,7 +16,7 @@
         </entry>
         <entry key="D:/anaconda/Python/第六次作业">
           <value>
-            <RecentProjectMetaInfo frameTitle="第六次作业 – try.py" opened="true" projectWorkspaceId="2730wBMiZWCIn5m9GxVoWke6CSJ">
+            <RecentProjectMetaInfo frameTitle="第六次作业 – Taxi.py" projectWorkspaceId="2730wBMiZWCIn5m9GxVoWke6CSJ">
               <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
               <option name="build" value="PC-213.6777.50" />
               <option name="buildTimestamp" value="1643299611005" />
@@ -26,7 +26,32 @@
             </RecentProjectMetaInfo>
           </value>
         </entry>
+        <entry key="D:/test">
+          <value>
+            <RecentProjectMetaInfo frameTitle="test" projectWorkspaceId="2MxOm44sEm9A54Tglm7kKVBorIH">
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="build" value="PC-213.6777.50" />
+              <option name="buildTimestamp" value="1643299586126" />
+              <frame x="948" y="0" width="984" height="1034" extendedState="6" />
+              <option name="productionCode" value="PC" />
+              <option name="projectOpenTimestamp" value="1678705922327" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="D:/pythonProject">
+          <value>
+            <RecentProjectMetaInfo frameTitle="pythonProject – test.py" opened="true" projectWorkspaceId="2MxQKXLLFg7bBplSUVQCDTyNKBq">
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="build" value="PC-213.6777.50" />
+              <option name="buildTimestamp" value="1643299586126" />
+              <frame x="-11" y="-11" width="1943" height="1056" extendedState="6" />
+              <option name="productionCode" value="PC" />
+              <option name="projectOpenTimestamp" value="1678706341743" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
       </map>
     </option>
+    <option name="lastProjectLocation" value="D:/" />
   </component>
 </application>

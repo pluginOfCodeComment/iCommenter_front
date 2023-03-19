@@ -2,8 +2,11 @@
   <component name="Trusted.Paths">
     <option name="TRUSTED_PROJECT_PATHS">
       <map>
+        <entry key="D:\" value="true" />
         <entry key="D:\anaconda\Python\homework2" value="true" />
         <entry key="D:\anaconda\Python\第六次作业" value="true" />
+        <entry key="D:\pythonProject" value="true" />
+        <entry key="D:\test" value="true" />
       </map>
     </option>
   </component>

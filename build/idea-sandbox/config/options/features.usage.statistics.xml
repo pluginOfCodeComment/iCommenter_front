@@ -7,7 +7,7 @@
     <feature id="editing.completion.cancelByControlArrows" count="0" last-shown="0" last-used="0" shown-count="0" />
     <feature id="navigation.popup.symbol" count="0" last-shown="0" last-used="0" shown-count="0" />
     <feature id="find.recent.search" count="0" last-shown="0" last-used="0" shown-count="0" />
-    <feature id="editing.completion.replace" count="0" last-shown="1678436356539" last-used="0" shown-count="171" />
+    <feature id="editing.completion.replace" count="0" last-shown="1679223714913" last-used="0" shown-count="259" />
     <feature id="navigation.goto.inspection" count="0" last-shown="0" last-used="0" shown-count="0" />
     <feature id="navigation.popup.camelprefix" count="0" last-shown="0" last-used="0" shown-count="0" />
     <feature id="SearchEverywhere" count="0" last-shown="0" last-used="0" shown-count="0" />
@@ -17,7 +17,7 @@
     <feature id="refactoring.introduceVariable" count="0" last-shown="0" last-used="0" shown-count="0" />
     <feature id="codeassists.quickdefinition" count="0" last-shown="0" last-used="0" shown-count="0" />
     <feature id="find.completion" count="0" last-shown="0" last-used="0" shown-count="0" />
-    <feature id="editing.completion.basic" count="1" last-shown="0" last-used="1675504373263" shown-count="0" />
+    <feature id="editing.completion.basic" count="5" last-shown="0" last-used="1679223704294" shown-count="0" />
     <feature id="tag.name.completion" count="0" last-shown="0" last-used="0" shown-count="0" />
     <feature id="editing.select.word" count="0" last-shown="0" last-used="0" shown-count="0" />
     <feature id="navigation.recent.files" count="0" last-shown="0" last-used="0" shown-count="0" />
@@ -37,16 +37,16 @@
     <feature id="codeassists.quickdefinition.lookup" count="0" last-shown="0" last-used="0" shown-count="0" />
     <completionStatsTag>
       <option name="sparedCharacters" value="0" />
-      <option name="invocations" value="0" />
-      <option name="startDate" value="0" />
-      <option name="dayCount" value="0" />
-      <option name="lastDate" value="0" />
+      <option name="invocations" value="3" />
+      <option name="startDate" value="1679155200000" />
+      <option name="dayCount" value="1" />
+      <option name="lastDate" value="1679155200000" />
     </completionStatsTag>
     <fixesStatsTag>
-      <option name="invocations" value="8" />
+      <option name="invocations" value="9" />
       <option name="startDate" value="1671811200000" />
-      <option name="dayCount" value="6" />
-      <option name="lastDate" value="1675526400000" />
+      <option name="dayCount" value="7" />
+      <option name="lastDate" value="1678636800000" />
     </fixesStatsTag>
   </component>
 </application>

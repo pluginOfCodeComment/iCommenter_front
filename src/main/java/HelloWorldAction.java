@@ -23,20 +23,6 @@ public class HelloWorldAction extends AnAction {
         Project project = e.getData(PlatformDataKeys.PROJECT);
         Editor editor = e.getData(PlatformDataKeys.EDITOR);
         SelectionModel selectionModel = editor.getSelectionModel();
-        ProgressManager.getInstance().run(
-                new Task.Modal(project, "Generating Comment", true) {
-                    @Override
-                    public void run(@NotNull ProgressIndicator indicator) {
-
-                        indicator.setFraction(0.1);
-                        try {
-                            Thread.sleep(700);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-
-                    }
-                });
 
 
         //获取当前操作的类文件
@@ -45,7 +31,9 @@ public class HelloWorldAction extends AnAction {
         String classPath = psiFile.getVirtualFile().getPath();
         String title = "Hello World!";
 
-        Messages.showMessageDialog(project, classPath, title, Messages.getInformationIcon());
+        //Messages.showMessageDialog(project, classPath, title, Messages.getInformationIcon());
+        int i = Messages.showYesNoCancelDialog(project,title,"test","1","0","cancel",Messages.getQuestionIcon());
+        System.out.println(i);
         // TODO: insert action logic here
 
     }

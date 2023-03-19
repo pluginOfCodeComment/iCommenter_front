@@ -12,6 +12,21 @@
             <ProjectPluginTracker />
           </value>
         </entry>
+        <entry key="2MxOm44sEm9A54Tglm7kKVBorIH">
+          <value>
+            <ProjectPluginTracker />
+          </value>
+        </entry>
+        <entry key="2MxPckxNmlJH6BxKcTrfWKDiZY8">
+          <value>
+            <ProjectPluginTracker />
+          </value>
+        </entry>
+        <entry key="2MxQKXLLFg7bBplSUVQCDTyNKBq">
+          <value>
+            <ProjectPluginTracker />
+          </value>
+        </entry>
       </map>
     </trackers>
   </component>
@@ -28,15 +43,15 @@
     <property name="PyCharm.InitialConfiguration.V7" value="true" />
     <property name="bundled.plugins.list.saved.version" value="PC-213.6777.50" />
     <property name="experimentalFeature.terminal.shell.command.handling" value="false" />
-    <property name="file.chooser.recent.files" value="D:/anaconda/Python/第六次作业&#10;D:/anaconda/Python/homework2" />
-    <property name="file.gist.reindex.count" value="117" />
+    <property name="file.chooser.recent.files" value="$USER_HOME$/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Python 3.10&#10;D:/test&#10;D:/&#10;D:/anaconda/Python/第六次作业&#10;D:/anaconda/Python/homework2" />
+    <property name="file.gist.reindex.count" value="142" />
     <property name="fileTypeChangedCounter" value="2" />
     <property name="fileTypeDetectors" value="com.intellij.ide.scratch.ScratchFileServiceImpl$Detector:org.jetbrains.plugins.textmate.TextMateFileType$TextMateFileDetector" />
     <property name="got.it.tooltip.cwm.invitation.notification" value="1" />
     <property name="gotit.previous.run" value="PC-213.6777.50" />
     <property name="ide.memory.adjusted" value="true" />
     <property name="ignore.virus.scanning.warn.message" value="true" />
-    <property name="last_opened_file_path" value="D:/anaconda/Python/homework2" />
+    <property name="last_opened_file_path" value="D:/test" />
     <property name="registry.to.advanced.settings.migration.build" value="PC-213.6777.50" />
     <property name="tasks.pass.word.conversion.enforced" value="true" />
   </component>

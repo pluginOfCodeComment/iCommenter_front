@@ -21,7 +21,7 @@
     <action id="demo.hello.world" class="HelloWorldAction" text="HelloWorld" description="Say Hello World">
       <add-to-group group-id="GenerateGroup" anchor="first" />
     </action>
-    <action id="src.main.java.action" class="action.generateCommentAction" text="generate comment" description="automatically generate code comment">
+    <action id="src.main.java.action" class="action.GenerateAction" text="generate comment" description="generate the comment for target function automatically">
       <add-to-group group-id="GenerateGroup" anchor="first" />
       <keyboard-shortcut keymap="$default" first-keystroke="shift C" />
     </action>
