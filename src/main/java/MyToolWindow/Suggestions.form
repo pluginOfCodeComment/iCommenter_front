@@ -106,16 +106,18 @@
                 </constraints>
                 <properties>
                   <horizontalScrollBarPolicy value="31"/>
-                  <verticalScrollBarPolicy value="22"/>
+                  <verticalScrollBarPolicy value="20"/>
                 </properties>
-                <border type="none"/>
+                <border type="line">
+                  <color color="-11053225"/>
+                </border>
                 <children>
                   <component id="a40d1" class="javax.swing.JTextArea" binding="feedback">
                     <constraints/>
                     <properties>
-                      <editable value="false"/>
+                      <editable value="true"/>
                       <lineWrap value="true"/>
-                      <text value=""/>
+                      <text value="Please write your suggestions here."/>
                       <toolTipText value="Please write your suggestions here."/>
                       <wrapStyleWord value="true"/>
                     </properties>
@@ -250,8 +252,13 @@
                 <constraints>
                   <grid row="10" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                 </constraints>
-                <properties/>
-                <border type="none"/>
+                <properties>
+                  <horizontalScrollBarPolicy value="31"/>
+                </properties>
+                <border type="line">
+                  <font/>
+                  <color color="-11053225"/>
+                </border>
                 <children>
                   <component id="88474" class="javax.swing.JTextArea" binding="contactDetailsTextArea" default-binding="true">
                     <constraints/>

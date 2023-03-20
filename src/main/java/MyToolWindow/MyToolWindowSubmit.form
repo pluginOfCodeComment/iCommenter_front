@@ -89,8 +89,14 @@
             <constraints/>
             <properties>
               <editable value="true"/>
+              <enabled value="true"/>
+              <focusCycleRoot value="false"/>
+              <focusTraversalPolicyProvider value="false"/>
               <lineWrap value="true"/>
-              <text value=""/>
+              <text value="Please write your comment here."/>
+              <toolTipText value="Please write your comment here."/>
+              <verifyInputWhenFocusTarget value="true"/>
+              <visible value="true"/>
               <wrapStyleWord value="true"/>
             </properties>
           </component>

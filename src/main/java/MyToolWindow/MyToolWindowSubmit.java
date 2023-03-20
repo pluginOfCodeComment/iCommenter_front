@@ -1,13 +1,12 @@
 package MyToolWindow;
 
-import application.Comment;
 import application.Context;
-
+import application.Comment;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
+import java.util.Objects;
 
 public class MyToolWindowSubmit {
     private int[] score = new int[3];
@@ -183,7 +182,25 @@ public class MyToolWindowSubmit {
                 Suggestions.main(null);
             }
         });
+//        commentOfUser.addFocusListener(new FocusAdapter() {
+//            @Override
+//            public void focusGained(FocusEvent e) {
+//                super.focusGained(e);
+//                if(!Objects.equals(commentOfUser.getText(), "Please write your comment here.")){
+//                    commentOfUser.setText("");
+//                }
+//            }
+//            @Override
+//            public void focusLost(FocusEvent e) {
+//                super.focusLost(e);
+//                if(!Objects.equals(commentOfUser.getText(), "")){
+//                    commentOfUser.setText("Please write your comment here.");
+//                }
+//            }
+//        });
+        commentOfUser.addFocusListener(new JTextAreaHintListener(commentOfUser,"Please write your comment here."));
     }
+
     public String getUsrComment(){
         return commentOfUser.getText();
     }//获取用户的反馈

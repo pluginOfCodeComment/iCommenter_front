@@ -133,6 +133,7 @@ public class Suggestions {
                 JOptionPane.showMessageDialog(panel1,"success");
             }
         });
+        feedback.addFocusListener(new JTextAreaHintListener(feedback,"Please write your suggestions here."));
     }
     public String getFeedback(){
         return feedback.getText();
