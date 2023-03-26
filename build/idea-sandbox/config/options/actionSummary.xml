@@ -4,10 +4,10 @@
       <i c="10" l="1678706155178" />
     </e>
     <e n="$Undo">
-      <i c="193" l="1679231219028" />
+      <i c="212" l="1679842935906" />
     </e>
     <e n="EditorBackSpace">
-      <i c="643" l="1679231145799" />
+      <i c="673" l="1679842943903" />
     </e>
     <e n="EditorChooseLookupItem">
       <i c="5" l="1679223704285" />
@@ -19,16 +19,16 @@
       <i c="9" l="1678723698084" />
     </e>
     <e n="EditorEnter">
-      <i c="179" l="1679228902929" />
+      <i c="181" l="1679842880771" />
     </e>
     <e n="EditorLeft">
-      <i c="31" l="1678844260633" />
+      <i c="38" l="1679842877292" />
     </e>
     <e n="EditorPaste">
       <i c="4" l="1678706181534" />
     </e>
     <e n="EditorRight">
-      <i c="20" l="1679223702035" />
+      <i c="23" l="1679842939431" />
     </e>
     <e n="EditorStartNewLine">
       <i c="1" l="1678723735009" />
@@ -73,7 +73,7 @@
       <i c="1" l="1671278035161" />
     </e>
     <e n="com.intellij.diagnostic.IdeMessagePanel$4">
-      <i c="28" l="1679226445579" />
+      <i c="29" l="1679740890015" />
     </e>
     <e n="com.intellij.diagnostic.WindowsDefenderChecker$1">
       <i c="1" l="1677553514606" />
@@ -88,10 +88,10 @@
       <i c="8" l="1678621649796" />
     </e>
     <e n="com.intellij.openapi.ui.DialogWrapper$4">
-      <i c="32" l="1679229244140" />
+      <i c="45" l="1679756296770" />
     </e>
     <e n="com.intellij.openapi.wm.impl.ToolWindowHeader$HideAction">
-      <i c="73" l="1679226038801" />
+      <i c="74" l="1679556062732" />
     </e>
     <e n="com.intellij.openapi.wm.impl.ToolWindowHeader$ShowOptionsAction">
       <i c="3" l="1678156283532" />

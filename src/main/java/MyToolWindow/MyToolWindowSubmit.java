@@ -6,7 +6,6 @@ import application.Comment;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.util.Objects;
 
 public class MyToolWindowSubmit {
     private int[] score = new int[3];
@@ -160,7 +159,7 @@ public class MyToolWindowSubmit {
         Apply.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                context.insert(0);
+                context.insert();
                 JOptionPane.showMessageDialog(window,"success");
             }
         });
