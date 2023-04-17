@@ -22,6 +22,7 @@ public class GenerateAction extends AnAction {
 
     private Context context;
     private static final String ToolWindowName = "generate comments";
+
     @Override
     public void actionPerformed(AnActionEvent e) {
         // TODO: insert action logic here
@@ -53,8 +54,10 @@ public class GenerateAction extends AnAction {
         }
 
         try {
-            context.getBody();
             context.transfer();
+        } catch (RuntimeException re) {
+            re.printStackTrace();
+            return;
         } catch (IOException ex) {
             ex.printStackTrace();
         }

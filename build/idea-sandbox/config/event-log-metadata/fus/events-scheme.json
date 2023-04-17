@@ -430,11 +430,13 @@
         "hide_fully_covered" : [ "{enum#boolean}" ],
         "includes" : [ "{regexp#integer}" ],
         "loaded_classes" : [ "{regexp#integer}" ],
-        "runner" : [ "{enum:emma|jacoco|idea}", "{enum:IJCSampling|IJCTracing|IJCTracingTestTracking|JaCoCo|Emma}" ],
+        "runner" : [ "{enum:emma|jacoco|idea}", "{enum#__runner}", "{enum:IJCSampling|IJCTracing|IJCTracingTestTracking|JaCoCo|Emma}" ],
+        "runners" : [ "{enum:idea|jacoco|Emma|PhpCoverage|utPlSqlCoverageRunner|JestJavaScriptTestRunnerCoverage|rcov|DartCoverageRunner|WipCoverageRunner|VitestJavaScriptTestRunnerCoverage|jacoco_xml_report|MochaJavaScriptTestRunnerCoverage|GoCoverage|KarmaJavaScriptTestRunnerCoverage|coverage.py}" ],
         "show_only_modified" : [ "{enum#boolean}" ]
       },
       "enums" : {
-        "__event_id" : [ "html.generated", "report.loaded", "started", "report.built", "view.opened" ]
+        "__event_id" : [ "html.generated", "report.loaded", "started", "report.built", "view.opened", "report.imported" ],
+        "__runner" : [ "PhpCoverage", "WipCoverageRunner", "utPlSqlCoverageRunner", "VitestJavaScriptTestRunnerCoverage", "jacoco_xml_report", "JestJavaScriptTestRunnerCoverage", "MochaJavaScriptTestRunnerCoverage", "rcov", "GoCoverage", "KarmaJavaScriptTestRunnerCoverage", "DartCoverageRunner", "coverage.py" ]
       }
     }
   }, {
@@ -1299,6 +1301,7 @@
         "connector" : [ "{enum:unknown|cwm.connector|space.connector|ssh.connector}", "{enum:gitpod.connector}", "{enum:google.cloud.connector}", "{enum:LinkedClientProxyingConnector|WslConnector}", "{enum:WorkstationsConnector|CawsConnector|GitpodConnector|CodespacesConnector}", "{enum:SshConnector|SpaceGatewayConnector|CodeWithMeConnector|WslConnector}" ],
         "connectorProvider" : [ "{util#class_name}" ],
         "duration_ms" : [ "{regexp#integer}" ],
+        "emptyPassword" : [ "{enum#boolean}" ],
         "ide_activity_id" : [ "{regexp#integer}" ],
         "installationSource" : [ "{enum:CustomLink|LocalArchive|SuggestionList}" ],
         "installation_result" : [ "{enum:Success|Error|IncompatibleVersion}" ],
@@ -1320,10 +1323,11 @@
         "productId" : [ "{enum:unknown|IU|RM|PY|DS|PS|WS|CL|RD|GO}", "{enum:IC}", "{enum:FLL}" ],
         "projectsPerHost" : [ "{regexp#integer}" ],
         "projectsPerWslInstance" : [ "{regexp#integer}" ],
+        "savePassUntilRestart" : [ "{enum#boolean}" ],
         "sshAuthType" : [ "{enum:unknown|Password|Key pair (OpenSSH or PuTTY)|OpenSSH config and authentication agent|PASSWORD|OPEN_SSH|KEY_PAIR}" ]
       },
       "enums" : {
-        "__event_id" : [ "full.deploy.cycle.activity.started", "full.deploy.cycle.activity.finished", "download.ide.backend.activity.started", "download.ide.backend.activity.finished", "otherOptions.clicked", "useOldBackend.clicked", "openSshTerminal.clicked", "uploadInstaller.clicked", "useNewBackend.clicked", "documentation.clicked", "useDownloadLink.clicked", "checkConnectionAndContinue.clicked", "connect.clicked", "gtwFromStandaloneIde.started", "install_plugin", "ssh.auth.type.selected", "recent.ssh.projects.opened", "projects.per.host.registered", "JBInstaller.clicked", "backend.changed", "checking.connection.activity.finished", "checking.connection.activity.started", "connection.changed", "installation.source.selected", "projects.per.wsl.instance.registered", "recent.wsl.projects.opened", "openSettings.clicked", "leave_panel", "backButton.clicked", "plugin.documentation.clicked", "plugin.install.clicked", "select.different.ide.clicked", "recents.gear.clicked", "manage.backends.clicked", "openProject.clicked", "newProject.clicked", "connectToHost.clicked", "remove.host.clicked", "connect.provider.clicked", "openSshTerminal.recents.clicked", "different.ide.toggle.clicked", "remove.from.recents.clicked" ]
+        "__event_id" : [ "full.deploy.cycle.activity.started", "full.deploy.cycle.activity.finished", "download.ide.backend.activity.started", "download.ide.backend.activity.finished", "otherOptions.clicked", "useOldBackend.clicked", "openSshTerminal.clicked", "uploadInstaller.clicked", "useNewBackend.clicked", "documentation.clicked", "useDownloadLink.clicked", "checkConnectionAndContinue.clicked", "connect.clicked", "gtwFromStandaloneIde.started", "install_plugin", "ssh.auth.type.selected", "recent.ssh.projects.opened", "projects.per.host.registered", "JBInstaller.clicked", "backend.changed", "checking.connection.activity.finished", "checking.connection.activity.started", "connection.changed", "installation.source.selected", "projects.per.wsl.instance.registered", "recent.wsl.projects.opened", "openSettings.clicked", "leave_panel", "backButton.clicked", "plugin.documentation.clicked", "plugin.install.clicked", "select.different.ide.clicked", "recents.gear.clicked", "manage.backends.clicked", "openProject.clicked", "newProject.clicked", "connectToHost.clicked", "remove.host.clicked", "connect.provider.clicked", "openSshTerminal.recents.clicked", "different.ide.toggle.clicked", "remove.from.recents.clicked", "authenticate.clicked", "authenticate.dialog.ok.clicked", "authenticate.dialog.cancel.clicked" ]
       }
     }
   }, {
@@ -1969,6 +1973,18 @@
         "download_binary_size" : [ "{regexp#integer}" ],
         "download_cache_size" : [ "{regexp#integer}" ],
         "duration" : [ "{regexp#integer}" ]
+      }
+    }
+  }, {
+    "id" : "js.lens",
+    "builds" : [ ],
+    "versions" : [ {
+      "from" : "3"
+    } ],
+    "rules" : {
+      "event_id" : [ "{enum:usages.clicked|implementations.clicked|code.author.clicked}" ],
+      "event_data" : {
+        "location" : [ "{enum:interface|class|var_or_field|function|export_assignment|callback|other}" ]
       }
     }
   }, {
@@ -3054,7 +3070,7 @@
         "python_version" : [ "{regexp#integer}", "{regexp#version}" ]
       },
       "enums" : {
-        "__package" : [ "requests", "pytz", "numpy", "six", "python-dateutil", "certifi", "urllib3", "pandas", "idna", "chardet", "Pillow", "click", "cffi", "matplotlib", "cryptography", "pyparsing", "pytest", "Jinja2", "PyYAML", "Django", "redis", "scipy", "pycparser", "boto3", "attrs", "MarkupSafe", "gunicorn", "djangorestframework", "lxml", "packaging", "sqlparse", "tqdm", "Werkzeug", "psycopg2-binary", "Flask", "typing-extensions", "pyasn1", "beautifulsoup4", "openpyxl", "decorator", "wcwidth", "celery", "asgiref", "psycopg2", "SQLAlchemy", "itsdangerous", "protobuf", "xlrd", "future", "botocore", "jsonschema", "PyJWT", "scikit-learn", "colorama", "zipp", "jmespath", "pyasn1-modules", "importlib-metadata", "psutil", "python-dotenv", "django-cors-headers", "toml", "rsa", "oauthlib", "requests-oauthlib", "defusedxml", "s3transfer", "pyyaml", "django-filter", "py", "ipython", "cachetools", "wrapt", "docutils", "prompt-toolkit", "coverage", "appdirs", "tornado", "greenlet", "pluggy", "sentry-sdk", "Pygments", "cycler", "kombu", "pymongo", "torch", "webencodings", "simplejson", "google-auth", "PyMySQL", "aiohttp", "opencv-python", "pillow", "flake8", "billiard", "pickleshare", "selenium", "gevent", "paramiko", "mccabe", "amqp", "kiwisolver", "grpcio", "traitlets", "mysqlclient", "django", "et-xmlfile", "xlwt", "regex", "more-itertools", "mock", "httplib2", "setuptools", "vine", "pyrsistent", "backcall", "flask", "pexpect", "joblib", "pydantic", "jedi", "soupsieve", "uritemplate", "jinja2", "google-api-python-client", "bcrypt", "ptyprocess", "sqlalchemy", "parso", "django-extensions", "iniconfig", "xmltodict", "isort", "pyOpenSSL", "seaborn", "Markdown", "pycodestyle", "pylint", "pytest-cov", "alembic", "django-redis", "dnspython", "async-timeout", "elasticsearch", "msgpack", "django-storages", "black", "prometheus-client", "uvicorn", "filelock", "tzlocal", "Babel", "tensorflow", "bleach", "django-debug-toolbar", "html5lib", "zope.interface", "torchvision", "jdcal", "pycryptodome", "text-unidecode", "yarl", "networkx", "termcolor", "multidict", "XlsxWriter", "mypy-extensions", "marshmallow", "pyjwt", "pyzmq", "asn1crypto", "Mako", "h5py", "Flask-SQLAlchemy", "blinker", "google-auth-oauthlib", "tensorboard", "fastapi", "googleapis-common-protos", "requests-toolbelt", "reportlab", "websocket-client", "google-api-core", "tabulate", "entrypoints", "sklearn", "python-editor", "coreapi", "typed-ast", "google-auth-httplib2", "oauth2client", "mistune", "pycrypto", "pyflakes", "boto", "whitenoise", "lazy-object-proxy", "phonenumbers", "werkzeug", "virtualenv", "isodate" ],
+        "__package" : [ "requests", "pytz", "numpy", "six", "python-dateutil", "certifi", "urllib3", "pandas", "idna", "chardet", "Pillow", "click", "cffi", "matplotlib", "cryptography", "pyparsing", "pytest", "Jinja2", "PyYAML", "Django", "redis", "scipy", "pycparser", "boto3", "attrs", "MarkupSafe", "gunicorn", "djangorestframework", "lxml", "packaging", "sqlparse", "tqdm", "Werkzeug", "psycopg2-binary", "Flask", "typing-extensions", "pyasn1", "beautifulsoup4", "openpyxl", "decorator", "wcwidth", "celery", "asgiref", "psycopg2", "SQLAlchemy", "itsdangerous", "protobuf", "xlrd", "future", "botocore", "jsonschema", "PyJWT", "scikit-learn", "colorama", "zipp", "jmespath", "pyasn1-modules", "importlib-metadata", "psutil", "python-dotenv", "django-cors-headers", "toml", "rsa", "oauthlib", "requests-oauthlib", "defusedxml", "s3transfer", "pyyaml", "django-filter", "py", "ipython", "cachetools", "wrapt", "docutils", "prompt-toolkit", "coverage", "appdirs", "tornado", "greenlet", "pluggy", "sentry-sdk", "Pygments", "cycler", "kombu", "pymongo", "torch", "webencodings", "simplejson", "google-auth", "PyMySQL", "aiohttp", "opencv-python", "pillow", "flake8", "billiard", "pickleshare", "selenium", "gevent", "paramiko", "mccabe", "amqp", "kiwisolver", "grpcio", "traitlets", "mysqlclient", "django", "et-xmlfile", "xlwt", "regex", "more-itertools", "mock", "httplib2", "setuptools", "vine", "pyrsistent", "backcall", "flask", "pexpect", "joblib", "pydantic", "jedi", "soupsieve", "uritemplate", "jinja2", "google-api-python-client", "bcrypt", "ptyprocess", "sqlalchemy", "parso", "django-extensions", "iniconfig", "xmltodict", "isort", "pyOpenSSL", "seaborn", "Markdown", "pycodestyle", "pylint", "pytest-cov", "alembic", "django-redis", "dnspython", "async-timeout", "elasticsearch", "msgpack", "django-storages", "black", "prometheus-client", "uvicorn", "filelock", "tzlocal", "Babel", "tensorflow", "bleach", "django-debug-toolbar", "html5lib", "zope.interface", "torchvision", "jdcal", "pycryptodome", "text-unidecode", "yarl", "networkx", "termcolor", "multidict", "XlsxWriter", "mypy-extensions", "marshmallow", "pyjwt", "pyzmq", "asn1crypto", "Mako", "h5py", "Flask-SQLAlchemy", "blinker", "google-auth-oauthlib", "tensorboard", "fastapi", "googleapis-common-protos", "requests-toolbelt", "reportlab", "websocket-client", "google-api-core", "tabulate", "entrypoints", "sklearn", "python-editor", "coreapi", "typed-ast", "google-auth-httplib2", "oauth2client", "mistune", "pycrypto", "pyflakes", "boto", "whitenoise", "lazy-object-proxy", "phonenumbers", "werkzeug", "virtualenv", "isodate", "pyspark" ],
         "executionType" : [ "local", "Remote_Docker", "Remote_Docker_Compose", "Remote_WSL", "Remote_null", "third_party", "Remote_SSH_Credentials", "Remote_Vagrant", "Remote_Web_Deployment", "Remote_Unknown" ],
         "interpreterType" : [ "pipenv", "condavenv", "virtualenv", "regular" ]
       }
@@ -3465,6 +3481,18 @@
       }
     }
   }, {
+    "id" : "rust.code.vision",
+    "builds" : [ ],
+    "versions" : [ {
+      "from" : "1"
+    } ],
+    "rules" : {
+      "event_id" : [ "{enum:author.clicked|usages.clicked}" ],
+      "event_data" : {
+        "location" : [ "{enum:function|struct_item|enum_item|enum_variant|named_field_decl|trait_item|impl_item|type_alias|constant|macro_def|mod_item|unknown}" ]
+      }
+    }
+  }, {
     "id" : "rust.counters",
     "builds" : [ ],
     "versions" : [ {
@@ -3474,6 +3502,18 @@
       "event_id" : [ "{enum:new_project_creation}" ],
       "event_data" : {
         "template" : [ "{enum:binary|library|wasm|proc_macro|custom}" ]
+      }
+    }
+  }, {
+    "id" : "rust.debug.evaluate.expression",
+    "builds" : [ ],
+    "versions" : [ {
+      "from" : "1"
+    } ],
+    "rules" : {
+      "event_id" : [ "{enum:evaluated}" ],
+      "event_data" : {
+        "success" : [ "{enum#boolean}" ]
       }
     }
   }, {
@@ -3978,7 +4018,7 @@
     "rules" : {
       "event_id" : [ "{enum#__event_id}" ],
       "enums" : {
-        "__event_id" : [ "run.codegen.configuration.action", "edit.codegen.configuration.action", "edit.remote.specifications.endpoints", "add.remote.specification", "swagger.ui.requests.try.out", "swagger.ui.requests.execute" ]
+        "__event_id" : [ "run.codegen.configuration.action", "edit.codegen.configuration.action", "edit.remote.specifications.endpoints", "add.remote.specification", "swagger.ui.requests.try.out", "swagger.ui.requests.execute", "redoc.requests.try.it", "redoc.requests.send" ]
       }
     }
   }, {
@@ -5074,5 +5114,5 @@
       "version" : "Unknown|unknown.format|unknown|UNKNOWN|((\\d+\\.?)*\\d+)"
     }
   },
-  "version" : "3091"
+  "version" : "3112"
 }

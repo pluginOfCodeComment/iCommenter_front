@@ -18,6 +18,7 @@ import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.util.messages.MessageBusConnection;
 import org.jetbrains.annotations.NotNull;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.util.Objects;
 
@@ -178,30 +179,6 @@ public class Context {
             }
         }
         return;
-        //查找函数体前的
-//        boolean special = false;
-//        for(int i = function_begin - 1; i >= 0; i--){
-//            if(text[i].contains("'''") || text[i].contains("\"\"\"") || text[i].contains("#")){
-//                if(!hasCodeComment){
-//                    hasCodeComment = true;
-//                    comment_begin = i;
-//                    comment_end = function_begin - 1;
-//                    if(text[i].contains("#")){
-//                        special = true;
-//                    }else if(text[i].matches("\"\"\"(.*?)\"\"\"")){
-//                        return;
-//                    }else if(text[i].matches("'''(.*?)'''")){
-//                        return;
-//                    }
-//                }else{
-//                    comment_begin = i;
-//                    if(!special){return;}
-//                }
-//            }else if(!hasCodeComment || special){
-//                return;
-//            }
-//        }
-
     }
 
     public void getBody(){
@@ -215,27 +192,34 @@ public class Context {
     /*
     return comments from different models
     */
-    public void transfer() throws IOException {
+    public void transfer() throws RuntimeException, IOException {
+        getBody();
         ProgressManager.getInstance().run(
                 new Task.Modal(project, "Generating Comment", true) {
                     @Override
                     public void run(@NotNull ProgressIndicator indicator) {
-
-                        indicator.setFraction(0.1);
+                        indicator.setIndeterminate(true);
                         try {
-                            Thread.sleep(700);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
+                            myClient = new MyClient("127.0.0.1",6666);
+                            myClient.sendRequest(code);
+                            myClient.receive();
+                            String res_comment = myClient.receive();
+                            comment = new Comment(res_comment,indent + 4);
+                        } catch (IOException e) {
+                            //e.printStackTrace();
+                            System.out.println("error");
+                            //indicator.setIndeterminate(false);
+                            SwingUtilities.invokeLater(() -> {
+                                Messages.showErrorDialog(project,"连接失败，请重新操作","错误");
+                            });
+                            throw new RuntimeException();
                         }
-
+                        if(indicator.isCanceled()){
+                            throw new RuntimeException();
+                        }
                     }
                 });
 
-        myClient = new MyClient("127.0.0.1",6666);
-        myClient.sendRequest(code);
-        myClient.receive();
-        String res_comment = myClient.receive();
-        comment = new Comment(res_comment,indent + 4);
     }
 
     public void insert(){
@@ -330,6 +314,7 @@ public class Context {
             if(s[i].contains(name)){
                 hasCodeComment = false;
                 function_begin = i;
+                comment_begin = comment_end = -1;
                 this.checkComment();
                 String change = document.getText(new TextRange(document.getLineStartOffset(comment_begin),document.getLineEndOffset(comment_end)));
                 System.out.println("change :");

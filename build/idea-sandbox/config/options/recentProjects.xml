@@ -38,15 +38,39 @@
             </RecentProjectMetaInfo>
           </value>
         </entry>
+        <entry key="D:/anaconda/Python/第五次作业">
+          <value>
+            <RecentProjectMetaInfo frameTitle="第五次作业 – read_csv.py" projectWorkspaceId="26jEpazqAn6y5pKN2XoJjUyrvXI">
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="build" value="PC-213.6777.50" />
+              <option name="buildTimestamp" value="1643299581335" />
+              <frame x="-11" y="-11" width="1943" height="1056" extendedState="6" />
+              <option name="productionCode" value="PC" />
+              <option name="projectOpenTimestamp" value="1680413788844" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="D:/anaconda/Python">
+          <value>
+            <RecentProjectMetaInfo frameTitle="Python – main.py" projectWorkspaceId="259V9Y13OPzev4dPL9CemNNIU0d">
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="build" value="PC-213.6777.50" />
+              <option name="buildTimestamp" value="1643299582097" />
+              <frame x="-11" y="-11" width="1943" height="1056" extendedState="6" />
+              <option name="productionCode" value="PC" />
+              <option name="projectOpenTimestamp" value="1681053969027" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
         <entry key="D:/pythonProject">
           <value>
             <RecentProjectMetaInfo frameTitle="pythonProject – test.py" opened="true" projectWorkspaceId="2MxQKXLLFg7bBplSUVQCDTyNKBq">
               <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
               <option name="build" value="PC-213.6777.50" />
-              <option name="buildTimestamp" value="1643299586126" />
-              <frame x="948" y="0" width="981" height="837" />
+              <option name="buildTimestamp" value="1643299582097" />
+              <frame x="948" y="0" width="981" height="1034" />
               <option name="productionCode" value="PC" />
-              <option name="projectOpenTimestamp" value="1678706341743" />
+              <option name="projectOpenTimestamp" value="1681054041354" />
             </RecentProjectMetaInfo>
           </value>
         </entry>

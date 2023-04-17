@@ -4,43 +4,43 @@
       <i c="10" l="1678706155178" />
     </e>
     <e n="$Undo">
-      <i c="212" l="1679842935906" />
+      <i c="220" l="1681706749762" />
     </e>
     <e n="EditorBackSpace">
-      <i c="673" l="1679842943903" />
+      <i c="762" l="1681054139274" />
     </e>
     <e n="EditorChooseLookupItem">
       <i c="5" l="1679223704285" />
     </e>
     <e n="EditorCopy">
-      <i c="4" l="1678156193830" />
+      <i c="6" l="1680413800832" />
     </e>
     <e n="EditorDown">
-      <i c="9" l="1678723698084" />
+      <i c="10" l="1680413818328" />
     </e>
     <e n="EditorEnter">
-      <i c="181" l="1679842880771" />
+      <i c="188" l="1681706734727" />
     </e>
     <e n="EditorLeft">
-      <i c="38" l="1679842877292" />
+      <i c="39" l="1680413814514" />
     </e>
     <e n="EditorPaste">
-      <i c="4" l="1678706181534" />
+      <i c="5" l="1681706735363" />
     </e>
     <e n="EditorRight">
-      <i c="23" l="1679842939431" />
+      <i c="30" l="1681054062059" />
     </e>
     <e n="EditorStartNewLine">
       <i c="1" l="1678723735009" />
     </e>
     <e n="EditorTab">
-      <i c="22" l="1679229215646" />
+      <i c="23" l="1680413816370" />
     </e>
     <e n="EditorTabsEntryPoint">
       <i c="3" l="1678180079490" />
     </e>
     <e n="Generate">
-      <i c="194" l="1679224967948" />
+      <i c="214" l="1681054142683" />
     </e>
     <e n="NewDirectoryProject">
       <i c="4" l="1678706329743" />
@@ -55,7 +55,7 @@
       <i c="1" l="1672411502419" />
     </e>
     <e n="OpenFile">
-      <i c="1" l="1671881475624" />
+      <i c="3" l="1681053952144" />
     </e>
     <e n="SearchEverywhere">
       <i c="11" l="1679223708040" />
@@ -73,10 +73,13 @@
       <i c="1" l="1671278035161" />
     </e>
     <e n="com.intellij.diagnostic.IdeMessagePanel$4">
-      <i c="29" l="1679740890015" />
+      <i c="30" l="1680416106618" />
     </e>
     <e n="com.intellij.diagnostic.WindowsDefenderChecker$1">
       <i c="1" l="1677553514606" />
+    </e>
+    <e n="com.intellij.ide.ReopenProjectAction">
+      <i c="2" l="1681054039602" />
     </e>
     <e n="com.intellij.ide.actions.ToolWindowViewModeAction">
       <i c="2" l="1675583794704" />
@@ -85,13 +88,13 @@
       <i c="2" l="1675494120607" />
     </e>
     <e n="com.intellij.openapi.fileEditor.impl.tabActions.CloseTab">
-      <i c="8" l="1678621649796" />
+      <i c="10" l="1679920558682" />
     </e>
     <e n="com.intellij.openapi.ui.DialogWrapper$4">
-      <i c="45" l="1679756296770" />
+      <i c="61" l="1681706743853" />
     </e>
     <e n="com.intellij.openapi.wm.impl.ToolWindowHeader$HideAction">
-      <i c="74" l="1679556062732" />
+      <i c="79" l="1681054075869" />
     </e>
     <e n="com.intellij.openapi.wm.impl.ToolWindowHeader$ShowOptionsAction">
       <i c="3" l="1678156283532" />
