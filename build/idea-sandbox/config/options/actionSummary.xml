@@ -4,28 +4,28 @@
       <i c="10" l="1678706155178" />
     </e>
     <e n="$Undo">
-      <i c="220" l="1681706749762" />
+      <i c="223" l="1683297904639" />
     </e>
     <e n="EditorBackSpace">
-      <i c="762" l="1681054139274" />
+      <i c="807" l="1683297875533" />
     </e>
     <e n="EditorChooseLookupItem">
       <i c="5" l="1679223704285" />
     </e>
     <e n="EditorCopy">
-      <i c="6" l="1680413800832" />
+      <i c="7" l="1682333948676" />
     </e>
     <e n="EditorDown">
       <i c="10" l="1680413818328" />
     </e>
     <e n="EditorEnter">
-      <i c="188" l="1681706734727" />
+      <i c="191" l="1682335885398" />
     </e>
     <e n="EditorLeft">
-      <i c="39" l="1680413814514" />
+      <i c="40" l="1682335881472" />
     </e>
     <e n="EditorPaste">
-      <i c="5" l="1681706735363" />
+      <i c="7" l="1683297868862" />
     </e>
     <e n="EditorRight">
       <i c="30" l="1681054062059" />
@@ -34,13 +34,13 @@
       <i c="1" l="1678723735009" />
     </e>
     <e n="EditorTab">
-      <i c="23" l="1680413816370" />
+      <i c="24" l="1682333938705" />
     </e>
     <e n="EditorTabsEntryPoint">
       <i c="3" l="1678180079490" />
     </e>
     <e n="Generate">
-      <i c="214" l="1681054142683" />
+      <i c="215" l="1682334356491" />
     </e>
     <e n="NewDirectoryProject">
       <i c="4" l="1678706329743" />
@@ -52,7 +52,7 @@
       <i c="1" l="1679223631745" />
     </e>
     <e n="NewPythonFile">
-      <i c="1" l="1672411502419" />
+      <i c="2" l="1683297859920" />
     </e>
     <e n="OpenFile">
       <i c="3" l="1681053952144" />
@@ -91,10 +91,10 @@
       <i c="10" l="1679920558682" />
     </e>
     <e n="com.intellij.openapi.ui.DialogWrapper$4">
-      <i c="61" l="1681706743853" />
+      <i c="62" l="1682334799589" />
     </e>
     <e n="com.intellij.openapi.wm.impl.ToolWindowHeader$HideAction">
-      <i c="79" l="1681054075869" />
+      <i c="83" l="1682335901826" />
     </e>
     <e n="com.intellij.openapi.wm.impl.ToolWindowHeader$ShowOptionsAction">
       <i c="3" l="1678156283532" />

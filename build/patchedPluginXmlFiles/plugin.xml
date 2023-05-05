@@ -4,7 +4,7 @@
       &lt;em&gt;most HTML tags may be used&lt;/em&gt;</change-notes>
   <idea-version since-build="213.6777" until-build="213.*" />
   <id>org.example.gradlePlugin</id>
-  <name>codeComment</name>
+  <name>iCommenter</name>
   <vendor email="2274572823@qq.com" url="http://github.com">njuse</vendor>
   <description><![CDATA[aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa<br>
     <em>asdddddddddddd</em>]]></description>

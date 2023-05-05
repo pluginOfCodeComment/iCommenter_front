@@ -7,7 +7,7 @@
     <feature id="editing.completion.cancelByControlArrows" count="0" last-shown="0" last-used="0" shown-count="0" />
     <feature id="navigation.popup.symbol" count="0" last-shown="0" last-used="0" shown-count="0" />
     <feature id="find.recent.search" count="0" last-shown="0" last-used="0" shown-count="0" />
-    <feature id="editing.completion.replace" count="0" last-shown="1681054066842" last-used="0" shown-count="291" />
+    <feature id="editing.completion.replace" count="0" last-shown="1682335894222" last-used="0" shown-count="314" />
     <feature id="navigation.goto.inspection" count="0" last-shown="0" last-used="0" shown-count="0" />
     <feature id="navigation.popup.camelprefix" count="0" last-shown="0" last-used="0" shown-count="0" />
     <feature id="SearchEverywhere" count="0" last-shown="0" last-used="0" shown-count="0" />
@@ -43,10 +43,10 @@
       <option name="lastDate" value="1679155200000" />
     </completionStatsTag>
     <fixesStatsTag>
-      <option name="invocations" value="12" />
+      <option name="invocations" value="13" />
       <option name="startDate" value="1671811200000" />
-      <option name="dayCount" value="9" />
-      <option name="lastDate" value="1680364800000" />
+      <option name="dayCount" value="10" />
+      <option name="lastDate" value="1682265600000" />
     </fixesStatsTag>
   </component>
 </application>

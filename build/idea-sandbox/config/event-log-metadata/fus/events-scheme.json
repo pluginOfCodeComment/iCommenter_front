@@ -270,7 +270,7 @@
       "event_id" : [ "{enum:tool.installed|config.exists}" ],
       "event_data" : {
         "config" : [ "{enum:kubeconfig}" ],
-        "tool" : [ "{enum:docker|helm|kubectl|minikube|podman|telepresence|terraform|ansible}" ]
+        "tool" : [ "{enum:docker|helm|kubectl|minikube|podman|telepresence|terraform|ansible}", "{enum:packer|kind|pulumi|skaffold}", "{enum:tfswitch}" ]
       }
     }
   }, {
@@ -318,7 +318,9 @@
       "event_data" : {
         "additional.full_line.added" : [ "{enum#boolean}" ],
         "additional.full_line.enabled" : [ "{enum#boolean}" ],
-        "additional.full_line.finished" : [ "{enum#boolean}" ],
+        "additional.full_line.finished" : [ "{enum#boolean}", "{regexp#integer}" ],
+        "additional.full_line.finished_cancelled" : [ "{regexp#integer}" ],
+        "additional.full_line.finished_timed_out" : [ "{regexp#integer}" ],
         "additional.full_line.items_analyzed" : [ "{regexp#integer}" ],
         "additional.full_line.items_generated" : [ "{regexp#integer}" ],
         "additional.full_line.items_invalid_critical" : [ "{regexp#integer}" ],
@@ -332,7 +334,7 @@
         "additional.full_line.selected_semantic_state" : [ "{enum:CORRECT|UNKNOWN|INCORRECT_ACCEPTABLE|INCORRECT_CRITICAL}" ],
         "additional.full_line.selected_suffix_length" : [ "{regexp#integer}" ],
         "additional.full_line.selected_syntax_state" : [ "{enum:CORRECT|UNKNOWN|INCORRECT_ACCEPTABLE|INCORRECT_CRITICAL}" ],
-        "additional.full_line.started" : [ "{enum#boolean}" ],
+        "additional.full_line.started" : [ "{enum#boolean}", "{regexp#integer}" ],
         "additional.full_line.tracked" : [ "{enum#boolean}" ],
         "additional.full_line.version" : [ "{regexp#version}" ],
         "additional.iren_model_type" : [ "{enum:default|both|ngram|dobf}" ],
@@ -1080,6 +1082,21 @@
       "event_id" : [ "{enum:statistics.test.mode.enabled|team.city.version.detected}" ]
     }
   }, {
+    "id" : "experimental.ui.interactions",
+    "builds" : [ ],
+    "versions" : [ {
+      "from" : "1"
+    } ],
+    "rules" : {
+      "event_id" : [ "{enum:switch.ui|meet.new.ui.switch_theme|meet.new.ui.action}" ],
+      "event_data" : {
+        "action" : [ "{enum:NEW_UI_LINK|DENSITY_CLEAN|DENSITY_COMPACT}" ],
+        "exp_ui" : [ "{enum#boolean}" ],
+        "switch_source" : [ "{enum:ENABLE_NEW_UI_ACTION}", "{enum:WELCOME_PROMO|DISABLE_NEW_UI_ACTION}", "{enum:WHATS_NEW_PAGE}" ],
+        "theme_name" : [ "{enum#look_and_feel}" ]
+      }
+    }
+  }, {
     "id" : "external.project.task",
     "builds" : [ ],
     "versions" : [ {
@@ -1135,7 +1152,7 @@
     "rules" : {
       "event_id" : [ "{enum:notification.respond.invoked|notification.disable.invoked|notification.shown}" ],
       "event_data" : {
-        "idle_feedback_type" : [ "{enum:NEW_UI_FEEDBACK|PRODUCTIVITY_METRIC_FEEDBACK}" ]
+        "idle_feedback_type" : [ "{enum:NEW_UI_FEEDBACK|PRODUCTIVITY_METRIC_FEEDBACK}", "{enum:PYCHARM_UI_FEEDBACK}" ]
       }
     }
   }, {
@@ -2405,7 +2422,7 @@
       },
       "enums" : {
         "__event_id" : [ "action.invoked", "balloon.collapsed", "balloon.expanded", "closed.by.user", "event.log.balloon.shown", "hyperlink.clicked", "logged", "settings.clicked", "shown" ],
-        "notification_id" : [ "ignored.to.exclude.synchronization.notification", "externally.added.files.notification", "project.configuration.files.added.notification", "manage.ignore.files.notification", "github.missing.default.account", "github.pull.request.cannot.set.tracking.branch", "github.clone.unable.to.create.destination.dir", "github.clone.unable.to.find.destination", "github.open.in.browser.file.is.not.under.repo", "github.open.in.browser.cannot.get.last.revision", "github.rebase.success", "github.gist.cannot.create", "github.pull.request.cannot.load.branches", "github.pull.request.cannot.collect.additional.data", "github.pull.request.cannot.load.forks", "github.pull.request.failed.to.add.remote", "github.pull.request.push.failed", "github.pull.request.creation.error", "github.pull.request.cannot.collect.diff.data", "github.pull.request.cannot.find.repo", "github.pull.request.created", "github.pull.request.cannot.process.remote", "github.pull.request.no.current.branch", "github.rebase.cannot.validate.upstream.remote", "github.rebase.upstream.is.own.repo", "github.rebase.cannot.get.user.info", "github.rebase.cannot.retrieve.upstream.info", "github.rebase.cannot.configure.upstream.remote", "github.rebase.repo.not.found", "github.rebase.cannot.load.repo.info", "github.rebase.repo.is.not.a.fork", "github.share.cannot.find.git.repo", "github.share.cannot.create.repo", "github.share.project.successfully.shared", "github.share.empty.repo.created", "github.share.project.created.init.commit.failed", "github.share.init.push.failed", "github.gist.created", "github.git.repo.init.error", "unknown", "hg.update.unresolved.conflicts.error", "git.merge.local.changes.detected", "vcs.patch.apply.rollback.failed", "hg.qrefresh.error", "git.revert.abort.failed", "git.fetch.success", "git.branch.operation.success", "git.pull.failed", "hg.merge.warning", "vcs.commit.finished.with.warnings", "vcs.shelve.successful", "git.merge.reset.error", "git.stage.commit.successful", "git.clone.unable.to.create.destination.dir", "git.rebase.cannot.continue", "vcs.commit.canceled", "git.branch.rename.rollback.success", "hg.merge.error", "hg.rebase.error", "git.update.no.tracked.branch.error", "git.rebase.update.project.error", "hg.tag.creation.error", "git.local.changes.not.restored", "hg.clone.destination.error", "vcs.shelve.failed", "hg.merging.with.ancestor.skipped", "vcs.patch.apply.aborted", "hg.pushed.successfully", "git.remote.branch.deletion.success", "hg.repository.created", "git.tag.created", "hg.qpop.completed.with.errors", "git.branch.operation.error", "hg.compare.with.branch.error", "git.fetch.error", "hg.nothing.to.push", "git.rebase.cannot.abort", "hg.unsupported.extensions", "vcs.patch.partially.applied", "git.branches.update.successful", "hg.exception.during.merge.commit", "git.init.failed", "git.rebase.not.allowed", "hg.qfold.error", "hg.qfinish.error", "git.merge.abort.success", "git.init.error", "git.rebase.commit.edit.undo.error.repo.changed", "git.reset.failed", "git.update.detached.head.error", "git.create.branch.rollback.successful", "git.branch.checkout.failed", "git.delete.branch.on.merge", "vcs.root.added", "git.stash.failed", "vcs.patch.copied.to.clipboard", "git.merge.abort.failed", "vcs.could.not.compare.with.branch", "git.reset.successful", "git.branch.creation.failed", "git.branch.deletion.rollback.error", "hg.graft.continue.error", "hg.merge.exception", "git.rebase.abort.succeeded", "hg.debugancestor.error", "hg.log.command.execution.error", "hg.unable.to.run.executable", "hg.bookmark.error", "git.rebase.commit.edit.undo.error", "git.unstash.with.unresolved.conflicts", "git.unstash.failed", "hg.qgoto.error", "hg.clone.error", "git.clone.failed", "git.rebase.abort.failed", "hg.remote.auth.error", "vcs.uncommitted.changes.saving.error", "git.update.nothing.to.update", "git.merge.rollback.error", "hg.qnew.error", "git.checkout.success", "git.update.error", "git.cannot.resolve.conflict", "git.unstash.with.conflicts", "space.sharing.not.finished", "hg.rebase.continue.error", "git.checkout.rollback.error", "git.reset.partially.failed", "git.remote.branch.deletion.error", "hg.qrename.error", "hg.unsupported.version", "hg.repo.creation.error", "space.git.repo.init.error", "git.tag.remote.deletion.error", "hg.push.error", "vcs.cherry.pick.error", "git.repository.created", "vcs.roots.invalid", "git.stash.local.changes.detected", "git.could.not.compare.with.branch", "git.rebase.not.started", "space.project.shared.successfully", "vcs.compare.failed", "vcs.patch.apply.success.applied", "hg.qdelete.error", "hg.branch.creation.error", "git.cherry.pick.abort.failed", "git.rebase.rollback.failed", "git.merge.error", "vcs.patch.apply.cannot.find.patch.file", "git.rebase.commit.edit.undo.error.protected.branch", "git.rebase.successful", "vcs.commit.failed", "git.could.not.load.changes.of.commit", "git.unresolved.conflicts", "vcs.patch.apply.new.files.error", "hg.rebase.abort.error", "git.revert.abort.success", "git.stage.commit.error", "git.tag.not.created", "git.create.branch.rollback.error", "git.fix.tracked.not.on.branch", "vcs.shelve.deletion.undo", "hg.tag.creation.failed", "git.tag.deletion.rollback.error", "hg.update.error", "vcs.roots.registered", "hg.status.command.error", "hg.qimport.error", "vcs.patch.apply.not.patch.type.file", "vcs.commit.finished", "git.could.not.save.uncommitted.changes", "hg.rename.failed", "git.branch.rename.rollback.failed", "git.cherry.pick.abort.success", "hg.qpop.error", "git.conflict.resolving.error", "git.merge.failed", "hg.pull.error", "git.unstash.patch.applied", "hg.bookmark.name.is.empty", "hg.pull.auth.required", "git.rebase.abort", "vcs.patch.already.applied", "git.checkout.new.branch.operation.rollback.error", "hg4idea.changesets.error", "vcs.patch.creation.failed", "hg.graft.error", "hg.qpush.error", "git.checkout.new.branch.operation.rollback.successful", "github.rebase.remote.origin.not.found", "github.rebase.account.not.found", "github.rebase.multi.repo.not.supported", "rebase.error.failed.to.match.gh.repo", "git.branch.set.upstream.failed", "git.log.could.not.load.changes.of.commit", "vcs.project.partially.updated", "vcs.shelf.undo.delete", "vcs.branch.operations.are.executed.on.all.roots", "git.rebase.collect.updated.changes.error", "git.push.not.supported", "vcs.inactive.ranges.damaged", "git.commit.cancelled", "git.fetch.result", "git.tag.remote.deletion.success", "git.fetch.cancelled", "git.fetch.details", "git.project.updated", "git.all.files.are.up.to.date", "git.fetch.result.error", "git.project.partially.updated", "git.push.result", "git.branch.deleted", "git.tag.restored", "git.files.updated.after.merge", "vcs.project.update.finished", "git.tag.deleted", "git.commit.edit.success", "space.other", "gradle.jvm.invalid", "gradle.jvm.configured", "gradle.configuration.error", "sh.update.shellcheck.error", "sh.update.shellcheck.success", "sh.update.formatter.success", "sh.install.formatter.error", "sh.update.formatter.error", "sh.install.formatter", "sh.update.shellcheck", "sh.update.formatter", "sh.install.formatter.success", "git.bad.executable", "git.init.stage.failed", "git.rebase.failed", "diff.external.too.many.selected", "ignored.to.exclude.not.found", "git.rebase.stopped.for.editing", "vcs.cannot.load.annotations", "untracked.files.overwritten", "diff.external.cant.load.changes", "vcs.obsolete.plugin.unbundled", "vcs.suggested.plugin.install.failed", "diff.merge.intenral.error", "git.rebase.stopped.due.to.conflicts", "vcs.commit.checks.failed", "git.tags.loading.failed", "vcs.commit.checks.only.failed", "vcs.add.unversioned.error" ]
+        "notification_id" : [ "ignored.to.exclude.synchronization.notification", "externally.added.files.notification", "project.configuration.files.added.notification", "manage.ignore.files.notification", "github.missing.default.account", "github.pull.request.cannot.set.tracking.branch", "github.clone.unable.to.create.destination.dir", "github.clone.unable.to.find.destination", "github.open.in.browser.file.is.not.under.repo", "github.open.in.browser.cannot.get.last.revision", "github.rebase.success", "github.gist.cannot.create", "github.pull.request.cannot.load.branches", "github.pull.request.cannot.collect.additional.data", "github.pull.request.cannot.load.forks", "github.pull.request.failed.to.add.remote", "github.pull.request.push.failed", "github.pull.request.creation.error", "github.pull.request.cannot.collect.diff.data", "github.pull.request.cannot.find.repo", "github.pull.request.created", "github.pull.request.cannot.process.remote", "github.pull.request.no.current.branch", "github.rebase.cannot.validate.upstream.remote", "github.rebase.upstream.is.own.repo", "github.rebase.cannot.get.user.info", "github.rebase.cannot.retrieve.upstream.info", "github.rebase.cannot.configure.upstream.remote", "github.rebase.repo.not.found", "github.rebase.cannot.load.repo.info", "github.rebase.repo.is.not.a.fork", "github.share.cannot.find.git.repo", "github.share.cannot.create.repo", "github.share.project.successfully.shared", "github.share.empty.repo.created", "github.share.project.created.init.commit.failed", "github.share.init.push.failed", "github.gist.created", "github.git.repo.init.error", "unknown", "hg.update.unresolved.conflicts.error", "git.merge.local.changes.detected", "vcs.patch.apply.rollback.failed", "hg.qrefresh.error", "git.revert.abort.failed", "git.fetch.success", "git.branch.operation.success", "git.pull.failed", "hg.merge.warning", "vcs.commit.finished.with.warnings", "vcs.shelve.successful", "git.merge.reset.error", "git.stage.commit.successful", "git.clone.unable.to.create.destination.dir", "git.rebase.cannot.continue", "vcs.commit.canceled", "git.branch.rename.rollback.success", "hg.merge.error", "hg.rebase.error", "git.update.no.tracked.branch.error", "git.rebase.update.project.error", "hg.tag.creation.error", "git.local.changes.not.restored", "hg.clone.destination.error", "vcs.shelve.failed", "hg.merging.with.ancestor.skipped", "vcs.patch.apply.aborted", "hg.pushed.successfully", "git.remote.branch.deletion.success", "hg.repository.created", "git.tag.created", "hg.qpop.completed.with.errors", "git.branch.operation.error", "hg.compare.with.branch.error", "git.fetch.error", "hg.nothing.to.push", "git.rebase.cannot.abort", "hg.unsupported.extensions", "vcs.patch.partially.applied", "git.branches.update.successful", "hg.exception.during.merge.commit", "git.init.failed", "git.rebase.not.allowed", "hg.qfold.error", "hg.qfinish.error", "git.merge.abort.success", "git.init.error", "git.rebase.commit.edit.undo.error.repo.changed", "git.reset.failed", "git.update.detached.head.error", "git.create.branch.rollback.successful", "git.branch.checkout.failed", "git.delete.branch.on.merge", "vcs.root.added", "git.stash.failed", "vcs.patch.copied.to.clipboard", "git.merge.abort.failed", "vcs.could.not.compare.with.branch", "git.reset.successful", "git.branch.creation.failed", "git.branch.deletion.rollback.error", "hg.graft.continue.error", "hg.merge.exception", "git.rebase.abort.succeeded", "hg.debugancestor.error", "hg.log.command.execution.error", "hg.unable.to.run.executable", "hg.bookmark.error", "git.rebase.commit.edit.undo.error", "git.unstash.with.unresolved.conflicts", "git.unstash.failed", "hg.qgoto.error", "hg.clone.error", "git.clone.failed", "git.rebase.abort.failed", "hg.remote.auth.error", "vcs.uncommitted.changes.saving.error", "git.update.nothing.to.update", "git.merge.rollback.error", "hg.qnew.error", "git.checkout.success", "git.update.error", "git.cannot.resolve.conflict", "git.unstash.with.conflicts", "space.sharing.not.finished", "hg.rebase.continue.error", "git.checkout.rollback.error", "git.reset.partially.failed", "git.remote.branch.deletion.error", "hg.qrename.error", "hg.unsupported.version", "hg.repo.creation.error", "space.git.repo.init.error", "git.tag.remote.deletion.error", "hg.push.error", "vcs.cherry.pick.error", "git.repository.created", "vcs.roots.invalid", "git.stash.local.changes.detected", "git.could.not.compare.with.branch", "git.rebase.not.started", "space.project.shared.successfully", "vcs.compare.failed", "vcs.patch.apply.success.applied", "hg.qdelete.error", "hg.branch.creation.error", "git.cherry.pick.abort.failed", "git.rebase.rollback.failed", "git.merge.error", "vcs.patch.apply.cannot.find.patch.file", "git.rebase.commit.edit.undo.error.protected.branch", "git.rebase.successful", "vcs.commit.failed", "git.could.not.load.changes.of.commit", "git.unresolved.conflicts", "vcs.patch.apply.new.files.error", "hg.rebase.abort.error", "git.revert.abort.success", "git.stage.commit.error", "git.tag.not.created", "git.create.branch.rollback.error", "git.fix.tracked.not.on.branch", "vcs.shelve.deletion.undo", "hg.tag.creation.failed", "git.tag.deletion.rollback.error", "hg.update.error", "vcs.roots.registered", "hg.status.command.error", "hg.qimport.error", "vcs.patch.apply.not.patch.type.file", "vcs.commit.finished", "git.could.not.save.uncommitted.changes", "hg.rename.failed", "git.branch.rename.rollback.failed", "git.cherry.pick.abort.success", "hg.qpop.error", "git.conflict.resolving.error", "git.merge.failed", "hg.pull.error", "git.unstash.patch.applied", "hg.bookmark.name.is.empty", "hg.pull.auth.required", "git.rebase.abort", "vcs.patch.already.applied", "git.checkout.new.branch.operation.rollback.error", "hg4idea.changesets.error", "vcs.patch.creation.failed", "hg.graft.error", "hg.qpush.error", "git.checkout.new.branch.operation.rollback.successful", "github.rebase.remote.origin.not.found", "github.rebase.account.not.found", "github.rebase.multi.repo.not.supported", "rebase.error.failed.to.match.gh.repo", "git.branch.set.upstream.failed", "git.log.could.not.load.changes.of.commit", "vcs.project.partially.updated", "vcs.shelf.undo.delete", "vcs.branch.operations.are.executed.on.all.roots", "git.rebase.collect.updated.changes.error", "git.push.not.supported", "vcs.inactive.ranges.damaged", "git.commit.cancelled", "git.fetch.result", "git.tag.remote.deletion.success", "git.fetch.cancelled", "git.fetch.details", "git.project.updated", "git.all.files.are.up.to.date", "git.fetch.result.error", "git.project.partially.updated", "git.push.result", "git.branch.deleted", "git.tag.restored", "git.files.updated.after.merge", "vcs.project.update.finished", "git.tag.deleted", "git.commit.edit.success", "space.other", "gradle.jvm.invalid", "gradle.jvm.configured", "gradle.configuration.error", "sh.update.shellcheck.error", "sh.update.shellcheck.success", "sh.update.formatter.success", "sh.install.formatter.error", "sh.update.formatter.error", "sh.install.formatter", "sh.update.shellcheck", "sh.update.formatter", "sh.install.formatter.success", "git.bad.executable", "git.init.stage.failed", "git.rebase.failed", "diff.external.too.many.selected", "ignored.to.exclude.not.found", "git.rebase.stopped.for.editing", "vcs.cannot.load.annotations", "untracked.files.overwritten", "diff.external.cant.load.changes", "vcs.obsolete.plugin.unbundled", "vcs.suggested.plugin.install.failed", "diff.merge.intenral.error", "git.rebase.stopped.due.to.conflicts", "vcs.commit.checks.failed", "git.tags.loading.failed", "vcs.commit.checks.only.failed", "vcs.add.unversioned.error", "vcs.post.commit.checks.failed", "grazie.pro.advertisement" ]
       }
     }
   }, {
@@ -2415,7 +2432,7 @@
       "from" : "1"
     } ],
     "rules" : {
-      "event_id" : [ "{enum:tips.disabled|promoted.action.used|hide.disable.proposal}" ],
+      "event_id" : [ "{enum:tips.disabled|promoted.action.used|hide.disable.proposal|onboarding.tips.installed}" ],
       "event_data" : {
         "action_id" : [ "{enum:SearchEverywhere|ShowIntentionActions|Run|Debug|ToggleLineBreakpoint}" ],
         "first_time_used" : [ "{enum#boolean}" ],
@@ -2520,6 +2537,7 @@
         "configured" : [ "{enum#boolean}" ],
         "configured_subprojects" : [ "{regexp#integer}" ],
         "constraint" : [ "{enum:>|>=|-|~|^|=}" ],
+        "custom_vendor_dir" : [ "{enum#boolean}" ],
         "default" : [ "{enum#boolean}" ],
         "dev" : [ "{enum#boolean}" ],
         "interpreterType" : [ "{enum#__interpreterType}" ],
@@ -2539,6 +2557,15 @@
         "__interpreterType" : [ "third.party", "unconfigured", "lost", "corrupted", "local", "vagrant", "docker", "docker-compose", "ssh-credentials", "web-deployment" ],
         "__repository_type" : [ "composer", "vcs", "git", "svn", "fossil", "hg", "pear", "package", "artifact", "path" ]
       }
+    }
+  }, {
+    "id" : "php.composer.files.view",
+    "builds" : [ ],
+    "versions" : [ {
+      "from" : "1"
+    } ],
+    "rules" : {
+      "event_id" : [ "{enum:add|edit|remove}" ]
     }
   }, {
     "id" : "php.debug.validation",
@@ -2637,6 +2664,18 @@
       "event_id" : [ "{enum:build.file}" ]
     }
   }, {
+    "id" : "php.settings",
+    "builds" : [ ],
+    "versions" : [ {
+      "from" : "1"
+    } ],
+    "rules" : {
+      "event_id" : [ "{enum:select}" ],
+      "event_data" : {
+        "tab" : [ "{enum:INCLUDE_PATH|PHP_RUNTIME|ANALYSIS|COMPOSER_FILES}" ]
+      }
+    }
+  }, {
     "id" : "php.terminal.customizer",
     "builds" : [ ],
     "versions" : [ {
@@ -2696,7 +2735,7 @@
       "event_data" : {
         "acceptance_result" : [ "{enum:ACCEPTED|DECLINED|AUTO_ACCEPTED}" ],
         "enabled_state" : [ "{enum:ENABLED_ON_DEMAND|ENABLED|DISABLED}" ],
-        "group" : [ "{enum:UPDATE|INSTALLING|INSTALLED|SEARCH_INSTALLED|SEARCH|FEATURED|NEW_AND_UPDATED|TOP_DOWNLOADS|TOP_RATED|CUSTOM_REPOSITORY}", "{enum:BUNDLED_UPDATE}" ],
+        "group" : [ "{enum:UPDATE|INSTALLING|INSTALLED|SEARCH_INSTALLED|SEARCH|FEATURED|NEW_AND_UPDATED|TOP_DOWNLOADS|TOP_RATED|CUSTOM_REPOSITORY}", "{enum:BUNDLED_UPDATE}", "{enum:SUGGESTED}" ],
         "index" : [ "{regexp#integer}" ],
         "plugin" : [ "{util#plugin}" ],
         "plugin_type" : [ "{util#plugin_type}" ],
@@ -2843,6 +2882,7 @@
       "event_data" : {
         "action_id" : [ "{enum:JumpToSource|FocusInFlameGraph|FocusInCallTree|FocusInMethodList|MethodMergedCallees|MethodBackTraces|CopyFrame|CopyStackUpToFrame|ExpandTree|CollapseTree|ExpandAll|CollapseAll|PresentationSettings|CompareWithBaseline|CreateDiff|ContextMenu|SpeedSearch|RecursionCheckbox|Drag|Scroll|Zoom|FocusOnNode|ZoomIn|ZoomOut|ResetZoom|IcicleGraph|StickyText|NodesFilter|CaptureImage|CopyImage|SaveImage|SearchToolbar|SelectDiffFlameGraphType|ShowPercentOfTotal|ShowPercentOfParent|FilterCalls|HideCallsLessPercent|ShowCalleeList|FocusOnSubtree|ExcludeSubtree|FocusOnCall|ExcludeCall|RecursionCollapse|ShowChart|ZoomIn|ZoomOut|ZoomReset|ZoomBySelectionWithoutModifier|FilterEvents|ThreadList.SortByName|ThreadList.SortByMetric|ThreadList.ShowIds|ThreadList.KeepSimilarThreadsClose|ThreadList.AllThreadsMergedSelected|ThreadList.CustomThreadSelected|ThreadList.SpeedSearch}", "{enum:GetExpandableEventContents|OpenExpandableEventContentsPanel}", "{enum:ExpandGroup|CollapseGroup}" ],
         "anonymous_dump_id" : [ "{regexp#hash}" ],
+        "capture_memory_snapshot_origin" : [ "{enum:WELCOME_SCREEN|CPU_MEMORY_TAB}" ],
         "diff_calc_time" : [ "{regexp#integer}" ],
         "diff_calc_time_ms" : [ "{regexp#integer}" ],
         "diff_flame_graph_type" : [ "{util#class_name}" ],
@@ -2879,7 +2919,7 @@
         "type" : [ "{util#profiler_snapshot_type}" ]
       },
       "enums" : {
-        "__event_id" : [ "execute", "start", "snapshot.generated", "attach", "tree.recursion.collapse", "tree.recursion.checkbox", "snapshot.open", "tab.open", "event.open", "configurations.changed", "home.action.invoked", "diff.flamegraph.type.changed", "diff.created", "snapshot.action.invoked", "run.widget.interaction", "bad.snapshot.folder", "profiler.error", "profiler.recoverFromError" ]
+        "__event_id" : [ "execute", "start", "snapshot.generated", "attach", "tree.recursion.collapse", "tree.recursion.checkbox", "snapshot.open", "tab.open", "event.open", "configurations.changed", "home.action.invoked", "diff.flamegraph.type.changed", "diff.created", "snapshot.action.invoked", "run.widget.interaction", "bad.snapshot.folder", "profiler.error", "profiler.recoverFromError", "memory.snapshot.generated" ]
       }
     }
   }, {
@@ -3535,7 +3575,7 @@
       "from" : "1"
     } ],
     "rules" : {
-      "event_id" : [ "{enum:cargo_projects|compile_time_targets|packages|editions}" ],
+      "event_id" : [ "{enum#__event_id}" ],
       "event_data" : {
         "build_script_dependency" : [ "{regexp#integer}" ],
         "build_script_workspace" : [ "{regexp#integer}" ],
@@ -3543,9 +3583,36 @@
         "dependencies" : [ "{enum:2015|2018|2021}" ],
         "dependency" : [ "{regexp#integer}" ],
         "direct_dependency" : [ "{regexp#integer}" ],
+        "name" : [ "{enum:syn|rand|libc|rand_core|quote|proc-macro2|cfg-if|serde|autocfg|itoa|unicode-xid|bitflags|getrandom|log|rand_chacha|lazy_static|serde_derive|time|serde_json|base64|memchr|regex|num-traits|parking_lot_core|regex-syntax|cc|smallvec|parking_lot|version_check|ryu|once_cell|strsim|aho-corasick|semver|clap|bytes|hashbrown|digest|crossbeam-utils|lock_api|scopeguard|block-buffer|generic-array|num_cpus|byteorder|textwrap|atty|indexmap|num-integer|mio|percent-encoding|idna|either|pin-project-lite|url|ppv-lite86|tokio|itertools|unicode-width|heck|slab|thiserror|thiserror-impl|futures|ansi_term|unicode-normalization|chrono|memoffset|rustc_version|miniz_oxide|fnv|typenum|unicode-bidi|anyhow|pkg-config|termcolor|env_logger|futures-core|hyper|socket2|tokio-util|toml|futures-util|futures-task|crossbeam-epoch|futures-sink|futures-channel|crossbeam-channel|winapi|thread_local|http|sha2|futures-io|arrayvec|matches|tracing|nom|pin-utils|opaque-debug|tracing-core|httparse|tinyvec|h2|crossbeam-deque|humantime|pin-project|unicode-segmentation|pin-project-internal|crc32fast|nix|remove_dir_all|tempfile|instant|futures-macro|http-body|backtrace|uuid|adler|rustc-demangle|proc-macro-hack|futures-executor|hex|vec_map|mime|want|form_urlencoded|semver-parser|flate2|openssl-sys|ahash|proc-macro-error|serde_urlencoded|try-lock|tinyvec_macros|tokio-macros|wasi|quick-error|walkdir|proc-macro-error-attr|object|spin|same-file|async-trait|sha-1|tower-service|glob|num-bigint|httpdate|encoding_rs|gimli|signal-hook-registry|openssl|rayon|subtle|unicode-ident|hmac|rayon-core|rand_hc|reqwest|cpufeatures|openssl-probe|addr2line|tracing-attributes|linked-hash-map|foreign-types|foreign-types-shared|redox_syscall|which|regex-automata|unicase|paste|synstructure|rustls|static_assertions|native-tls|fastrand|bstr|ipnet|crypto-mac|winapi-x86_64-pc-windows-gnu|winapi-i686-pc-windows-gnu|ring|untrusted|time-macros|dirs|hyper-tls|fixedbitset|sct|webpki|num-rational|petgraph|darling_macro|darling_core|darling|libloading|rand_pcg|block-padding|tracing-subscriber|jobserver|crossbeam-queue|hermit-abi|zeroize|phf_shared|bumpalo|crypto-common|os_str_bytes|siphasher|winapi-util|tokio-rustls|wasm-bindgen|wasm-bindgen-backend|wasm-bindgen-shared|wasm-bindgen-macro|wasm-bindgen-macro-support|yaml-rust|net2|lazycell|stable_deref_trait|dtoa|strum_macros|iovec|num-iter|pest|sharded-slab|proc-macro-crate|num-complex|js-sys|webpki-roots|filetime|rustc-hash|rustversion|mime_guess|shlex|tokio-stream|dirs-sys|miow|strum|phf|rand_xorshift|tracing-log|void|ucd-trie|derive_more|sha1|structopt|libz-sys|ident_case|byte-tools|structopt-derive|bincode|core-foundation-sys|tracing-futures|web-sys|proc-macro-nested|ctor|clap_derive|prost-derive|prost|serde_yaml|matchers|half|csv|phf_generator|num|fake-simd|tokio-native-tls|csv-core|prost-types|core-foundation|scoped-tls|term|failure|vcpkg|bindgen|ordered-float|minimal-lexical|lexical-core|clap_lex|arrayref|failure_derive|windows_x86_64_msvc|convert_case|async-stream|error-chain|maplit|hostname|async-stream-impl|arc-swap|clang-sys|winreg|console|cookie|wasm-bindgen-futures|const_fn|constant_time_eq|cexpr|prost-build|cipher|maybe-uninit|derivative|multimap|bit-vec|hyper-rustls|dirs-sys-next|zstd-sys|signal-hook|windows-sys|schannel|serde_cbor|tower-layer|security-framework|adler32|xml-rs|aes|windows_x86_64_gnu|terminal_size|zstd-safe|windows_i686_msvc|zstd|windows_i686_gnu|security-framework-sys|tower|event-listener|peeking_take_while|windows_aarch64_msvc|dashmap|pest_derive|crunchy|rand_isaac|rand_os|dirs-next|md-5|bitvec|match_cfg|data-encoding|cast|standback|rustls-pemfile|pest_meta|pest_generator|time-macros-impl|vsdb|fxhash|globset|vsdb_derive|vsdbsled|concurrent-queue|rand_jitter|nodrop|phf_codegen|radium|criterion|winapi-build|safemem|utf-8|crossbeam|kernel32-sys|criterion-plot|redox_users|num_threads|pretty_assertions|threadpool|fallible-iterator|colored|tinytemplate|cargo_metadata|cmake|diff|combine|libm|futures-lite|serde_bytes|parking|zeroize_derive|indoc|async-channel|tar|crc|utf8-ranges|waker-fn|pem|bit-set|cache-padded|oorandom|curve25519-dalek|tungstenite|md5|tracing-serde|language-tags|plotters|mio-uds|funty|sha3|iana-time-zone|num-derive|protobuf|lru-cache|rustls-native-certs|wyz|unindent|aead|async-task|difference|bytemuck|Inflector|tap|libgit2-sys|git2|approx|ntapi|tiny-keccak|tonic|tokio-io|memmap2|xattr|trust-dns-proto|doc-comment|ctr|polling|unreachable|fs2|async-io|keccak|universal-hash|pbkdf2|owning_ref|lru|cpuid-bool|signature|float-cmp|tokio-timer|fs_extra|string_cache|backtrace-sys|tokio-executor|plotters-backend|trust-dns-resolver|plotters-svg|tonic-build|enum-as-inner|rustc-serialize|polyval|getopts|serde_with|resolv-conf|ignore|serde_with_macros|precomputed-hash|tempdir|number_prefix|aes-gcm|encode_unicode|tokio-reactor|ghash|new_debug_unreachable|futures-timer|wait-timeout|async-executor|num_enum|num_enum_derive|tokio-tungstenite|zip|async-lock|headers|predicates|errno|tokio-threadpool|png|dyn-clone|prometheus|quick-xml|blocking|home|tokio-tcp|openssl-macros|target-lexicon|tokio-io-timeout|headers-core|serde_repr|atomic-waker|gcc|indicatif|predicates-core|predicates-tree|async-std|curl-sys|pulldown-cmark|ws2_32-sys|paste-impl|hyper-timeout|tokio-current-thread|tokio-sync|notify|inotify|image|io-lifetimes|config|pyo3|cloudabi|hkdf|cloudabi}" ],
         "proc_macro_dependency" : [ "{regexp#integer}" ],
         "proc_macro_workspace" : [ "{regexp#integer}" ],
+        "version" : [ "{regexp#version}" ],
         "workspace" : [ "{regexp#integer}", "{enum:2015|2018|2021}" ]
+      },
+      "enums" : {
+        "__event_id" : [ "cargo_projects", "compile_time_targets", "packages", "editions", "dependency" ]
+      }
+    }
+  }, {
+    "id" : "rust.settings",
+    "builds" : [ ],
+    "versions" : [ {
+      "from" : "1"
+    } ],
+    "rules" : {
+      "event_id" : [ "{enum:rustfmt|project|external_linter|cargo}" ],
+      "event_data" : {
+        "auto_show_errors_in_editor" : [ "{enum#boolean}" ],
+        "auto_update" : [ "{enum#boolean}" ],
+        "channel" : [ "{enum:[default]|stable|beta|nightly|dev}" ],
+        "compile_all_targets" : [ "{enum#boolean}" ],
+        "doctest_injection" : [ "{enum#boolean}" ],
+        "enabled" : [ "{enum#boolean}" ],
+        "macro_expansion_engine" : [ "{enum:disabled|old|new}" ],
+        "offline" : [ "{enum#boolean}" ],
+        "run_on_fly" : [ "{enum#boolean}" ],
+        "run_on_save" : [ "{enum#boolean}" ],
+        "tool" : [ "{enum:cargo check|clippy}" ]
       }
     }
   }, {
@@ -3796,6 +3863,9 @@
         "component" : [ "{util#class_name}" ],
         "id" : [ "{regexp#integer}" ],
         "number_of_loaded" : [ "{regexp#integer}" ],
+        "plugin" : [ "{util#plugin}" ],
+        "plugin_type" : [ "{util#plugin_type}" ],
+        "plugin_version" : [ "{util#plugin_version}" ],
         "usage_view" : [ "{regexp#integer}" ]
       },
       "enums" : {
@@ -4105,17 +4175,19 @@
     "rules" : {
       "event_id" : [ "{enum#__event_id}" ],
       "event_data" : {
+        "command" : [ "{enum:<relative path>|<absolute path>|curl|ps|g++|gcc|systeminfo|ssh|del|echo|rmdir|type|helm|hostname|java|telnet|powershell|vim|cargo|mkdir|zip|scp|python|apt|gdb|xcopy|ip|tracert|subst|cls|brew|taskmgr|exit|node|rd|route|az|rm|tasklist|pwd|ping|wget|unzip|pnpm|rustup|sc|eslint|top|where|copy|sudo|free|cd|karma|set|more|msbuild|svn|kill|cp|cypress|prettier|gradle|help|rsync|yarn|apt-get|ipconfig|df|javac|dig|compact|ls|nano|mocha|screen|source|dir|chkdsk|docker-compose|netsh|mode|du|playwright|reg|webpack|find|md|assoc|net|vitest|export|valgrind|which|ver|nvm|tar|chown|format|pwsh|rvm|tree|mv|touch|history|less|sort|netstat|pause|expand|vi|nslookup|pathping|kubectl|ng|shutdown|systemctl|gulp|code|ifconfig|nodejs|traceroute|title|docker|yum|grunt|git|attrib|whois|cat|vagrant|alias|chmod|htop|make|cipher|move|mvn|whence|ant|grep|clear|start|npm|jest|command|ruby|apt-cache|service|npx|ssh-keygen|taskkill|prompt|hg}" ],
         "os-version" : [ "{regexp#version}" ],
         "plugin" : [ "{util#plugin}" ],
         "plugin_type" : [ "{util#plugin_type}" ],
         "plugin_version" : [ "{util#plugin_version}" ],
         "runAnythingProvider" : [ "{util#class_name}" ],
         "shell" : [ "{enum#__shell}", "{enum:unspecified}" ],
+        "subCommand" : [ "{enum:test|run|install|update|status|checkout|commit|install|test|run|compose|tag|add|pull|status|push|checkout|merge|init|diff|branch|log|reset|commit|clone|stash|install|run|test}" ],
         "terminalCommandHandler" : [ "{util#class_name}" ]
       },
       "enums" : {
         "__event_id" : [ "ssh.exec", "local.exec", "terminal.command.executed", "terminal.smart.command.executed", "terminal.smart.command.not.executed" ],
-        "__shell" : [ "bash", "cmd", "zsh", "other", "fish", "powershell", "sh", "wsl", "cmder_shell", "tcsh", "git-bash", "cmder", "pwsh", "git-cmd", "git", "activate", "init", "ubuntu", "ubuntu1804", "anaconda3", "cexec", "cygwin", "miniconda3", "msys2_shell" ]
+        "__shell" : [ "bash", "cmd", "zsh", "other", "fish", "powershell", "sh", "wsl", "cmder_shell", "tcsh", "git-bash", "cmder", "pwsh", "git-cmd", "git", "activate", "init", "ubuntu", "ubuntu1804", "anaconda3", "cexec", "cygwin", "miniconda3", "msys2_shell", "mksh", "ksh", "xonsh", "ion", "hamilton", "es", "nushell", "scsh", "rc", "eshell", "ash", "csh", "fsh", "bbsh", "dash" ]
       }
     }
   }, {
@@ -4998,7 +5070,7 @@
         "count" : [ "{regexp#integer}" ]
       },
       "enums" : {
-        "__event_id" : [ "fixLocal", "navigateInfo", "showInfo", "fixGlobal", "globalResult", "localResult", "runGlobal" ]
+        "__event_id" : [ "fixLocal", "navigateInfo", "showInfo", "fixGlobal", "globalResult", "localResult", "runGlobal", "localPathResult" ]
       }
     }
   }, {
@@ -5065,6 +5137,59 @@
       }
     }
   }, {
+    "id" : "wrs.article",
+    "builds" : [ ],
+    "versions" : [ {
+      "from" : "1"
+    } ],
+    "rules" : {
+      "event_id" : [ "{enum:deleted|created}" ],
+      "event_data" : {
+        "anonymous_id" : [ "{regexp#hash}" ],
+        "template" : [ "{regexp#hash}" ]
+      }
+    }
+  }, {
+    "id" : "wrs.config",
+    "builds" : [ ],
+    "versions" : [ {
+      "from" : "1"
+    } ],
+    "rules" : {
+      "event_id" : [ "{enum:buildprofiles.update}" ],
+      "event_data" : {
+        "solution_name" : [ "{regexp#hash}" ]
+      }
+    }
+  }, {
+    "id" : "wrs.instance",
+    "builds" : [ ],
+    "versions" : [ {
+      "from" : "1"
+    } ],
+    "rules" : {
+      "event_id" : [ "{enum:create|delete}" ],
+      "event_data" : {
+        "anonymous_id" : [ "{regexp#hash}" ]
+      }
+    }
+  }, {
+    "id" : "wrs.toc",
+    "builds" : [ ],
+    "versions" : [ {
+      "from" : "1"
+    } ],
+    "rules" : {
+      "event_id" : [ "{enum:move.nextTo|move.into|insert|remove}" ],
+      "event_data" : {
+        "above" : [ "{enum#boolean}" ],
+        "anonymous_id" : [ "{regexp#hash}" ],
+        "article_id" : [ "{regexp#hash}" ],
+        "article_ids" : [ "{regexp#hash}" ],
+        "target_id" : [ "{regexp#hash}" ]
+      }
+    }
+  }, {
     "id" : "wsl.installations",
     "builds" : [ ],
     "versions" : [ {
@@ -5096,7 +5221,7 @@
       "build_tools" : [ "Maven", "Gradle", "gradle", "sbt", "Clojure_Deps", "clojure_deps", "Pants", "pants", "bsp", "Kobalt", "kobalt", "undefined.system", "third.party", "SPM", "CompDB", "Compilation_Database", "Makefile" ],
       "dotnet_technologies" : [ ".NET_Core", ".NET Core", ".NET_Classic", ".NET Classic", "Avalonia", "C++", "Godot", "Managed_C++", "Managed C++", "Silverlight", "UE4", "UE5", "UWP", "Unity", "UnitySidecar", "MAUI", "WPF", "Web_Classic", "Web Classic", "Web_Core", "Web Core", "WebSite", "WinRT", "Sql Database Project", "WindowsForms_Classic", "WindowsForms Classic", "WindowsForms Core", "WindowsForms_Core", "WindowsPhone", "Uno", "Xamarin", "XamarinForms", "Azure_Function", "Azure Function", "AzureFunction", "Xamarin.Mac", "Xamarin.Android", "Xamarin.iOS", "Xamarin.PlayStation3", "Xamarin.PlayStation4", "Xamarin.PlayStationVita", "Xamarin.WatchOS", "Xamarin.TVOS", "Xamarin.Xbox360", "Xamarin.XboxOne", "UnrealGame", "UnrealModule", "UnrealPlugin", "UnrealFolder", "Unreal Engine (any)" ],
       "keymaps" : [ "Mac_OS_X_10.5+", "Default_for_GNOME", "Rider", "Eclipse", "Emacs", "Default_for_KDE", "Mac_OS_X", "ReSharper_OSX", "NetBeans_6.5", "Visual_Studio", "Rider_OSX", "TextMate", "Eclipse_(Mac_OS_X)", "ReSharper", "Xcode", "unknown", "custom", "Sublime_Text_(Mac_OS_X)", "Sublime_Text", "Default_for_XWin", "$default", "JBuilder", "VS_Code", "Visual_Studio_OSX", "Visual_Studio_2022", "Visual_Assist", "VSCode", "macOS_System_Shortcuts" ],
-      "look_and_feel" : [ "Acme", "Apricode_Monokai", "Arc_Dark", "Arc_Dark_(Material)", "Arc_Dark_Contrast", "Arc_Theme", "Arc_Theme_-_Orange", "Arc_Theme_Dark", "Arc_Theme_Dark_-_Orange", "Astra_Dark", "AtomOneDarkByMayke", "Atom_One_Dark", "Atom_One_Dark_(Material)", "Atom_One_Dark_Contrast", "Atom_One_Light", "Atom_One_Light_(Material)", "Atom_One_Light_Contrast", "Aura", "Ayu_Mirage", "AzurLane:_Essex", "Bas_Tools_Black", "Bas_Tools_Dark", "Bas_Tools_White", "Base16_Monokai", "Base16_Tomorrow_Dark", "BattleField", "Blackbird", "BlendS:_Maika", "Blue_Dolphin", "Blue_Whale", "Breeze_Dark", "Bright_and_Sheen_Theme", "BunnySenpai:_Mai_Dark", "BunnySenpai:_Mai_Light", "Burnt", "Calm", "Carbon", "Cell_Dark_Theme", "Chicken", "Chuunibyou:_Takanashi_Rikka", "City_Pop", "Clean_Sheet", "Cobalt", "Cobalt9", "Cobalt_2", "Codely", "Codely_Blue", "Codely_Dark", "Codely_Light", "Coderpillr_Dusk", "CoffeeBean", "Construction_Paper", "Core", "Custom_Theme_(Material)", "Cute_Pink_Light", "Cyan_light", "Cyberpunk_Theme", "DDLC:_Monika_Dark", "DDLC:_Monika_Light", "DDLC:_Natsuki_Dark", "DDLC:_Natsuki_Light", "DDLC:_Sayori_Dark", "DDLC:_Sayori_Light", "DDLC:_Yuri_Dark", "DDLC:_Yuri_Light", "DM:_Kanna", "DM:_Tohru", "DR:_Mioda_Ibuki_Dark", "DR:_Mioda_Ibuki_Light", "DTWMMN:_Hayase_Nagatoro", "Darcula", "Darcula_(blacker)", "Darcula_Darker", "Darcula_Pitch_Black", "Darcula_Solid", "Darcula_Sombre", "Darcula_Sombre_(transparent_selection)", "Darcula_Sombre_(with_bright_borders)", "Darcula_Sombre_(with_dark_borders)", "Dark", "DarkCode", "DarkCode_Contrast", "DarkDark", "DarkTheme", "Dark_Candy", "Dark_Flat", "Dark_Orange", "Dark_purple", "Dark_ubuntu", "Deep_Ocean_Theme", "Dracula", "Dracula_(Material)", "Dracula_Colorful", "Dracula_Contrast", "DxD:_Rias:_Crimson", "DxD:_Rias:_Onyx", "Dysh_Unreal_Simple", "Dysh_Unreal_Simple_Vivid", "EVA:_Katsuragi_Misato", "EVA:_Rei", "Eclipse_Plus", "El_Chalten", "Elements", "Emerald", "Ender_Theme", "EroManga:_Sagiri", "Espresso_Light", "Espresso_Lightgram", "Field_Lights", "FlatAndMinimalistic_-_dark", "FlatAndMinimalistic_-_gray", "FlatOcean", "Forest_Night", "Foundation_Dark", "Foundation_Light", "Franxx:_Zero_Two_Dark", "Franxx:_Zero_Two_Light", "FutureDiary:_Gasai_Yuno", "Galaxy", "Galizur", "Gate:_Rory_Mercury", "Gerry_Oceanic", "Gerry_Space", "Gerry_Violet", "Giraffe", "GitHub", "GitHub_(Material)", "GitHub_Contrast", "GitHub_Dark", "GitHub_Dark_(Material)", "GitHub_Dark_Contrast", "GitHub_Dark_Dimmed", "GitHub_Light", "Gloom", "Glowing_Darcula", "Godot_Theme", "Golden_Blue", "Gradianto_Dark_Fuchsia", "Gradianto_Deep_Ocean", "Gradianto_Midnight_Blue", "Gradianto_Nature_Green", "Gray", "Green_Haze", "Green_lite", "Greenly", "Gruvbox", "Gruvbox_Dark_Hard", "Gruvbox_Dark_Medium", "Gruvbox_Dark_Soft", "Gruvbox_Github", "Gruvbox_Light_Hard", "Gruvbox_Light_Medium", "Gruvbox_Light_Soft", "Gruvbox_Material", "Hack_The_Box", "Hacker_Theme", "Haikyu:_Hinata_Shoyo", "Halcyon", "Helsing", "Hiberbee_Dark", "High-Contrast-Theme", "High_contrast", "HyperTheme", "Iceberg", "InBedBy7", "IntelliJ", "IntelliJ_Light", "Interesting", "JahySama:_Jahy", "JavierSC_dark", "KCoroutine", "Kakegurui:_Jabami_Yumeko", "KillLaKill:_Ryuko_Dark", "KillLaKill:_Ryuko_Light", "KillLaKill:_Satsuki_Dark", "KillLaKill:_Satsuki_Light", "KonoSuba:_Aqua", "KonoSuba:_Darkness_Dark", "KonoSuba:_Darkness_Light", "KonoSuba:_Megumin", "Kromatic", "Kyoto", "LS:_Konata", "Light", "Light_Custom_Theme_(Material)", "Light_Flat", "Light_Owl", "Light_Owl_(Material)", "Light_Owl_Contrast", "Light_green", "Lotus_Dark", "Lotus_Light", "LoveLive:_Sonoda_Umi", "Lumio", "MacchuPicchu", "Material_Darker", "Material_Darker_Contrast", "Material_Deep_Ocean", "Material_Deep_Ocean_Contrast", "Material_Forest", "Material_Forest_Contrast", "Material_Lighter", "Material_Lighter_Contrast", "Material_Oceanic", "Material_Oceanic_Contrast", "Material_Palenight", "Material_Palenight_Contrast", "Material_Sandy_Beach", "Material_Sandy_Beach_Contrast", "Material_Sky_Blue", "Material_Sky_Blue_Contrast", "Material_Theme:_Default", "Material_Theme:_Lighter", "Material_Theme:_Night", "Material_Theme:_Ocean", "Material_Volcano", "Material_Volcano_Contrast", "Mayukai_Alucard", "Mayukai_Mirage", "Mayukai_Mono", "Mayukai_Reversal", "Monarcula", "Monarcula_Pro", "Monarcula_Soft", "Monocai", "Monogatari:_Hanekawa_Tsubasa", "Monokai_Pro", "Monokai_Pro_(Classic)", "Monokai_Pro_(Filter_Machine)", "Monokai_Pro_(Filter_Octagon)", "Monokai_Pro_(Filter_Ristretto)", "Monokai_Pro_(Filter_Spectrum)", "Monokai_Pro_(Material)", "Monokai_Pro_Contrast", "MonsterMusume:_Miia", "Moonlight", "Moonlight_(Material)", "Moonlight_Contrast", "Moto_Ducat", "MyGruvbox", "Napalmpapalam", "NekoPara:_Azuki", "NekoPara:_Chocola", "NekoPara:_Christmas_Chocola", "NekoPara:_Cinnamon", "NekoPara:_Coconut", "NekoPara:_Maple_Dark", "NekoPara:_Maple_Light", "NekoPara:_Shigure", "NekoPara:_Vanilla", "Nier:Automata_Theme", "Night_Owl", "Night_Owl_(Material)", "Night_Owl_Contrast", "Noctis", "Noctis_Azureus", "Noctis_Bordo", "Noctis_Sereno", "Noctis_Uva", "Noctis_Voila", "Nord", "NotReallyMDTheme", "OPM:_Genos", "Obsidian", "Obsidian_Bright", "Oceanic_Dark_Theme", "Oceanic_Primal", "OneDarkMonokai", "One_Dark", "One_Dark_Italic", "One_Dark_Vivid", "One_Dark_Vivid_Italic", "OreGairu:_Yukinoshita_Yukino", "OreImo:_Kirino", "Pink_as_Heck", "Polar", "Prpl", "Purple", "QQ:_Nakano_Miku", "QQ:_Nakano_Nino", "QQ:_Nakano_Yotsuba", "Railgun:_Misaka_Mikoto", "Re:Zero:_Beatrice", "Re:Zero:_Echidna", "Re:Zero:_Emilia_Dark", "Re:Zero:_Emilia_Light", "Re:Zero:_Ram", "Re:Zero:_Rem", "ReSharper_Dark", "ReSharper_Light", "Red", "Red2", "Rider_Dark", "Rider_Light", "Rider_Melon_Dark", "Rider_Melon_Light", "Roboticket_Light", "Romeo-Theme", "Rouge", "SAO:_Asuna_Dark", "SAO:_Asuna_Light", "SG:_Makise_Kurisu", "Sage", "Salmon", "Sepia", "ShadeSmear_Dark", "ShadeSmear_Light", "Shades_Of_Purple", "Shape", "ShieldHero:_Raphtalia", "Shokugeki:_Yukihira_Soma", "Slime:_Rimiru_Tempest", "Solarized_Dark", "Solarized_Dark_(Material)", "Solarized_Dark_Contrast", "Solarized_Light", "Solarized_Light_(Material)", "Solarized_Light_Contrast", "Solo_Coding", "SpaceDay", "Spacegray", "Spacemacs", "Starlight", "StarlightDark", "Sublime", "Super_Dark", "SynthWave_'84", "SynthWave_'84_(Material)", "SynthWave_'84_Contrast", "Synthwave_Blue", "Synthwave_Refined", "Tanne", "The_Above_Dark", "The_Above_Light", "Trash_Panda_Theme", "Twitch_Dark_Theme", "TypeMoon:_Astolfo", "TypeMoon:_Gray", "TypeMoon:_Ishtar_Dark", "TypeMoon:_Ishtar_Light", "TypeMoon:_Tohsaka_Rin", "Ubuntu_Theme", "Universe", "Universe_Purple", "VSCode_Dark", "Visual_Assist_Dark", "Visual_Assist_Light", "Visual_Studio_2019_Dark", "Visual_Studio_Code_Dark_Plus", "Visual_Studio_Dark", "Visual_Studio_Light", "Vocaloid:_Hatsune_Miku", "VoidTheme", "VsCode_Monokai_HC", "Windows_10_Light", "Winter_Is_Coming", "Xcode-Dark", "Xcode_Dark", "Xcode_Light", "Yaru_Dark", "YuruCamp:_Nadeshiko", "YuruCamp:_Shima_Rin", "[Doki]_AzurLane:_Essex", "[Doki]_BlendS:_Maika", "[Doki]_BunnySenpai:_Mai_Dark", "[Doki]_BunnySenpai:_Mai_Light", "[Doki]_DDLC:_Monika_Dark", "[Doki]_DDLC:_Monika_Light", "[Doki]_DDLC:_Natsuki_Dark", "[Doki]_DDLC:_Natsuki_Light", "[Doki]_DDLC:_Sayori_Dark", "[Doki]_DDLC:_Sayori_Light", "[Doki]_DDLC:_Yuri_Dark", "[Doki]_DDLC:_Yuri_Light", "[Doki]_DM:_Kanna", "[Doki]_DM:_Tohru", "[Doki]_DR:_Mioda_Ibuki_Dark", "[Doki]_DR:_Mioda_Ibuki_Light", "[Doki]_DTWMMN:_Hayase_Nagatoro", "[Doki]_DxD:_Rias:_Crimson", "[Doki]_DxD:_Rias:_Onyx", "[Doki]_EVA:_Katsuragi_Misato", "[Doki]_EVA:_Rei", "[Doki]_EroManga:_Sagiri", "[Doki]_Franxx:_Zero_Two_Dark", "[Doki]_Franxx:_Zero_Two_Light", "[Doki]_FutureDiary:_Gasai_Yuno", "[Doki]_Gate:_Rory_Mercury", "[Doki]_JahySama:_Jahy", "[Doki]_Kakegurui:_Jabami_Yumeko", "[Doki]_KillLaKill:_Ryuko_Dark", "[Doki]_KillLaKill:_Ryuko_Light", "[Doki]_KillLaKill:_Satsuki_Dark", "[Doki]_KillLaKill:_Satsuki_Light", "[Doki]_KonoSuba:_Aqua", "[Doki]_KonoSuba:_Darkness_Dark", "a.onji", "ajaaibu", "asiimov", "celestial", "color_blind_theme", "dark-jeff", "darkerla", "deep-focus-theme", "flat", "foggy-night", "hibNet_Midnight_Blue", "jDark", "jake-theme", "macOS_Light", "madrid", "metalheart", "minimal", "naysayer88", "nevaTheme", "night-owl-native", "nightfall", "plaid", "qubTheme", "reykjavik", "shirotelin", "silkworm", "soft-charcoal", "spectre_theme", "subtle-hacker-theme", "theme-oldirony-dark", "theme_eclipse", "thursday", "vuesion-theme", "warm-night", "white-sand", "xndlnk-monokai" ],
+      "look_and_feel" : [ "Acme", "Apricode_Monokai", "Arc_Dark", "Arc_Dark_(Material)", "Arc_Dark_Contrast", "Arc_Theme", "Arc_Theme_-_Orange", "Arc_Theme_Dark", "Arc_Theme_Dark_-_Orange", "Astra_Dark", "AtomOneDarkByMayke", "Atom_One_Dark", "Atom_One_Dark_(Material)", "Atom_One_Dark_Contrast", "Atom_One_Light", "Atom_One_Light_(Material)", "Atom_One_Light_Contrast", "Aura", "Ayu_Mirage", "AzurLane:_Essex", "Bas_Tools_Black", "Bas_Tools_Dark", "Bas_Tools_White", "Base16_Monokai", "Base16_Tomorrow_Dark", "BattleField", "Blackbird", "BlendS:_Maika", "Blue_Dolphin", "Blue_Whale", "Breeze_Dark", "Bright_and_Sheen_Theme", "BunnySenpai:_Mai_Dark", "BunnySenpai:_Mai_Light", "Burnt", "Calm", "Carbon", "Cell_Dark_Theme", "Chicken", "Chuunibyou:_Takanashi_Rikka", "City_Pop", "Clean_Sheet", "Cobalt", "Cobalt9", "Cobalt_2", "Codely", "Codely_Blue", "Codely_Dark", "Codely_Light", "Coderpillr_Dusk", "CoffeeBean", "Construction_Paper", "Core", "Custom_Theme_(Material)", "Cute_Pink_Light", "Cyan_light", "Cyberpunk_Theme", "DDLC:_Monika_Dark", "DDLC:_Monika_Light", "DDLC:_Natsuki_Dark", "DDLC:_Natsuki_Light", "DDLC:_Sayori_Dark", "DDLC:_Sayori_Light", "DDLC:_Yuri_Dark", "DDLC:_Yuri_Light", "DM:_Kanna", "DM:_Tohru", "DR:_Mioda_Ibuki_Dark", "DR:_Mioda_Ibuki_Light", "DTWMMN:_Hayase_Nagatoro", "Darcula", "Darcula_(blacker)", "Darcula_Darker", "Darcula_Pitch_Black", "Darcula_Solid", "Darcula_Sombre", "Darcula_Sombre_(transparent_selection)", "Darcula_Sombre_(with_bright_borders)", "Darcula_Sombre_(with_dark_borders)", "Dark", "DarkCode", "DarkCode_Contrast", "DarkDark", "DarkTheme", "Dark_Candy", "Dark_Flat", "Dark_Orange", "Dark_purple", "Dark_ubuntu", "Deep_Ocean_Theme", "Dracula", "Dracula_(Material)", "Dracula_Colorful", "Dracula_Contrast", "DxD:_Rias:_Crimson", "DxD:_Rias:_Onyx", "Dysh_Unreal_Simple", "Dysh_Unreal_Simple_Vivid", "EVA:_Katsuragi_Misato", "EVA:_Rei", "Eclipse_Plus", "El_Chalten", "Elements", "Emerald", "Ender_Theme", "EroManga:_Sagiri", "Espresso_Light", "Espresso_Lightgram", "Field_Lights", "FlatAndMinimalistic_-_dark", "FlatAndMinimalistic_-_gray", "FlatOcean", "Forest_Night", "Foundation_Dark", "Foundation_Light", "Franxx:_Zero_Two_Dark", "Franxx:_Zero_Two_Light", "FutureDiary:_Gasai_Yuno", "Galaxy", "Galizur", "Gate:_Rory_Mercury", "Gerry_Oceanic", "Gerry_Space", "Gerry_Violet", "Giraffe", "GitHub", "GitHub_(Material)", "GitHub_Contrast", "GitHub_Dark", "GitHub_Dark_(Material)", "GitHub_Dark_Contrast", "GitHub_Dark_Dimmed", "GitHub_Light", "Gloom", "Glowing_Darcula", "Godot_Theme", "Golden_Blue", "Gradianto_Dark_Fuchsia", "Gradianto_Deep_Ocean", "Gradianto_Midnight_Blue", "Gradianto_Nature_Green", "Gray", "Green_Haze", "Green_lite", "Greenly", "Gruvbox", "Gruvbox_Dark_Hard", "Gruvbox_Dark_Medium", "Gruvbox_Dark_Soft", "Gruvbox_Github", "Gruvbox_Light_Hard", "Gruvbox_Light_Medium", "Gruvbox_Light_Soft", "Gruvbox_Material", "Hack_The_Box", "Hacker_Theme", "Haikyu:_Hinata_Shoyo", "Halcyon", "Helsing", "Hiberbee_Dark", "High-Contrast-Theme", "High_contrast", "HyperTheme", "Iceberg", "InBedBy7", "IntelliJ", "IntelliJ_Light", "Interesting", "JahySama:_Jahy", "JavierSC_dark", "KCoroutine", "Kakegurui:_Jabami_Yumeko", "KillLaKill:_Ryuko_Dark", "KillLaKill:_Ryuko_Light", "KillLaKill:_Satsuki_Dark", "KillLaKill:_Satsuki_Light", "KonoSuba:_Aqua", "KonoSuba:_Darkness_Dark", "KonoSuba:_Darkness_Light", "KonoSuba:_Megumin", "Kromatic", "Kyoto", "LS:_Konata", "Light", "Light_Custom_Theme_(Material)", "Light_Flat", "Light_Owl", "Light_Owl_(Material)", "Light_Owl_Contrast", "Light_green", "Lotus_Dark", "Lotus_Light", "LoveLive:_Sonoda_Umi", "Lumio", "MacchuPicchu", "Material_Darker", "Material_Darker_Contrast", "Material_Deep_Ocean", "Material_Deep_Ocean_Contrast", "Material_Forest", "Material_Forest_Contrast", "Material_Lighter", "Material_Lighter_Contrast", "Material_Oceanic", "Material_Oceanic_Contrast", "Material_Palenight", "Material_Palenight_Contrast", "Material_Sandy_Beach", "Material_Sandy_Beach_Contrast", "Material_Sky_Blue", "Material_Sky_Blue_Contrast", "Material_Theme:_Default", "Material_Theme:_Lighter", "Material_Theme:_Night", "Material_Theme:_Ocean", "Material_Volcano", "Material_Volcano_Contrast", "Mayukai_Alucard", "Mayukai_Mirage", "Mayukai_Mono", "Mayukai_Reversal", "Monarcula", "Monarcula_Pro", "Monarcula_Soft", "Monocai", "Monogatari:_Hanekawa_Tsubasa", "Monokai_Pro", "Monokai_Pro_(Classic)", "Monokai_Pro_(Filter_Machine)", "Monokai_Pro_(Filter_Octagon)", "Monokai_Pro_(Filter_Ristretto)", "Monokai_Pro_(Filter_Spectrum)", "Monokai_Pro_(Material)", "Monokai_Pro_Contrast", "MonsterMusume:_Miia", "Moonlight", "Moonlight_(Material)", "Moonlight_Contrast", "Moto_Ducat", "MyGruvbox", "Napalmpapalam", "NekoPara:_Azuki", "NekoPara:_Chocola", "NekoPara:_Christmas_Chocola", "NekoPara:_Cinnamon", "NekoPara:_Coconut", "NekoPara:_Maple_Dark", "NekoPara:_Maple_Light", "NekoPara:_Shigure", "NekoPara:_Vanilla", "Nier:Automata_Theme", "Night_Owl", "Night_Owl_(Material)", "Night_Owl_Contrast", "Noctis", "Noctis_Azureus", "Noctis_Bordo", "Noctis_Sereno", "Noctis_Uva", "Noctis_Voila", "Nord", "NotReallyMDTheme", "OPM:_Genos", "Obsidian", "Obsidian_Bright", "Oceanic_Dark_Theme", "Oceanic_Primal", "OneDarkMonokai", "One_Dark", "One_Dark_Italic", "One_Dark_Vivid", "One_Dark_Vivid_Italic", "OreGairu:_Yukinoshita_Yukino", "OreImo:_Kirino", "Pink_as_Heck", "Polar", "Prpl", "Purple", "QQ:_Nakano_Miku", "QQ:_Nakano_Nino", "QQ:_Nakano_Yotsuba", "Railgun:_Misaka_Mikoto", "Re:Zero:_Beatrice", "Re:Zero:_Echidna", "Re:Zero:_Emilia_Dark", "Re:Zero:_Emilia_Light", "Re:Zero:_Ram", "Re:Zero:_Rem", "ReSharper_Dark", "ReSharper_Light", "Red", "Red2", "Rider_Dark", "Rider_Light", "Rider_Melon_Dark", "Rider_Melon_Light", "Roboticket_Light", "Romeo-Theme", "Rouge", "SAO:_Asuna_Dark", "SAO:_Asuna_Light", "SG:_Makise_Kurisu", "Sage", "Salmon", "Sepia", "ShadeSmear_Dark", "ShadeSmear_Light", "Shades_Of_Purple", "Shape", "ShieldHero:_Raphtalia", "Shokugeki:_Yukihira_Soma", "Slime:_Rimiru_Tempest", "Solarized_Dark", "Solarized_Dark_(Material)", "Solarized_Dark_Contrast", "Solarized_Light", "Solarized_Light_(Material)", "Solarized_Light_Contrast", "Solo_Coding", "SpaceDay", "Spacegray", "Spacemacs", "Starlight", "StarlightDark", "Sublime", "Super_Dark", "SynthWave_'84", "SynthWave_'84_(Material)", "SynthWave_'84_Contrast", "Synthwave_Blue", "Synthwave_Refined", "System", "Tanne", "The_Above_Dark", "The_Above_Light", "Trash_Panda_Theme", "Twitch_Dark_Theme", "TypeMoon:_Astolfo", "TypeMoon:_Gray", "TypeMoon:_Ishtar_Dark", "TypeMoon:_Ishtar_Light", "TypeMoon:_Tohsaka_Rin", "Ubuntu_Theme", "Universe", "Universe_Purple", "VSCode_Dark", "Visual_Assist_Dark", "Visual_Assist_Light", "Visual_Studio_2019_Dark", "Visual_Studio_Code_Dark_Plus", "Visual_Studio_Dark", "Visual_Studio_Light", "Vocaloid:_Hatsune_Miku", "VoidTheme", "VsCode_Monokai_HC", "Windows_10_Light", "Winter_Is_Coming", "Xcode-Dark", "Xcode_Dark", "Xcode_Light", "Yaru_Dark", "YuruCamp:_Nadeshiko", "YuruCamp:_Shima_Rin", "[Doki]_AzurLane:_Essex", "[Doki]_BlendS:_Maika", "[Doki]_BunnySenpai:_Mai_Dark", "[Doki]_BunnySenpai:_Mai_Light", "[Doki]_DDLC:_Monika_Dark", "[Doki]_DDLC:_Monika_Light", "[Doki]_DDLC:_Natsuki_Dark", "[Doki]_DDLC:_Natsuki_Light", "[Doki]_DDLC:_Sayori_Dark", "[Doki]_DDLC:_Sayori_Light", "[Doki]_DDLC:_Yuri_Dark", "[Doki]_DDLC:_Yuri_Light", "[Doki]_DM:_Kanna", "[Doki]_DM:_Tohru", "[Doki]_DR:_Mioda_Ibuki_Dark", "[Doki]_DR:_Mioda_Ibuki_Light", "[Doki]_DTWMMN:_Hayase_Nagatoro", "[Doki]_DxD:_Rias:_Crimson", "[Doki]_DxD:_Rias:_Onyx", "[Doki]_EVA:_Katsuragi_Misato", "[Doki]_EVA:_Rei", "[Doki]_EroManga:_Sagiri", "[Doki]_Franxx:_Zero_Two_Dark", "[Doki]_Franxx:_Zero_Two_Light", "[Doki]_FutureDiary:_Gasai_Yuno", "[Doki]_Gate:_Rory_Mercury", "[Doki]_JahySama:_Jahy", "[Doki]_Kakegurui:_Jabami_Yumeko", "[Doki]_KillLaKill:_Ryuko_Dark", "[Doki]_KillLaKill:_Ryuko_Light", "[Doki]_KillLaKill:_Satsuki_Dark", "[Doki]_KillLaKill:_Satsuki_Light", "[Doki]_KonoSuba:_Aqua", "[Doki]_KonoSuba:_Darkness_Dark", "a.onji", "ajaaibu", "asiimov", "celestial", "color_blind_theme", "dark-jeff", "darkerla", "deep-focus-theme", "flat", "foggy-night", "hibNet_Midnight_Blue", "jDark", "jake-theme", "macOS_Light", "madrid", "metalheart", "minimal", "naysayer88", "nevaTheme", "night-owl-native", "nightfall", "plaid", "qubTheme", "reykjavik", "shirotelin", "silkworm", "soft-charcoal", "spectre_theme", "subtle-hacker-theme", "theme-oldirony-dark", "theme_eclipse", "thursday", "vuesion-theme", "warm-night", "white-sand", "xndlnk-monokai" ],
       "os" : [ "Windows", "Mac", "Linux", "FreeBSD", "ChromeOS", "Solaris", "Other" ],
       "plugin_type" : [ "PLATFORM", "JB_BUNDLED", "JB_NOT_BUNDLED", "LISTED", "NOT_LISTED", "UNKNOWN" ],
       "state" : [ "enabled", "disabled" ],
@@ -5114,5 +5239,5 @@
       "version" : "Unknown|unknown.format|unknown|UNKNOWN|((\\d+\\.?)*\\d+)"
     }
   },
-  "version" : "3112"
+  "version" : "3185"
 }
