@@ -13,21 +13,26 @@ iCommenter是一个应用于PyCharm的智能化代码注释生成插件
 
 ![plugin](./pic/step2.png)
 
-4.找到jar文件，并将其导入
+4.找到zip文件，并将其导入
 
 5.重启PyCharm以激活插件
+![img.png](./pic/step3.png)
 
 ## 使用
 1.在PyCharm中打开项目后，选择你想要为其生成注释的目标函数
 
 2.将光标移动至函数体内，使用快捷键`Shift + C` 或右键选择`Generate->generate comment`
+![plugin](./pic/app1.png)
 
 3.确认生成注释后会启动插件，等待片刻后会跳出侧边栏界面，上方显示了插件生成的注释结果
 
 4.点击apply可调用插件自动完成插入操作，若已有注释，可自行选择直接在其后插入、替换插入或撤销插入；
+![plugin](./pic/app2.png)
+![plugin](./pic/app4.png)
+示例图展示的是用户选择在其后插入的结果，若选择替换插入，则会将原注释完全替换为插件生成的注释
 
 5.在侧边栏下方可对生成的注释进行评价，点击Submit即可提交评价
-
+![plugin](./pic/app3.png)
 6.点击页面右下角的`Feedback for Plugin`可提交对于插件工具的反馈
 
 ## 源码使用

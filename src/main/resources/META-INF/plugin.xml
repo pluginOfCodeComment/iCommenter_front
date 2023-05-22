@@ -9,7 +9,7 @@
     and pressing the keyboard shortcuts “shift + c”.
     It can also be invoked by right-clicking generateComment button in the Generate group.
     Then plug-in will automatically generate the comment and insert it after clicking apply button.<br>
-
+    <br>
     iCommenter：一个应用于PyCharm上的自动化python代码注释生成插件<br>
     用户可以通过将光标移动至目标函数体内部并选择快捷键shift + c，或右键选择Generate -> generateComment来调用插件。
     此后插件将自动生成注释结果并在点击apply按钮后完成插入。
