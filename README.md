@@ -1,18 +1,17 @@
-#iCommenter
 iCommenter是一个应用于PyCharm的智能化代码注释生成插件
 
 ## 安装
-1.下载xx.jar
+1.下载gradlePlugin-1.0-SNAPSHOT.zip
 
 2.打开PyCharm，选择
 - Windows：`File` -> `Settings` -> `Plugins`;
 
-![setting](https://box.nju.edu.cn/library/284f4941-07bf-4375-9c2f-0f5f71774cbd/iCommenter/第一步.png)
+![setting]()
 - Mac：`IntelliJ IDEA` -> `Preferences` -> `Plugins`;
 
 3.选择 `Install Plugin from Disk`
 
-![plugin](https://box.nju.edu.cn/library/284f4941-07bf-4375-9c2f-0f5f71774cbd/iCommenter/第二步.png)
+![plugin]()
 
 4.找到jar文件，并将其导入
 
@@ -21,7 +20,7 @@ iCommenter是一个应用于PyCharm的智能化代码注释生成插件
 ## 使用
 1.在PyCharm中打开项目后，选择你想要为其生成注释的目标函数
 
-2.将光标移动至函数体内，使用快捷键`Shift + C` 或右键选择`generate->generate comment`
+2.将光标移动至函数体内，使用快捷键`Shift + C` 或右键选择`Generate->generate comment`
 
 3.确认生成注释后会启动插件，等待片刻后会跳出侧边栏界面，上方显示了插件生成的注释结果
 
@@ -45,6 +44,6 @@ iCommenter是一个应用于PyCharm的智能化代码注释生成插件
 
 2.点击右侧侧边栏的Gradle，选择`Tasks` -> `intellij` -> `runIde`
 
-3.开始运行，若一切正常将会跳出PyCharm（已配置好插件）的初始界面，可按照上文的使用部分正常调用插件iCommenter
+3.开始运行，若一切正常将会跳出PyCharm（已配置好插件）的初始界面，可按照上文的`使用`正常使用插件iCommenter
 
 4.关闭Pycharm后会结束runIde的调用
