@@ -7,7 +7,7 @@ iCommenter是一个应用于PyCharm的智能化代码注释生成插件
 2.打开PyCharm，选择
 - Windows：`File` -> `Settings` -> `Plugins`;
 
-![setting](https://box.nju.edu.cn/f/724dce7740b5445596b8/)
+![setting](https://box.nju.edu.cn/library/284f4941-07bf-4375-9c2f-0f5f71774cbd/iCommenter/第一步.png)
 - Mac：`IntelliJ IDEA` -> `Preferences` -> `Plugins`;
 
 3.选择 `Install Plugin from Disk`
