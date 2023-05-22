@@ -79,7 +79,7 @@ public class Context {
                 new FileEditorManagerListener() {
                     @Override
                     public void selectionChanged(@NotNull FileEditorManagerEvent event) {
-                        System.out.println("selection change");
+                        //System.out.println("selection change");
                         try {
                             check();
                         } catch (IOException ex) {
@@ -88,7 +88,7 @@ public class Context {
                     }
                     @Override
                     public void fileClosed(@NotNull FileEditorManager source, @NotNull VirtualFile file){
-                        System.out.println("closed");
+                        //System.out.println("closed");
                         try {
                             check();
                         } catch (IOException ex) {
@@ -136,7 +136,7 @@ public class Context {
         for (i = 0; i < tmp.length && !tmp[i].equals("def"); i++) {}
         function_name = tmp[i + 1].split("\\(")[0];
         //test
-        System.out.println("function: " + function_begin + " " + function_end);
+        //System.out.println("function: " + function_begin + " " + function_end);
 
         name = text[function_begin];
         indent = compare;
@@ -190,8 +190,8 @@ public class Context {
         TextRange textRange = new TextRange(document.getLineStartOffset(function_begin), document.getLineEndOffset(function_end));
         code = document.getText(textRange);
         //test
-        System.out.println(code);
-        System.out.println("comment: " + comment_begin + " " + comment_end);
+        //System.out.println(code);
+        //System.out.println("comment: " + comment_begin + " " + comment_end);
     }
 
     /*
@@ -217,7 +217,7 @@ public class Context {
                             myClient.close();
                         } catch (IOException e) {
                             //e.printStackTrace();
-                            System.out.println("error");
+                            //System.out.println("error");
                             //indicator.setIndeterminate(false);
                             SwingUtilities.invokeLater(() -> {
                                 Messages.showErrorDialog(project,"连接失败，请重新操作","错误");
@@ -257,7 +257,6 @@ public class Context {
                     StringBuffer sb = new StringBuffer(space + "\"\"\"\n");
                     String[] old = before.split("\n");
                     for(int i = 0; i < old.length; i++){
-                        //sb.append(space + old[i].substring(indent + 1) + "\n");
                         sb.append(space + old[i].substring(indent + 5).strip() + "\n");
                     }
                     sb.append("\n" + s + space + "\"\"\"\n");
@@ -269,12 +268,10 @@ public class Context {
                     String toreplace = "\"\"\"";
                     boolean flag = false;
                     if(!before.startsWith(space + "'''\n")){
-                        System.out.println("begin need");
                         toreplace += "\n" + space;
                         add++;
                     }
                     if(!before.endsWith("\n" + space + "'''")){
-                        System.out.println("end need");
                         flag = true;
                         add++;
                     }
@@ -285,9 +282,8 @@ public class Context {
                 }else{
                     boolean flag = !before.endsWith("\n" + space + "\"\"\"");
 
-                    if(flag){add++;System.out.println("end need");}
+                    if(flag){add++;}
                     if(!before.startsWith(space + "\"\"\"\n")){
-                        System.out.println("begin need");
                         String after = before.substring(0,before.length() - 3).replace("\"\"\"","\"\"\"\n" + space) +
                                 (flag ? "\n" : "") + "\n" + s + space + "\"\"\"\n";
                         runnable = () -> document.replaceString(firstOffset,endOffset,after);
@@ -310,9 +306,10 @@ public class Context {
         }
         commentType = DocComment;
         WriteCommandAction.runWriteCommandAction(project,runnable);
+
         //test
-        System.out.println("insert commment: "+comment_begin + " " + comment_end);
-        System.out.println("function: " + function_begin + " " + function_end);
+        //System.out.println("insert commment: "+comment_begin + " " + comment_end);
+        //System.out.println("function: " + function_begin + " " + function_end);
     }
 
     private void check() throws IOException {
@@ -327,8 +324,9 @@ public class Context {
                 comment_begin = comment_end = -1;
                 this.checkComment();
                 String change = document.getText(new TextRange(document.getLineStartOffset(comment_begin),document.getLineEndOffset(comment_end)));
-                System.out.println("change :");
-                System.out.println(change);
+
+                //System.out.println("change :");
+                //System.out.println(change);
                 corrected_comment = change;
                 MyClient myClient1 = new MyClient("127.0.0.1",6666);
                 try {
