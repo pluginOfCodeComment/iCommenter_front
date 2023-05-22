@@ -1152,7 +1152,7 @@
     "rules" : {
       "event_id" : [ "{enum:notification.respond.invoked|notification.disable.invoked|notification.shown}" ],
       "event_data" : {
-        "idle_feedback_type" : [ "{enum:NEW_UI_FEEDBACK|PRODUCTIVITY_METRIC_FEEDBACK}", "{enum:PYCHARM_UI_FEEDBACK}" ]
+        "idle_feedback_type" : [ "{enum:NEW_UI_FEEDBACK|PRODUCTIVITY_METRIC_FEEDBACK}", "{enum:PYCHARM_UI_FEEDBACK}", "{enum:AQUA_NEW_USER_FEEDBACK|AQUA_OLD_USER_FEEDBACK}" ]
       }
     }
   }, {
@@ -2688,6 +2688,35 @@
       }
     }
   }, {
+    "id" : "php.unit.run.configuration",
+    "builds" : [ ],
+    "versions" : [ {
+      "from" : "1"
+    } ],
+    "rules" : {
+      "event_id" : [ "{enum:configured}" ],
+      "event_data" : {
+        "count" : [ "{regexp#integer}" ],
+        "has_custom_options" : [ "{enum#boolean}" ],
+        "scope" : [ "{enum:Directory|Method|Class|XML|Pattern}" ],
+        "use_paratest" : [ "{enum#boolean}" ]
+      }
+    }
+  }, {
+    "id" : "php.unit.run.configuration.exec",
+    "builds" : [ ],
+    "versions" : [ {
+      "from" : "1"
+    } ],
+    "rules" : {
+      "event_id" : [ "{enum:execute}" ],
+      "event_data" : {
+        "has_custom_options" : [ "{enum#boolean}" ],
+        "scope" : [ "{enum:Directory|Method|Class|XML|Pattern}" ],
+        "use_paratest" : [ "{enum#boolean}" ]
+      }
+    }
+  }, {
     "id" : "platform.installer",
     "builds" : [ ],
     "versions" : [ {
@@ -3344,7 +3373,10 @@
         "count" : [ "{regexp#integer}" ],
         "lang" : [ "{util#lang}" ],
         "level" : [ "{enum:ide|project}" ],
-        "sdk_type" : [ "{enum#__sdk_type}", "{util#sdk_type}" ]
+        "plugin" : [ "{util#plugin}" ],
+        "plugin_type" : [ "{util#plugin_type}" ],
+        "plugin_version" : [ "{util#plugin_version}" ],
+        "sdk_type" : [ "{enum#__sdk_type}", "{util#sdk_type}", "{util#class_name}" ]
       },
       "enums" : {
         "_" : [ "Docker_Compose", "Docker", "Web_Deployment", "Vagrant", "SSH_Credentials", "WSL", "Unknown" ],
@@ -3603,13 +3635,11 @@
       "event_id" : [ "{enum:rustfmt|project|external_linter|cargo}" ],
       "event_data" : {
         "auto_show_errors_in_editor" : [ "{enum#boolean}" ],
-        "auto_update" : [ "{enum#boolean}" ],
         "channel" : [ "{enum:[default]|stable|beta|nightly|dev}" ],
         "compile_all_targets" : [ "{enum#boolean}" ],
         "doctest_injection" : [ "{enum#boolean}" ],
         "enabled" : [ "{enum#boolean}" ],
         "macro_expansion_engine" : [ "{enum:disabled|old|new}" ],
-        "offline" : [ "{enum#boolean}" ],
         "run_on_fly" : [ "{enum#boolean}" ],
         "run_on_save" : [ "{enum#boolean}" ],
         "tool" : [ "{enum:cargo check|clippy}" ]
@@ -3869,7 +3899,7 @@
         "usage_view" : [ "{regexp#integer}" ]
       },
       "enums" : {
-        "__event_id" : [ "most.common.usages.shown", "link.to.similar.usage.clicked", "more.clusters.loaded", "more.usages.loaded", "show.similar.usages.link.clicked", "most.common.usage.patterns.refresh.clicked", "more.non.clustered.usage.loaded", "navigate.to.usage.clicked" ]
+        "__event_id" : [ "most.common.usages.shown", "link.to.similar.usage.clicked", "more.clusters.loaded", "more.usages.loaded", "show.similar.usages.link.clicked", "most.common.usage.patterns.refresh.clicked", "more.non.clustered.usage.loaded", "navigate.to.usage.clicked", "more.snippets.loaded.in.clusters.preview" ]
       }
     }
   }, {
@@ -5239,5 +5269,5 @@
       "version" : "Unknown|unknown.format|unknown|UNKNOWN|((\\d+\\.?)*\\d+)"
     }
   },
-  "version" : "3185"
+  "version" : "3198"
 }

@@ -1,13 +1,17 @@
 package MyToolWindow;
 
+import UploadAndDownload.MyClient;
 import application.Context;
 import application.Comment;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.IOException;
+import java.util.Arrays;
 
 public class MyToolWindowSubmit {
+    private static int feedback_id=-1;
     private int[] score = new int[3];
     private Context context;
 
@@ -172,6 +176,26 @@ public class MyToolWindowSubmit {
                         return;
                     }
                 }
+                MyClient myClient = new MyClient("127.0.0.1",6666);
+                try {
+                    System.out.println("feedback");
+                    myClient.sendRequest("feedback:"+ Arrays.toString(score)+getUsrComment()+"ehqpeui@!#!!#DQWW1"+Context.getcode()+"ehqpeui@!#!!#DQWW1"+Context.getStrComment()+"ehqpeui@!#!!#DQWW1"+Context.getCorrected_comment());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                String res = null;
+                try {
+                    res = myClient.receive();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                feedback_id = Integer.parseInt(res);
+                System.out.println("receive:"+res);
+                try {
+                    myClient.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 JOptionPane.showMessageDialog(window,"success");
             }
         });
@@ -205,6 +229,9 @@ public class MyToolWindowSubmit {
     }//获取用户的反馈
     public JComponent getContent() {
         return window;
+    }
+    public static int getID(){
+        return feedback_id;
     }
 
 }

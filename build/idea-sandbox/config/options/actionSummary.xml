@@ -4,10 +4,10 @@
       <i c="10" l="1678706155178" />
     </e>
     <e n="$Undo">
-      <i c="223" l="1683297904639" />
+      <i c="673" l="1684154741727" />
     </e>
     <e n="EditorBackSpace">
-      <i c="807" l="1683297875533" />
+      <i c="965" l="1684154826414" />
     </e>
     <e n="EditorChooseLookupItem">
       <i c="5" l="1679223704285" />
@@ -19,13 +19,13 @@
       <i c="10" l="1680413818328" />
     </e>
     <e n="EditorEnter">
-      <i c="191" l="1682335885398" />
+      <i c="193" l="1684126328026" />
     </e>
     <e n="EditorLeft">
       <i c="40" l="1682335881472" />
     </e>
     <e n="EditorPaste">
-      <i c="7" l="1683297868862" />
+      <i c="9" l="1684126328346" />
     </e>
     <e n="EditorRight">
       <i c="30" l="1681054062059" />
@@ -34,7 +34,7 @@
       <i c="1" l="1678723735009" />
     </e>
     <e n="EditorTab">
-      <i c="24" l="1682333938705" />
+      <i c="26" l="1684125057780" />
     </e>
     <e n="EditorTabsEntryPoint">
       <i c="3" l="1678180079490" />
@@ -55,7 +55,7 @@
       <i c="2" l="1683297859920" />
     </e>
     <e n="OpenFile">
-      <i c="3" l="1681053952144" />
+      <i c="5" l="1684126679547" />
     </e>
     <e n="SearchEverywhere">
       <i c="11" l="1679223708040" />
@@ -94,7 +94,7 @@
       <i c="62" l="1682334799589" />
     </e>
     <e n="com.intellij.openapi.wm.impl.ToolWindowHeader$HideAction">
-      <i c="83" l="1682335901826" />
+      <i c="97" l="1684154648390" />
     </e>
     <e n="com.intellij.openapi.wm.impl.ToolWindowHeader$ShowOptionsAction">
       <i c="3" l="1678156283532" />

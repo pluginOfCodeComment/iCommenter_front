@@ -1,33 +1,50 @@
-##iCommenter插件使用指南
+#iCommenter
+iCommenter是一个应用于PyCharm的智能化代码注释生成插件
 
-### 1.环境配置
-#### 1.1 插件开发调试时使用
-在 设置-项目结构 里配置正确的SDK版本
+## 安装
+1.下载xx.jar
 
-    SDK版本：Intellij平台插件SDK，选择内部java平台为11的版本
-    语言级别：11
+2.打开PyCharm，选择
+- Windows：`File` -> `Settings` -> `Plugins`;
 
-#### 1.2 正常使用
-下载代码文件后在 设置-插件 中选择从磁盘安装插件，将文件导入即可
+![setting](https://box.nju.edu.cn/f/724dce7740b5445596b8/)
+- Mac：`IntelliJ IDEA` -> `Preferences` -> `Plugins`;
 
-可跳过第二部分-运行直接使用插件
+3.选择 `Install Plugin from Disk`
 
-### 2.运行
-在gradle构建完成后运行沙盒演示
+![plugin](https://box.nju.edu.cn/f/c8b41003311c4f9990f0/)
 
-点击右侧侧边栏的Gradle，在目录中找到/gradlePlugin/Tasks/intellij/runIde
+4.找到jar文件，并将其导入
 
-点击runIde即可运行，若一切正常将会跳出Pycharm的初始界面
+5.重启PyCharm以激活插件
 
-关闭Pycharm后会结束runIde的调用
+## 使用
+1.在PyCharm中打开项目后，选择你想要为其生成注释的目标函数
 
-### 3.插件使用
-在Pycharm中打开项目后，选择好目标函数
+2.将光标移动至函数体内，使用快捷键`Shift + C` 或右键选择`generate->generate comment`
 
-将光标移动至函数体内，使用快捷键Shift + C 或右键选择generate->generate comment，确认生成注释后即可看到侧边栏界面出现
+3.确认生成注释后会启动插件，等待片刻后会跳出侧边栏界面，上方显示了插件生成的注释结果
 
-点击apply进行插入操作，若已有注释，可选择直接在其后插入、替换插入或撤销插入操作；
+4.点击apply可调用插件自动完成插入操作，若已有注释，可自行选择直接在其后插入、替换插入或撤销插入；
 
-可对生成的注释进行评价，点击Submit即可提交评价
+5.在侧边栏下方可对生成的注释进行评价，点击Submit即可提交评价
 
-点击下方的Feedback for Plugin即可对插件工具的使用进行评价
+6.点击页面右下角的`Feedback for Plugin`可提交对于插件工具的反馈
+
+## 源码使用
+
+### 环境配置
+1.下载源码后，打开Intellij IDEA导入项目，选择`File` -> `Project Structure`
+
+2.在`Project Settings` -> `Project`页面
+- 配置SDK为IntelliJ Platform Plugin SDK，若本地没有可点击`Add SDK`下载，选择对应JDK11的版本
+- 配置语言级别为11
+
+### 运行
+1.使用gradle构建项目
+
+2.点击右侧侧边栏的Gradle，选择`Tasks` -> `intellij` -> `runIde`
+
+3.开始运行，若一切正常将会跳出PyCharm（已配置好插件）的初始界面，可按照上文的使用部分正常调用插件iCommenter
+
+4.关闭Pycharm后会结束runIde的调用

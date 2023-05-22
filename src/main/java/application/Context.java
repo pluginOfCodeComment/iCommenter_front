@@ -1,5 +1,6 @@
 package application;
 
+import MyToolWindow.MyToolWindowSubmit;
 import UploadAndDownload.MyClient;
 import Util.Tools;
 import com.intellij.openapi.command.WriteCommandAction;
@@ -25,7 +26,9 @@ import java.util.Objects;
 
 public class Context {
     /** 选中的代码文本 **/
-    private String code;
+    private static String code;
+    private static String str_comment;
+    private static String corrected_comment;
     /** 工程对象 **/
     private Project project;
     /** 文件 **/
@@ -157,12 +160,14 @@ public class Context {
 
     public void checkComment(){
         String[] text = document.getText().split("\n");
-        if(!isCommentLine(text[function_begin + 1])){
+        int begin = function_begin + 1;
+        for(;begin < function_end && text[begin].equals(""); begin++);
+        if(!isCommentLine(text[begin])){
             hasCodeComment = false;
             return;
         }
         hasCodeComment = true;
-        comment_begin = function_begin + 1;
+        comment_begin = begin;
         comment_end = comment_begin;
         for(int i = comment_begin + 1; i <= function_end; i++){
             if(text[i].equals("")){
@@ -203,8 +208,13 @@ public class Context {
                             myClient = new MyClient("127.0.0.1",6666);
                             myClient.sendRequest(code);
                             myClient.receive();
+
+                            if(indicator.isCanceled()){
+                                throw new RuntimeException();
+                            }
                             String res_comment = myClient.receive();
                             comment = new Comment(res_comment,indent + 4);
+                            myClient.close();
                         } catch (IOException e) {
                             //e.printStackTrace();
                             System.out.println("error");
@@ -319,13 +329,39 @@ public class Context {
                 String change = document.getText(new TextRange(document.getLineStartOffset(comment_begin),document.getLineEndOffset(comment_end)));
                 System.out.println("change :");
                 System.out.println(change);
+                corrected_comment = change;
+                MyClient myClient1 = new MyClient("127.0.0.1",6666);
+                try {
+                    myClient1.sendRequest("change:"+ MyToolWindowSubmit.getID()+"ehqpeui@!#!!#DQWW1"+change);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                String res = null;
+                try {
+                    res = myClient1.receive();
+                    System.out.println(res);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                myClient1.close();
                 connection.disconnect();
-                myClient.close();
             }
         }
     }
 
     public Comment getComment() {
         return comment;
+    }
+
+    public static String getcode(){
+        return code;
+    }
+
+    public static String getStrComment(){
+        return str_comment;
+    }
+
+    public static String getCorrected_comment(){
+        return  corrected_comment;
     }
 }
