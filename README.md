@@ -12,7 +12,7 @@ iCommenter是一个应用于PyCharm的智能化代码注释生成插件
 
 3.选择 `Install Plugin from Disk`
 
-![plugin](https://box.nju.edu.cn/f/c8b41003311c4f9990f0/)
+![plugin](https://box.nju.edu.cn/library/284f4941-07bf-4375-9c2f-0f5f71774cbd/iCommenter/第二步.png)
 
 4.找到jar文件，并将其导入
 
