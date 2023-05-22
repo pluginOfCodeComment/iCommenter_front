@@ -6,12 +6,12 @@ iCommenter是一个应用于PyCharm的智能化代码注释生成插件
 2.打开PyCharm，选择
 - Windows：`File` -> `Settings` -> `Plugins`;
 
-![setting]()
+![setting](./pic/step1.png)
 - Mac：`IntelliJ IDEA` -> `Preferences` -> `Plugins`;
 
 3.选择 `Install Plugin from Disk`
 
-![plugin]()
+![plugin](./pic/step2.png)
 
 4.找到jar文件，并将其导入
 
