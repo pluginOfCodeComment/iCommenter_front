@@ -21,7 +21,7 @@ import static MyToolWindow.Icons.LOGO;
 public class GenerateAction extends AnAction {
 
     private Context context;
-    private static final String ToolWindowName = "generate comments";
+    private static final String ToolWindowName = "iCommenter";
 
     @Override
     public void actionPerformed(AnActionEvent e) {

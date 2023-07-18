@@ -189,7 +189,7 @@ public class MyToolWindowSubmit {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                feedback_id = Integer.parseInt(res);
+                //feedback_id = Integer.parseInt(res);
                 System.out.println("receive:"+res);
                 try {
                     myClient.close();

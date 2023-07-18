@@ -1,5 +1,5 @@
 <idea-plugin>
-    <id>org.example.gradlePlugin</id>
+    <id>org.example.iCommenter</id>
     <name>iCommenter</name>
     <vendor email="2274572823@qq.com" url="https://github.com/pluginOfCodeComment/Plugin_g">njuse</vendor>
 
