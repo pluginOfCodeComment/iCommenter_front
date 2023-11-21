@@ -189,9 +189,6 @@ public class Context {
     public void getBody(){
         TextRange textRange = new TextRange(document.getLineStartOffset(function_begin), document.getLineEndOffset(function_end));
         code = document.getText(textRange);
-        //test
-        //System.out.println(code);
-        //System.out.println("comment: " + comment_begin + " " + comment_end);
     }
 
     /*
@@ -199,6 +196,8 @@ public class Context {
     */
     public void transfer() throws RuntimeException, IOException {
         getBody();
+        // 如果只跑前端的话，把下面注释掉
+        // comment = new Comment("this is code comment",indent + 4);
         ProgressManager.getInstance().run(
                 new Task.Modal(project, "Generating Comment", true) {
                     @Override
@@ -216,9 +215,6 @@ public class Context {
                             comment = new Comment(res_comment,indent + 4);
                             myClient.close();
                         } catch (IOException e) {
-                            //e.printStackTrace();
-                            //System.out.println("error");
-                            //indicator.setIndeterminate(false);
                             SwingUtilities.invokeLater(() -> {
                                 Messages.showErrorDialog(project,"连接失败，请重新操作","错误");
                             });
@@ -306,10 +302,6 @@ public class Context {
         }
         commentType = DocComment;
         WriteCommandAction.runWriteCommandAction(project,runnable);
-
-        //test
-        //System.out.println("insert commment: "+comment_begin + " " + comment_end);
-        //System.out.println("function: " + function_begin + " " + function_end);
     }
 
     private void check() throws IOException {
@@ -325,8 +317,6 @@ public class Context {
                 this.checkComment();
                 String change = document.getText(new TextRange(document.getLineStartOffset(comment_begin),document.getLineEndOffset(comment_end)));
 
-                //System.out.println("change :");
-                //System.out.println(change);
                 corrected_comment = change;
                 MyClient myClient1 = new MyClient("127.0.0.1",6666);
                 try {
